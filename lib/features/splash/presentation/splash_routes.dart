@@ -1,4 +1,4 @@
 abstract class SplashRoutes {
-  static const name = 'home';
-  static const path = '/home';
+  static const name = 'splash';
+  static const path = '/splash';
 }

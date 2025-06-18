@@ -5,7 +5,7 @@ import 'package:e_commerce_app/features/splash/presentation/splash_routes.dart';
 import 'package:go_router/go_router.dart';
 
 final GoRouter router = GoRouter(
-  initialLocation: '/splash',
+  initialLocation: SplashRoutes.path,
   routes: [
     GoRoute(
       path: SplashRoutes.path,
@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
       path: HomeRoutes.path,
-      name: HomeRoutes.path,
+      name: HomeRoutes.name,
       builder: (context, state) => const HomePage(),
     ),
   ],
