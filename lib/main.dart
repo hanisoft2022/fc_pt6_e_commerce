@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/core/routes/router.dart';
+import 'package:e_commerce_app/core/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,6 +11,10 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(routerConfig: router);
+    return MaterialApp.router(
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      routerConfig: router,
+    );
   }
 }
