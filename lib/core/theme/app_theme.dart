@@ -10,7 +10,7 @@ abstract class AppTheme {
       colorScheme: ColorScheme.light(
         primary: AppColors.primary,
         // secondary: AppColors.secondary,
-        // background: AppColors.background,
+        surface: AppColors.primaryContainer,
         // error: AppColors.error,
       ),
       appBarTheme: const AppBarTheme(
