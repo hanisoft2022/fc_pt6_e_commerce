@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:e_commerce_app/core/theme/constant/app_colors.dart';
 import 'package:e_commerce_app/core/theme/constant/app_icons.dart';
-import 'package:e_commerce_app/features/home/presentation/home_routes.dart';
-import 'package:e_commerce_app/shared/extensions/context_extensions.dart';
+import 'package:e_commerce_app/features/main/presentation/main_routes.dart';
+import 'package:e_commerce_app/shared/extensions/context_media_query_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -19,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () => context.goNamed(HomeRoutes.name));
+    Timer(Duration(seconds: 2), () => context.goNamed(MainRoute.name));
   }
 
   @override
@@ -40,7 +40,7 @@ class _SplashPageState extends State<SplashPage> {
             right: 0,
             bottom: context.bottomPadding,
             child: SvgPicture.asset(
-              'assets/svgs/hanisoft_logo.svg',
+              'assets/svg/hanisoft_logo.svg',
               height: 50,
               colorFilter: ColorFilter.mode(Colors.white.withAlpha(100), BlendMode.srcIn),
             ),
