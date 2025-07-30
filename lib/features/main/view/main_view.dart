@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/features/main/presentation/widgets/navigation_bar.dart';
-import 'package:e_commerce_app/features/main/presentation/widgets/top_app_bar.dart';
+import 'package:e_commerce_app/features/main/widgets/navigation_bar.dart';
+import 'package:e_commerce_app/features/main/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart' hide NavigationBar;
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class MainView extends StatelessWidget {
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {

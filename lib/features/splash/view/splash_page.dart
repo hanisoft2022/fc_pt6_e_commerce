@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:e_commerce_app/core/theme/constant/app_colors.dart';
 import 'package:e_commerce_app/core/theme/constant/app_icons.dart';
-import 'package:e_commerce_app/features/main/presentation/main_routes.dart';
+import 'package:e_commerce_app/features/main/view/main_routes.dart';
 import 'package:e_commerce_app/shared/extensions/context_media_query_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
