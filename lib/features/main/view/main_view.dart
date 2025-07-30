@@ -1,8 +1,8 @@
 import 'package:e_commerce_app/features/category/view/category_page.dart';
 import 'package:e_commerce_app/features/home/view/home_page.dart';
-import 'package:e_commerce_app/features/main/cubit/cubit/bottom_nav_cubit.dart';
-import 'package:e_commerce_app/features/main/widgets/navigation_bar.dart';
-import 'package:e_commerce_app/features/main/widgets/top_app_bar.dart';
+import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
+import 'package:e_commerce_app/features/bottom_nav/widgets/navigation_bar.dart';
+import 'package:e_commerce_app/features/app_bar/top_app_bar.dart';
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/main/cubit/cubit/bottom_nav_cubit.dart';
+import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
 import 'package:flutter/material.dart' hide Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
