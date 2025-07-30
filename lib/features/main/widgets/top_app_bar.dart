@@ -32,8 +32,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.all(4),
             child: SvgPicture.asset(
               AppIcons.location,
-
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(context.colorScheme.surface, BlendMode.srcIn),
             ),
           ),
           Gap(8),
@@ -41,7 +40,7 @@ class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
             padding: const EdgeInsets.all(4),
             child: SvgPicture.asset(
               AppIcons.cart,
-              colorFilter: ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              colorFilter: ColorFilter.mode(context.colorScheme.surface, BlendMode.srcIn),
             ),
           ),
         ],
