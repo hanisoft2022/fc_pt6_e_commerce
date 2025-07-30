@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
-class TopAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TopAppBar({super.key});
+class DefaultAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const DefaultAppBar({super.key});
 
   @override
   Size get preferredSize => const Size.fromHeight(44);
