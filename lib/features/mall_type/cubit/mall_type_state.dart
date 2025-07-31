@@ -12,6 +12,15 @@ extension MallTypeX on MallType {
     }
   }
 
+  CustomAppBarTheme get theme {
+    switch (this) {
+      case MallType.market:
+        return CustomAppBarTheme.market;
+      case MallType.beauty:
+        return CustomAppBarTheme.beauty;
+    }
+  }
+
   bool get isMarket => this == MallType.market;
 
   bool get isBeauty => this == MallType.beauty;

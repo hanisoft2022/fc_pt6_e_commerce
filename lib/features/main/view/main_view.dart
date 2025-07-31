@@ -3,7 +3,7 @@ import 'package:e_commerce_app/features/home/view/home_page.dart';
 import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce_app/features/bottom_nav/widgets/navigation_bar.dart';
 import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
-import 'package:e_commerce_app/features/top_app_bar/widget/top_app_bar.dart';
+import 'package:e_commerce_app/features/top_app_bar/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 

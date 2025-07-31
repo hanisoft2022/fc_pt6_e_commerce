@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/core/theme/custom/custom_theme.dart';
 import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
-import 'package:e_commerce_app/shared/extensions/context_theme_extension.dart';
+import 'package:e_commerce_app/core/extensions/context_theme_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
