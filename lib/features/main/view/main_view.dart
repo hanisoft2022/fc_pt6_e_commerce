@@ -2,6 +2,7 @@ import 'package:e_commerce_app/features/category/view/category_page.dart';
 import 'package:e_commerce_app/features/home/view/home_page.dart';
 import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce_app/features/bottom_nav/widgets/navigation_bar.dart';
+import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
 import 'package:e_commerce_app/features/top_app_bar/widget/top_app_bar.dart';
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +12,13 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (context) => BottomNavCubit(), child: const MainPage());
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => BottomNavCubit()),
+        BlocProvider(create: (context) => MallTypeCubit()),
+      ],
+      child: const MainPage(),
+    );
   }
 }
 

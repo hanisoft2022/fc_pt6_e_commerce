@@ -4,4 +4,6 @@ part 'mall_type_state.dart';
 
 class MallTypeCubit extends Cubit<MallType> {
   MallTypeCubit() : super(MallType.market);
+
+  void changeMallType(MallType mallType) => emit(mallType);
 }
