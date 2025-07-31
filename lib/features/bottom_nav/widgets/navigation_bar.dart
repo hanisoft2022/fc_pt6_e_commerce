@@ -16,11 +16,11 @@ class NavigationBar extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           currentIndex: context.read<BottomNavCubit>().state.tab.index,
           onTap: (index) => {context.read<BottomNavCubit>().changeTab(index)},
-          items: List.generate(Tab.values.length, (index) {
+          items: List.generate(MyTab.values.length, (index) {
             return BottomNavigationBarItem(
-              icon: SvgPicture.asset(Tab.values[index].iconPath),
-              activeIcon: SvgPicture.asset(Tab.values[index].activeIconPath),
-              label: Tab.values[index].name,
+              icon: SvgPicture.asset(MyTab.values[index].iconPath),
+              activeIcon: SvgPicture.asset(MyTab.values[index].activeIconPath),
+              label: MyTab.values[index].name,
             );
           }),
         );

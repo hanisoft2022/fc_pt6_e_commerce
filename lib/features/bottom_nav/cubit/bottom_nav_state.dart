@@ -1,49 +1,49 @@
 part of 'bottom_nav_cubit.dart';
 
-enum Tab { home, category, search, user }
+enum MyTab { home, category, search, user }
 
-extension TabX on Tab {
+extension TabX on MyTab {
   String get iconPath {
     switch (this) {
-      case Tab.home:
+      case MyTab.home:
         return AppIcons.navHome;
-      case Tab.category:
+      case MyTab.category:
         return AppIcons.navCategory;
-      case Tab.search:
+      case MyTab.search:
         return AppIcons.navSearch;
-      case Tab.user:
+      case MyTab.user:
         return AppIcons.navUser;
     }
   }
 
   String get activeIconPath {
     switch (this) {
-      case Tab.home:
+      case MyTab.home:
         return AppIcons.navHomeOn;
-      case Tab.category:
+      case MyTab.category:
         return AppIcons.navCategoryOn;
-      case Tab.search:
+      case MyTab.search:
         return AppIcons.navSearchOn;
-      case Tab.user:
+      case MyTab.user:
         return AppIcons.navUserOn;
     }
   }
 
   String get name {
     switch (this) {
-      case Tab.home:
+      case MyTab.home:
         return '홈';
-      case Tab.category:
+      case MyTab.category:
         return '카테고리';
-      case Tab.search:
+      case MyTab.search:
         return '검색';
-      case Tab.user:
+      case MyTab.user:
         return '마이페이지';
     }
   }
 }
 
 final class BottomNavState {
-  final Tab tab;
+  final MyTab tab;
   BottomNavState({required this.tab});
 }

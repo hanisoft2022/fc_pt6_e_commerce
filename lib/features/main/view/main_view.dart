@@ -21,17 +21,17 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: TopAppBar(),
+      appBar: const TopAppBar(),
       body: BlocBuilder<BottomNavCubit, BottomNavState>(
         builder: (context, state) {
           switch (state.tab) {
-            case Tab.home:
+            case MyTab.home:
               return const HomePage();
-            case Tab.category:
+            case MyTab.category:
               return const CategoryPage();
-            case Tab.search:
+            case MyTab.search:
               return const SearchPage();
-            case Tab.user:
+            case MyTab.user:
               return const UserPage();
           }
         },

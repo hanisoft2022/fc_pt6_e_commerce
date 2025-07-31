@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'bottom_nav_state.dart';
 
 class BottomNavCubit extends Cubit<BottomNavState> {
-  BottomNavCubit() : super(BottomNavState(tab: Tab.home));
+  BottomNavCubit() : super(BottomNavState(tab: MyTab.home));
 
-  void changeTab(int index) => emit(BottomNavState(tab: Tab.values[index]));
+  void changeTab(int index) => emit(BottomNavState(tab: MyTab.values[index]));
 }
