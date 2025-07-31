@@ -23,9 +23,14 @@ class HomeAppBar extends StatelessWidget {
               initialIndex: mallType.index,
               length: MallType.values.length,
               child: TabBar(
+                indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: mallType.isMarket
+                      ? context.colorScheme.onPrimary
+                      : context.colorScheme.primary,
+                ),
                 onTap: (index) =>
                     context.read<MallTypeCubit>().changeMallType(MallType.values[index]),
-
                 labelColor: Colors.black,
                 tabs: List.generate(
                   MallType.values.length,
