@@ -6,8 +6,6 @@ import 'package:e_commerce_app/core/extensions/context_theme_extension.dart';
 import 'package:e_commerce_app/features/top_app_bar/widgets/home_app_bar/svg_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:gap/gap.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});

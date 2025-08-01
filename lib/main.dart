@@ -18,5 +18,3 @@ class MainApp extends StatelessWidget {
     );
   }
 }
-
-// for commit
