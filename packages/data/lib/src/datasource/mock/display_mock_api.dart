@@ -2,14 +2,20 @@ import 'dart:convert';
 
 import 'package:data/src/datasource/mock/display_mock_data.dart';
 import 'package:data/src/datasource/remote/display_api.dart';
+import 'package:data/src/dto/menu/common/response_wrapper.dart';
 import 'package:data/src/dto/menu/menu_dto.dart';
 
 class DisplayMockApi implements DisplayApi {
   @override
-  Future<List<MenuDto>> getMenus(String mallType) {
+  Future<ResponseWrapper<List<MenuDto>>> getMenus(String mallType) {
     return Future(
-      () => _menuParser(
-        mallType == 'market' ? DisplayMockData.menusByMarket : DisplayMockData.menusByBeauty,
+      () => ResponseWrapper(
+        status: 'SUCCESS',
+        code: '0000',
+        message: 'display mock api',
+        data: _menuParser(
+          mallType == 'market' ? DisplayMockData.menusByMarket : DisplayMockData.menusByBeauty,
+        ),
       ),
     );
   }
@@ -18,7 +24,6 @@ class DisplayMockApi implements DisplayApi {
     List<MenuDto> menus = [];
     final List json = jsonDecode(source);
     menus = json.map((e) => MenuDto.fromJson(e)).toList();
-
     return menus;
   }
 }
