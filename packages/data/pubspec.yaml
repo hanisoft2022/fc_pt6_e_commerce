@@ -16,6 +16,8 @@ dependencies:
   dio: ^5.8.0+1
   domain:
     path: ../domain
+  core:
+    path: ../core
 
 
 dev_dependencies:
