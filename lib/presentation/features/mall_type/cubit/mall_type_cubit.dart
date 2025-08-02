@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:e_commerce_app/core/theme/custom/custom_app_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

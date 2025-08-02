@@ -17,8 +17,14 @@ dependencies:
   go_router: ^16.0.0
   json_annotation: ^4.9.0
   retrofit: ^4.7.0
+  core:
+    path: packages/core
+  domain:
+    path: packages/domain
   data:
     path: packages/data
+
+
 
 dev_dependencies:
   flutter_test:

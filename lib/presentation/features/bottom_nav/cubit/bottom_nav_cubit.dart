@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/theme/constant/app_icons.dart';
+import 'package:e_commerce_app/core/theme/constants/app_icons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'bottom_nav_state.dart';

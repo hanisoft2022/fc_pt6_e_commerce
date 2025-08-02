@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/theme/constant/app_colors.dart';
+import '../constants/app_colors.dart';
 import 'package:flutter/services.dart';
 
 class CustomAppBarTheme {

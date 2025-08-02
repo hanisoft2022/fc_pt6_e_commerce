@@ -14,6 +14,8 @@ dependencies:
   retrofit: ^4.6.0
   logger: ^2.6.0  # for logging purpose
   dio: ^5.8.0+1
+  core:
+    path: ../core
 
 
 dev_dependencies:
