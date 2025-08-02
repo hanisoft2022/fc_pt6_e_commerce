@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:data/src/datasource/mock/display_mock_data.dart';
-import 'package:data/src/datasource/remote/display_api.dart';
-import 'package:data/src/dto/menu/common/response_wrapper.dart';
+import 'package:data/src/data_source/mock/display_mock_data.dart';
+import 'package:data/src/data_source/remote/display/display_api.dart';
+import 'package:data/src/dto/common/response_wrapper.dart';
 import 'package:data/src/dto/menu/menu_dto.dart';
 
 class DisplayMockApi implements DisplayApi {

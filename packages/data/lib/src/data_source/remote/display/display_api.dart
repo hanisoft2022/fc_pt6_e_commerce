@@ -1,4 +1,4 @@
-import 'package:data/src/dto/menu/common/response_wrapper.dart';
+import 'package:data/src/dto/common/response_wrapper.dart';
 import 'package:data/src/dto/menu/menu_dto.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
