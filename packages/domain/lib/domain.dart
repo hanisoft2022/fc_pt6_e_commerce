@@ -1,1 +1,1 @@
-export 'src/entity/entity.dart';
+export 'src/entities/entity.dart';
