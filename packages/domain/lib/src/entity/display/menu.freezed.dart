@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'menu_dto.dart';
+part of 'menu.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,22 +13,22 @@ part of 'menu_dto.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$MenuDto {
+mixin _$Menu {
 
- int? get tabId; String? get title;
-/// Create a copy of MenuDto
+ int get tabId; String get title;
+/// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MenuDtoCopyWith<MenuDto> get copyWith => _$MenuDtoCopyWithImpl<MenuDto>(this as MenuDto, _$identity);
+$MenuCopyWith<Menu> get copyWith => _$MenuCopyWithImpl<Menu>(this as Menu, _$identity);
 
-  /// Serializes this MenuDto to a JSON map.
+  /// Serializes this Menu to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuDto&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -37,18 +37,18 @@ int get hashCode => Object.hash(runtimeType,tabId,title);
 
 @override
 String toString() {
-  return 'MenuDto(tabId: $tabId, title: $title)';
+  return 'Menu(tabId: $tabId, title: $title)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MenuDtoCopyWith<$Res>  {
-  factory $MenuDtoCopyWith(MenuDto value, $Res Function(MenuDto) _then) = _$MenuDtoCopyWithImpl;
+abstract mixin class $MenuCopyWith<$Res>  {
+  factory $MenuCopyWith(Menu value, $Res Function(Menu) _then) = _$MenuCopyWithImpl;
 @useResult
 $Res call({
- int? tabId, String? title
+ int tabId, String title
 });
 
 
@@ -56,28 +56,28 @@ $Res call({
 
 }
 /// @nodoc
-class _$MenuDtoCopyWithImpl<$Res>
-    implements $MenuDtoCopyWith<$Res> {
-  _$MenuDtoCopyWithImpl(this._self, this._then);
+class _$MenuCopyWithImpl<$Res>
+    implements $MenuCopyWith<$Res> {
+  _$MenuCopyWithImpl(this._self, this._then);
 
-  final MenuDto _self;
-  final $Res Function(MenuDto) _then;
+  final Menu _self;
+  final $Res Function(Menu) _then;
 
-/// Create a copy of MenuDto
+/// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? tabId = freezed,Object? title = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? tabId = null,Object? title = null,}) {
   return _then(_self.copyWith(
-tabId: freezed == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,
+tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
 }
 
 
-/// Adds pattern-matching-related methods to [MenuDto].
-extension MenuDtoPatterns on MenuDto {
+/// Adds pattern-matching-related methods to [Menu].
+extension MenuPatterns on Menu {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -90,10 +90,10 @@ extension MenuDtoPatterns on MenuDto {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuDto value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Menu value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _MenuDto() when $default != null:
+case _Menu() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -112,10 +112,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuDto value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Menu value)  $default,){
 final _that = this;
 switch (_that) {
-case _MenuDto():
+case _Menu():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -133,10 +133,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuDto value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Menu value)?  $default,){
 final _that = this;
 switch (_that) {
-case _MenuDto() when $default != null:
+case _Menu() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -154,9 +154,9 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? tabId,  String? title)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int tabId,  String title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _MenuDto() when $default != null:
+case _Menu() when $default != null:
 return $default(_that.tabId,_that.title);case _:
   return orElse();
 
@@ -175,9 +175,9 @@ return $default(_that.tabId,_that.title);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? tabId,  String? title)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int tabId,  String title)  $default,) {final _that = this;
 switch (_that) {
-case _MenuDto():
+case _Menu():
 return $default(_that.tabId,_that.title);case _:
   throw StateError('Unexpected subclass');
 
@@ -195,9 +195,9 @@ return $default(_that.tabId,_that.title);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? tabId,  String? title)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int tabId,  String title)?  $default,) {final _that = this;
 switch (_that) {
-case _MenuDto() when $default != null:
+case _Menu() when $default != null:
 return $default(_that.tabId,_that.title);case _:
   return null;
 
@@ -209,27 +209,27 @@ return $default(_that.tabId,_that.title);case _:
 /// @nodoc
 @JsonSerializable()
 
-class _MenuDto implements MenuDto {
-   _MenuDto({this.tabId = -1, this.title = ''});
-  factory _MenuDto.fromJson(Map<String, dynamic> json) => _$MenuDtoFromJson(json);
+class _Menu implements Menu {
+   _Menu({required this.tabId, required this.title});
+  factory _Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);
 
-@override@JsonKey() final  int? tabId;
-@override@JsonKey() final  String? title;
+@override final  int tabId;
+@override final  String title;
 
-/// Create a copy of MenuDto
+/// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$MenuDtoCopyWith<_MenuDto> get copyWith => __$MenuDtoCopyWithImpl<_MenuDto>(this, _$identity);
+_$MenuCopyWith<_Menu> get copyWith => __$MenuCopyWithImpl<_Menu>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$MenuDtoToJson(this, );
+  return _$MenuToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuDto&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -238,18 +238,18 @@ int get hashCode => Object.hash(runtimeType,tabId,title);
 
 @override
 String toString() {
-  return 'MenuDto(tabId: $tabId, title: $title)';
+  return 'Menu(tabId: $tabId, title: $title)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$MenuDtoCopyWith<$Res> implements $MenuDtoCopyWith<$Res> {
-  factory _$MenuDtoCopyWith(_MenuDto value, $Res Function(_MenuDto) _then) = __$MenuDtoCopyWithImpl;
+abstract mixin class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
+  factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) _then) = __$MenuCopyWithImpl;
 @override @useResult
 $Res call({
- int? tabId, String? title
+ int tabId, String title
 });
 
 
@@ -257,20 +257,20 @@ $Res call({
 
 }
 /// @nodoc
-class __$MenuDtoCopyWithImpl<$Res>
-    implements _$MenuDtoCopyWith<$Res> {
-  __$MenuDtoCopyWithImpl(this._self, this._then);
+class __$MenuCopyWithImpl<$Res>
+    implements _$MenuCopyWith<$Res> {
+  __$MenuCopyWithImpl(this._self, this._then);
 
-  final _MenuDto _self;
-  final $Res Function(_MenuDto) _then;
+  final _Menu _self;
+  final $Res Function(_Menu) _then;
 
-/// Create a copy of MenuDto
+/// Create a copy of Menu
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? tabId = freezed,Object? title = freezed,}) {
-  return _then(_MenuDto(
-tabId: freezed == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,
+@override @pragma('vm:prefer-inline') $Res call({Object? tabId = null,Object? title = null,}) {
+  return _then(_Menu(
+tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 

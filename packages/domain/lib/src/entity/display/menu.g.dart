@@ -1,17 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'menu_dto.dart';
+part of 'menu.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_MenuDto _$MenuDtoFromJson(Map<String, dynamic> json) => _MenuDto(
-  tabId: (json['tabId'] as num?)?.toInt() ?? -1,
-  title: json['title'] as String? ?? '',
+_Menu _$MenuFromJson(Map<String, dynamic> json) => _Menu(
+  tabId: (json['tabId'] as num).toInt(),
+  title: json['title'] as String,
 );
 
-Map<String, dynamic> _$MenuDtoToJson(_MenuDto instance) => <String, dynamic>{
+Map<String, dynamic> _$MenuToJson(_Menu instance) => <String, dynamic>{
   'tabId': instance.tabId,
   'title': instance.title,
 };
