@@ -7,8 +7,8 @@ import 'package:mocktail/mocktail.dart';
 class MockDisplayApi extends Mock implements DisplayApi {}
 
 void main() {
-  late DisplayRepository displayRepository;
   late DisplayApi displayApi;
+  late DisplayRepository displayRepository;
 
   setUpAll(() {
     displayApi = MockDisplayApi();
