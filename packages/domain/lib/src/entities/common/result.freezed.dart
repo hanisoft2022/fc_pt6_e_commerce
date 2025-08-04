@@ -55,12 +55,12 @@ extension ResultPatterns<T> on Result<T> {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Success<T> value)?  success,TResult Function( Error<T> value)?  error,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( Success<T> value)?  success,TResult Function( Error<T> value)?  failure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case Success() when success != null:
-return success(_that);case Error() when error != null:
-return error(_that);case _:
+return success(_that);case Error() when failure != null:
+return failure(_that);case _:
   return orElse();
 
 }
@@ -78,15 +78,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Success<T> value)  success,required TResult Function( Error<T> value)  error,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( Success<T> value)  success,required TResult Function( Error<T> value)  failure,}){
 final _that = this;
 switch (_that) {
 case Success():
 return success(_that);case Error():
-return error(_that);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return failure(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
 ///
@@ -100,12 +97,12 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Success<T> value)?  success,TResult? Function( Error<T> value)?  error,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( Success<T> value)?  success,TResult? Function( Error<T> value)?  failure,}){
 final _that = this;
 switch (_that) {
 case Success() when success != null:
-return success(_that);case Error() when error != null:
-return error(_that);case _:
+return success(_that);case Error() when failure != null:
+return failure(_that);case _:
   return null;
 
 }
@@ -122,11 +119,11 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T data)?  success,TResult Function( ErrorResponse error)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( T data)?  success,TResult Function( ErrorResponse error)?  failure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case Success() when success != null:
-return success(_that.data);case Error() when error != null:
-return error(_that.error);case _:
+return success(_that.data);case Error() when failure != null:
+return failure(_that.error);case _:
   return orElse();
 
 }
@@ -144,14 +141,11 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T data)  success,required TResult Function( ErrorResponse error)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( T data)  success,required TResult Function( ErrorResponse error)  failure,}) {final _that = this;
 switch (_that) {
 case Success():
 return success(_that.data);case Error():
-return error(_that.error);case _:
-  throw StateError('Unexpected subclass');
-
-}
+return failure(_that.error);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -165,11 +159,11 @@ return error(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T data)?  success,TResult? Function( ErrorResponse error)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( T data)?  success,TResult? Function( ErrorResponse error)?  failure,}) {final _that = this;
 switch (_that) {
 case Success() when success != null:
-return success(_that.data);case Error() when error != null:
-return error(_that.error);case _:
+return success(_that.data);case Error() when failure != null:
+return failure(_that.error);case _:
   return null;
 
 }
@@ -271,7 +265,7 @@ int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'Result<$T>.error(error: $error)';
+  return 'Result<$T>.failure(error: $error)';
 }
 
 
