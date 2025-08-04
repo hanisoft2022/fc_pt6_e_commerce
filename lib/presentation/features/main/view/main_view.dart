@@ -7,8 +7,8 @@ import 'package:e_commerce_app/presentation/features/top_app_bar/widgets/top_app
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class MainView extends StatelessWidget {
-  const MainView({super.key});
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,13 +17,13 @@ class MainView extends StatelessWidget {
         BlocProvider(create: (context) => BottomNavCubit()),
         BlocProvider(create: (context) => MallTypeCubit()),
       ],
-      child: const MainPage(),
+      child: const MainView(),
     );
   }
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({super.key});
+class MainView extends StatelessWidget {
+  const MainView({super.key});
 
   @override
   Widget build(BuildContext context) {

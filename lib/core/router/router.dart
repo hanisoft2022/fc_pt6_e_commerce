@@ -17,7 +17,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: MainRoute.name,
       path: MainRoute.path,
-      builder: (context, state) => const MainView(),
+      builder: (context, state) => const MainPage(),
     ),
     GoRoute(
       name: HomeRoutes.name,
