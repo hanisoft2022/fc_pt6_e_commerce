@@ -32,5 +32,22 @@ void main() {
       when(() => displayApi.getMenus(any())).thenThrow(exception);
       expect(() => displayRepository.getMenus(mallType: MallType.market), throwsA(exception));
     });
+
+    test('api 호출 성공', () async {
+      final MallType mallType = MallType.market;
+      final ResponseWrapper<List<MenuDto>> mockingData = await DisplayMockApi().getMenus(
+        mallType.name,
+      );
+
+      when(() => displayApi.getMenus(any())).thenAnswer((_) async => mockingData);
+
+      final actual = await displayRepository.getMenus(mallType: mallType);
+
+      final expected = mockingData.toEntity<List<Menu>>(
+        mockingData.data?.map((menuDto) => menuDto.toEntity()).toList() ?? [],
+      );
+
+      expect(actual, expected);
+    });
   });
 }
