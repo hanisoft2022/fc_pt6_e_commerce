@@ -31,23 +31,24 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<MenuBloc, MenuState>(
-        builder: (context, MenuState state) {
-          switch (state.status) {
-            case Status.initial:
-            case Status.loading:
-              return const CircularProgressIndicator();
-            case Status.success:
-              return ListView.builder(
-                itemCount: state.menus.length,
-                itemBuilder: (context, index) {
-                  return Text(state.menus[index].title);
-                },
-              );
-            case Status.failure:
-              return Text(state.error.message ?? '');
-          }
+      child: BlocListener<MallTypeCubit, MallType>(
+        listener: (context, mallType) {
+          context.read<MenuBloc>().add(MenuStarted(mallType: mallType));
         },
+        listenWhen: (previous, current) => previous.index != current.index,
+        child: BlocBuilder<MenuBloc, MenuState>(
+          builder: (context, MenuState state) {
+            switch (state.status) {
+              case Status.initial:
+              case Status.loading:
+                return const CircularProgressIndicator();
+              case Status.success:
+                return Text(state.menus.toString());
+              case Status.failure:
+                return Text(state.error.message ?? '');
+            }
+          },
+        ),
       ),
     );
   }

@@ -14,7 +14,7 @@ class DisplayMockApi implements DisplayApi {
         code: '0000',
         message: 'display mock api',
         data: _menuParser(
-          mallType == 'market' ? DisplayMockData.menusByMarket : DisplayMockData.menusByBeauty,
+          mallType == '마켓패캠' ? DisplayMockData.menusByMarket : DisplayMockData.menusByBeauty,
         ),
       ),
     );

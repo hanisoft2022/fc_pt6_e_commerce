@@ -65,7 +65,6 @@ class HomeAppBar extends StatelessWidget {
                 color: mallType.theme.iconColor,
                 padding: 8,
               ),
-
               SVGIconButton(iconPath: AppIcons.cart, color: mallType.theme.iconColor, padding: 8),
             ],
           ),
