@@ -13,4 +13,13 @@ class DisplayRepositoryImpl implements DisplayRepository {
 
     return response.toEntity<List<Menu>>(response.data?.map((e) => e.toEntity()).toList() ?? []);
   }
+
+  @override
+  Future<ApiResponse<List<ViewModule>>> getViewModuleList({required int tabId}) async {
+    final ResponseWrapper<List<ViewModuleDto>> response = await _displayApi.getViewModulues(tabId);
+
+    return response.toEntity<List<ViewModule>>(
+      response.data?.map((e) => e.toEntity()).toList() ?? [],
+    );
+  }
 }

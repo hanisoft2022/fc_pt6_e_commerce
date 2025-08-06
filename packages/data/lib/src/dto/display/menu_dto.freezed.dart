@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MenuDto {
 
- int? get tabId; String? get title;
+ int get tabId; String get title;
 /// Create a copy of MenuDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $MenuDtoCopyWith<$Res>  {
   factory $MenuDtoCopyWith(MenuDto value, $Res Function(MenuDto) _then) = _$MenuDtoCopyWithImpl;
 @useResult
 $Res call({
- int? tabId, String? title
+ int tabId, String title
 });
 
 
@@ -65,11 +65,11 @@ class _$MenuDtoCopyWithImpl<$Res>
 
 /// Create a copy of MenuDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? tabId = freezed,Object? title = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? tabId = null,Object? title = null,}) {
   return _then(_self.copyWith(
-tabId: freezed == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,
+tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -154,7 +154,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int? tabId,  String? title)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int tabId,  String title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MenuDto() when $default != null:
 return $default(_that.tabId,_that.title);case _:
@@ -175,7 +175,7 @@ return $default(_that.tabId,_that.title);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int? tabId,  String? title)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int tabId,  String title)  $default,) {final _that = this;
 switch (_that) {
 case _MenuDto():
 return $default(_that.tabId,_that.title);case _:
@@ -195,7 +195,7 @@ return $default(_that.tabId,_that.title);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int? tabId,  String? title)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int tabId,  String title)?  $default,) {final _that = this;
 switch (_that) {
 case _MenuDto() when $default != null:
 return $default(_that.tabId,_that.title);case _:
@@ -213,8 +213,8 @@ class _MenuDto implements MenuDto {
    _MenuDto({this.tabId = -1, this.title = ''});
   factory _MenuDto.fromJson(Map<String, dynamic> json) => _$MenuDtoFromJson(json);
 
-@override@JsonKey() final  int? tabId;
-@override@JsonKey() final  String? title;
+@override@JsonKey() final  int tabId;
+@override@JsonKey() final  String title;
 
 /// Create a copy of MenuDto
 /// with the given fields replaced by the non-null parameter values.
@@ -249,7 +249,7 @@ abstract mixin class _$MenuDtoCopyWith<$Res> implements $MenuDtoCopyWith<$Res> {
   factory _$MenuDtoCopyWith(_MenuDto value, $Res Function(_MenuDto) _then) = __$MenuDtoCopyWithImpl;
 @override @useResult
 $Res call({
- int? tabId, String? title
+ int tabId, String title
 });
 
 
@@ -266,11 +266,11 @@ class __$MenuDtoCopyWithImpl<$Res>
 
 /// Create a copy of MenuDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? tabId = freezed,Object? title = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? tabId = null,Object? title = null,}) {
   return _then(_MenuDto(
-tabId: freezed == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int?,title: freezed == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
-as String?,
+tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
+as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
