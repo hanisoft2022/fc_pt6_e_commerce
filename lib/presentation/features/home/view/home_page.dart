@@ -1,9 +1,13 @@
+import 'package:e_commerce_app/presentation/features/home/widget/home_tab/home_tab.dart';
+import 'package:flutter/material.dart';
+
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:e_commerce_app/presentation/features/home/bloc/menu_bloc.dart';
 import 'package:e_commerce_app/presentation/features/mall_type/cubit/mall_type_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/core.dart';
 
@@ -30,25 +34,39 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: BlocListener<MallTypeCubit, MallType>(
-        listener: (context, mallType) {
-          context.read<MenuBloc>().add(MenuStarted(mallType: mallType));
+    return BlocListener<MallTypeCubit, MallType>(
+      listener: (context, mallType) {
+        context.read<MenuBloc>().add(MenuStarted(mallType: mallType));
+      },
+      listenWhen: (previous, current) => previous.index != current.index,
+      child: BlocConsumer<MenuBloc, MenuState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case Status.initial:
+            case Status.loading:
+            case Status.success:
+              return DefaultTabController(
+                length: state.menus.length,
+                child: Column(
+                  children: [
+                    HomeTabBar(menus: state.menus),
+                    HomeTabBarView(menus: state.menus, mallType: state.mallType),
+                  ],
+                ),
+              );
+            case Status.failure:
+              return Text(state.error.message ?? '');
+          }
         },
-        listenWhen: (previous, current) => previous.index != current.index,
-        child: BlocBuilder<MenuBloc, MenuState>(
-          builder: (context, MenuState state) {
-            switch (state.status) {
-              case Status.initial:
-              case Status.loading:
-                return const CircularProgressIndicator();
-              case Status.success:
-                return Text(state.menus.toString());
-              case Status.failure:
-                return Text(state.error.message ?? '');
+        listener: (context, state) async {
+          if (state.status == Status.failure) {
+            final bool result = await CommonDialog.errorDialog(context, state.error) ?? false;
+            if (result && context.mounted) {
+              context.read<MenuBloc>().add(MenuStarted(mallType: MallType.market));
             }
-          },
-        ),
+          }
+        },
+        listenWhen: (previous, current) => previous.status != current.status,
       ),
     );
   }

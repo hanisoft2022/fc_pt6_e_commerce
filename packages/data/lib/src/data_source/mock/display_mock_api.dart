@@ -13,6 +13,9 @@ class DisplayMockApi implements DisplayApi {
         status: 'SUCCESS',
         code: '0000',
         message: 'display mock api',
+        // status: 'FAILURE',
+        // code: 'GNB-0000',
+        // message: '서비스 에러가 발생했습니다.',
         data: _menuParser(
           mallType == '마켓패캠' ? DisplayMockData.menusByMarket : DisplayMockData.menusByBeauty,
         ),

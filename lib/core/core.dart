@@ -4,3 +4,4 @@ export 'service_locator/service_locator.dart';
 export 'theme/theme.dart';
 export 'logger/logger.dart';
 export 'constant/constant.dart';
+export 'widgets/widgets.dart';

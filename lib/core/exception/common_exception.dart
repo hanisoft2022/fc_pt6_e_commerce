@@ -5,12 +5,16 @@ class CommonException {
   const CommonException();
 
   static ErrorResponse setError(dynamic error) {
+    if (error is ErrorResponse) {
+      // 이미 원하는 데이터가 담긴 ErrorResponse라면 다시 감싸지 말고 그대로 반환
+      return error;
+    }
     if (error is DioException) {
       return _handleDioException(error);
     }
 
     if (error is Exception) {
-      return _handleGenericException();
+      return _handleGenericException(error);
     }
 
     return _handleUnknownError();
@@ -26,7 +30,7 @@ class CommonException {
     );
   }
 
-  static ErrorResponse _handleGenericException() {
+  static ErrorResponse _handleGenericException(Exception error) {
     return ErrorResponse(
       code: '8888',
       message: '서비스에 일시적인 오류가 발생했습니다.\n 잠시 후에 다시 시도해주세요.',

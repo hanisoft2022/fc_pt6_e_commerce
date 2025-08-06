@@ -22,7 +22,7 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
   Future<void> _onMenuStarted(MenuStarted event, Emitter<MenuState> emit) async {
     emit(state.copyWith(status: Status.loading));
 
-    await Future.delayed(Duration(milliseconds: 100));
+    await Future.delayed(Duration(milliseconds: 500));
 
     try {
       final mallType = event.mallType;
