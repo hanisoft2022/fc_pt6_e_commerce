@@ -1,9 +1,8 @@
+import 'factory/view_module_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'factory/view_module_widget.dart';
-
-class ViewModuleA extends StatelessWidget with ViewModuleWidget {
-  const ViewModuleA({super.key});
+class ViewModuleB extends StatelessWidget with ViewModuleWidget {
+  const ViewModuleB({super.key});
 
   @override
   Widget build(BuildContext context) {
