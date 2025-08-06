@@ -6,7 +6,7 @@ import 'factory.dart';
 
 enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE }
 
-abstract class ViewModuleFactory {
+class ViewModuleFactory {
   ViewModuleWidget textToWidget(ViewModule viewModule) {
     final String type = viewModule.type.toSnakeCase();
 

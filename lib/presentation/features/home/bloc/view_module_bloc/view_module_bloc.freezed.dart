@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ViewModuleState {
 
- Status get status; int get tabId; List<ViewModule> get viewModules; ErrorResponse get error;
+ Status get status; int get tabId; List<ViewModuleWidget> get viewModules; ErrorResponse get error;
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $ViewModuleStateCopyWith<$Res>  {
   factory $ViewModuleStateCopyWith(ViewModuleState value, $Res Function(ViewModuleState) _then) = _$ViewModuleStateCopyWithImpl;
 @useResult
 $Res call({
- Status status, int tabId, List<ViewModule> viewModules, ErrorResponse error
+ Status status, int tabId, List<ViewModuleWidget> viewModules, ErrorResponse error
 });
 
 
@@ -67,7 +67,7 @@ class _$ViewModuleStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
 as int,viewModules: null == viewModules ? _self.viewModules : viewModules // ignore: cast_nullable_to_non_nullable
-as List<ViewModule>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as List<ViewModuleWidget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
 }
@@ -153,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModule> viewModules,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModuleWidget> viewModules,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ViewModuleState() when $default != null:
 return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
@@ -174,7 +174,7 @@ return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModule> viewModules,  ErrorResponse error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModuleWidget> viewModules,  ErrorResponse error)  $default,) {final _that = this;
 switch (_that) {
 case _ViewModuleState():
 return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
@@ -194,7 +194,7 @@ return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  int tabId,  List<ViewModule> viewModules,  ErrorResponse error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  int tabId,  List<ViewModuleWidget> viewModules,  ErrorResponse error)?  $default,) {final _that = this;
 switch (_that) {
 case _ViewModuleState() when $default != null:
 return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
@@ -209,13 +209,13 @@ return $default(_that.status,_that.tabId,_that.viewModules,_that.error);case _:
 
 
 class _ViewModuleState implements ViewModuleState {
-  const _ViewModuleState({this.status = Status.initial, this.tabId = -1, final  List<ViewModule> viewModules = const <ViewModule>[], this.error = const ErrorResponse()}): _viewModules = viewModules;
+  const _ViewModuleState({this.status = Status.initial, this.tabId = -1, final  List<ViewModuleWidget> viewModules = const <ViewModuleWidget>[], this.error = const ErrorResponse()}): _viewModules = viewModules;
   
 
 @override@JsonKey() final  Status status;
 @override@JsonKey() final  int tabId;
- final  List<ViewModule> _viewModules;
-@override@JsonKey() List<ViewModule> get viewModules {
+ final  List<ViewModuleWidget> _viewModules;
+@override@JsonKey() List<ViewModuleWidget> get viewModules {
   if (_viewModules is EqualUnmodifiableListView) return _viewModules;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_viewModules);
@@ -253,7 +253,7 @@ abstract mixin class _$ViewModuleStateCopyWith<$Res> implements $ViewModuleState
   factory _$ViewModuleStateCopyWith(_ViewModuleState value, $Res Function(_ViewModuleState) _then) = __$ViewModuleStateCopyWithImpl;
 @override @useResult
 $Res call({
- Status status, int tabId, List<ViewModule> viewModules, ErrorResponse error
+ Status status, int tabId, List<ViewModuleWidget> viewModules, ErrorResponse error
 });
 
 
@@ -275,7 +275,7 @@ class __$ViewModuleStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
 as int,viewModules: null == viewModules ? _self._viewModules : viewModules // ignore: cast_nullable_to_non_nullable
-as List<ViewModule>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as List<ViewModuleWidget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
 }

@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+import 'package:e_commerce_app/presentation/features/home/widget/view_module_list/factory/factory.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -31,7 +32,12 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
       final Result<List<ViewModule>> response = await _fetch(tabId);
 
       response.when(
-        success: (List<ViewModule> viewModules) {
+        success: (List<ViewModule> data) {
+          ViewModuleFactory viewModuleFactory = ViewModuleFactory();
+
+          final List<ViewModuleWidget> viewModules = data
+              .map((e) => viewModuleFactory.textToWidget(e))
+              .toList();
           emit(state.copyWith(status: Status.success, viewModules: viewModules, tabId: tabId));
         },
         failure: (ErrorResponse error) {

@@ -45,19 +45,9 @@ class ViewModuleList extends StatelessWidget {
           case Status.success:
             return Column(
               children: [
-                Container(
-                  height: 50,
-                  color: Colors.deepOrange,
-                  child: Center(child: Text(state.tabId.toString())),
-                ),
                 Expanded(
                   child: ListView.separated(
-                    itemBuilder: (context, index) {
-                      return SizedBox(
-                        height: 200,
-                        child: Center(child: Text(state.viewModules[index].type)),
-                      );
-                    },
+                    itemBuilder: (context, index) => state.viewModules[index],
                     separatorBuilder: (context, index) => const Divider(thickness: 4),
                     itemCount: state.viewModules.length,
                   ),
