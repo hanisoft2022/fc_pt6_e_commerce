@@ -1,11 +1,15 @@
 // ignore_for_file: avoid_print
 
+import 'package:data/data.dart';
 import 'package:flutter/material.dart';
 
 import 'core/core.dart';
 
 void main() async {
   setupServiceLocator();
+
+  final data = await getIt<DisplayApi>().getViewModulues(10001);
+  print(data);
 
   runApp(const MainApp());
 }

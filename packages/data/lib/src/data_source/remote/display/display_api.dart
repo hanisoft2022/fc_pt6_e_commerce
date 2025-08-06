@@ -1,5 +1,5 @@
-import 'package:data/src/dto/common/response_wrapper.dart';
-import 'package:data/src/dto/menu/menu_dto.dart';
+import 'package:data/data.dart';
+
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -11,4 +11,7 @@ abstract interface class DisplayApi {
 
   @GET('/api/menus/{mall_type}')
   Future<ResponseWrapper<List<MenuDto>>> getMenus(@Path('mall_type') String mallType);
+
+  @GET('/api/view-modules/{tab_id}')
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulues(@Path('tab_id') int tabId);
 }
