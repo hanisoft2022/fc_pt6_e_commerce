@@ -3,7 +3,7 @@ import 'package:e_commerce_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../bloc/menu_bloc.dart';
+import '../../bloc/menu_bloc/menu_bloc.dart';
 
 class HomeTabBar extends StatelessWidget {
   final List<Menu> menus;

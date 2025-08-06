@@ -11,7 +11,6 @@ part of 'menu.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
-
 /// @nodoc
 mixin _$Menu {
 
@@ -22,8 +21,6 @@ mixin _$Menu {
 @pragma('vm:prefer-inline')
 $MenuCopyWith<Menu> get copyWith => _$MenuCopyWithImpl<Menu>(this as Menu, _$identity);
 
-  /// Serializes this Menu to a JSON map.
-  Map<String, dynamic> toJson();
 
 
 @override
@@ -31,7 +28,7 @@ bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,tabId,title);
 
@@ -207,11 +204,11 @@ return $default(_that.tabId,_that.title);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
+
 
 class _Menu implements Menu {
    _Menu({required this.tabId, required this.title});
-  factory _Menu.fromJson(Map<String, dynamic> json) => _$MenuFromJson(json);
+  
 
 @override final  int tabId;
 @override final  String title;
@@ -222,17 +219,14 @@ class _Menu implements Menu {
 @pragma('vm:prefer-inline')
 _$MenuCopyWith<_Menu> get copyWith => __$MenuCopyWithImpl<_Menu>(this, _$identity);
 
-@override
-Map<String, dynamic> toJson() {
-  return _$MenuToJson(this, );
-}
+
 
 @override
 bool operator ==(Object other) {
   return identical(this, other) || (other.runtimeType == runtimeType&&other is _Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
-@JsonKey(includeFromJson: false, includeToJson: false)
+
 @override
 int get hashCode => Object.hash(runtimeType,tabId,title);
 
