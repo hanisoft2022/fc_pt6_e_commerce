@@ -1,13 +1,13 @@
 import 'package:domain/domain.dart';
 import 'package:e_commerce_app/core/core.dart';
 
-import '../view_module_list.dart';
+import '../view_module.dart';
 import 'factory.dart';
 
 enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE }
 
-class ViewModuleFactory {
-  ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
+abstract class ViewModuleFactory {
+  static ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
     final String snakeCasesdType = viewModule.type.toSnakeCase();
 
     for (final module in Modules.values) {
