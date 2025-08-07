@@ -22,8 +22,7 @@ class HomeTabBarView extends StatelessWidget {
           menus.length,
           (index) => BlocProvider(
             create: (context) =>
-                ViewModuleBloc(displayUsecase: getIt<DisplayUsecase>())
-                  ..add(ViewModuleStarted(tabId: menus[index].tabId)),
+                getIt<ViewModuleBloc>()..add(ViewModuleStarted(tabId: menus[index].tabId)),
             child: ViewModuleList(),
           ),
         ),

@@ -16,12 +16,10 @@ class ViewModuleList extends StatelessWidget {
           case Status.loading:
             return const Center(child: CircularProgressIndicator());
           case Status.success:
-            return Expanded(
-              child: ListView.separated(
-                itemBuilder: (context, index) => state.viewModuleWidgets[index],
-                separatorBuilder: (context, index) => const Divider(thickness: 1),
-                itemCount: state.viewModuleWidgets.length,
-              ),
+            return ListView.separated(
+              itemBuilder: (context, index) => state.viewModuleWidgets[index],
+              separatorBuilder: (context, index) => const Divider(thickness: 1),
+              itemCount: state.viewModuleWidgets.length,
             );
           case Status.failure:
             return Text(state.error.message ?? '');

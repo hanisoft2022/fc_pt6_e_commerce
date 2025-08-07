@@ -2,7 +2,6 @@ import 'package:e_commerce_app/presentation/features/home/widget/home_tab/home_t
 import 'package:flutter/material.dart';
 
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,9 +18,7 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<MallTypeCubit, MallType>(
       builder: (context, mallType) {
         return BlocProvider(
-          create: (context) =>
-              MenuBloc(displayUsecase: getIt<DisplayUsecase>())
-                ..add(MenuStarted(mallType: mallType)),
+          create: (context) => getIt<MenuBloc>()..add(MenuStarted(mallType: mallType)),
           child: const HomeView(),
         );
       },
