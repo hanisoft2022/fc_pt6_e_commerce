@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'factory/view_module_widget.dart';
+import 'view_module_widget.dart';
 
 class ViewModuleD extends StatelessWidget with ViewModuleWidget {
   const ViewModuleD({super.key});

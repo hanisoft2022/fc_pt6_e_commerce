@@ -1,5 +1,5 @@
 import 'package:domain/domain.dart';
-import 'package:e_commerce_app/core/extensions/string.dart';
+import 'package:e_commerce_app/core/core.dart';
 
 import '../view_module_list.dart';
 import 'factory.dart';
@@ -7,12 +7,12 @@ import 'factory.dart';
 enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE }
 
 class ViewModuleFactory {
-  ViewModuleWidget textToWidget(ViewModule viewModule) {
-    final String type = viewModule.type.toSnakeCase();
+  ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
+    final String snakeCasesdType = viewModule.type.toSnakeCase();
 
     for (final module in Modules.values) {
-      final String name = module.name.toSnakeCase();
-      if (name == type) {
+      final String snakeCasedName = module.name.toSnakeCase();
+      if (snakeCasedName == snakeCasesdType) {
         return module.toViewModuleWidget();
       }
     }

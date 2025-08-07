@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../../core/core.dart';
 import '../../../../../core/exception/common_exception.dart';
+import '../../widget/view_module_list/view_module_list.dart';
 import '../menu_bloc/menu_bloc.dart';
 
 part 'view_module_event.dart';
@@ -36,8 +37,9 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
           ViewModuleFactory viewModuleFactory = ViewModuleFactory();
 
           final List<ViewModuleWidget> viewModules = data
-              .map((e) => viewModuleFactory.textToWidget(e))
+              .map((e) => viewModuleFactory.viewModuleToViewModuleWidget(e))
               .toList();
+
           emit(state.copyWith(status: Status.success, viewModules: viewModules, tabId: tabId));
         },
         failure: (ErrorResponse error) {
