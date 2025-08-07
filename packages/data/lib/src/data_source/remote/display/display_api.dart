@@ -13,5 +13,8 @@ abstract interface class DisplayApi {
   Future<ResponseWrapper<List<MenuDto>>> getMenus(@Path('mall_type') String mallType);
 
   @GET('/api/view-modules/{tab_id}')
-  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulues(@Path('tab_id') int tabId);
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulues(
+    @Path('tab_id') int tabId,
+    @Query('page') int page,
+  );
 }

@@ -4,27 +4,80 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/menu_bloc/menu_bloc.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
 
-class ViewModuleList extends StatelessWidget {
+class ViewModuleList extends StatefulWidget {
   const ViewModuleList({super.key});
+
+  @override
+  State<ViewModuleList> createState() => _ViewModuleListState();
+}
+
+class _ViewModuleListState extends State<ViewModuleList> {
+  final ScrollController scrollController = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (_is90PercentEnd) {
+      BlocProvider.of<ViewModuleBloc>(context).add(ViewModuleFetched());
+    }
+  }
+
+  bool get _is90PercentEnd {
+    if (scrollController.hasClients == false) return false;
+    final maxScroll = scrollController.position.maxScrollExtent;
+    final currentScroll = scrollController.position.pixels;
+    return maxScroll * 0.9 <= currentScroll;
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ViewModuleBloc, ViewModuleState>(
       builder: (context, state) {
-        switch (state.status) {
-          case Status.initial:
-          case Status.loading:
-            return const Center(child: CircularProgressIndicator());
-          case Status.success:
-            return ListView.separated(
-              itemBuilder: (context, index) => state.viewModuleWidgets[index],
-              separatorBuilder: (context, index) => const Divider(thickness: 1),
-              itemCount: state.viewModuleWidgets.length,
-            );
-          case Status.failure:
-            return Text(state.error.message ?? '');
-        }
+        return state.status.isInitial || state.viewModuleWidgets.isEmpty
+            ? Center(child: CircularProgressIndicator())
+            : ListView(
+                controller: scrollController,
+                children: [
+                  ...state.viewModuleWidgets,
+                  if (state.status.isLoading) _LoadingWidget(),
+                ],
+              );
+        // switch (state.status) {
+        //   case Status.initial:
+        //   case Status.loading:
+        //     return const Center(child: CircularProgressIndicator());
+        //   case Status.success:
+        //     return ListView.separated(
+        //       itemBuilder: (context, index) => state.viewModuleWidgets[index],
+        //       separatorBuilder: (context, index) => const Divider(thickness: 1),
+        //       itemCount: state.viewModuleWidgets.length,
+        //     );
+        //   case Status.failure:
+        //     return Text(state.error.message ?? '');
+        // }
       },
+    );
+  }
+}
+
+// ignore: unused_element
+class _LoadingWidget extends StatelessWidget {
+  const _LoadingWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: Transform.scale(scale: 0.5, child: Center(child: CircularProgressIndicator())),
     );
   }
 }

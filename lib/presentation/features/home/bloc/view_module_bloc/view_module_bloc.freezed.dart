@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ViewModuleState {
 
- Status get status; int get tabId; List<ViewModuleWidget> get viewModuleWidgets; ErrorResponse get error;
+ Status get status; int get tabId; int get currentPage; bool get isLastPage; List<ViewModuleWidget> get viewModuleWidgets; ErrorResponse get error;
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ViewModuleStateCopyWith<ViewModuleState> get copyWith => _$ViewModuleStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&const DeepCollectionEquality().equals(other.viewModuleWidgets, viewModuleWidgets)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.isLastPage, isLastPage) || other.isLastPage == isLastPage)&&const DeepCollectionEquality().equals(other.viewModuleWidgets, viewModuleWidgets)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,tabId,const DeepCollectionEquality().hash(viewModuleWidgets),error);
+int get hashCode => Object.hash(runtimeType,status,tabId,currentPage,isLastPage,const DeepCollectionEquality().hash(viewModuleWidgets),error);
 
 @override
 String toString() {
-  return 'ViewModuleState(status: $status, tabId: $tabId, viewModuleWidgets: $viewModuleWidgets, error: $error)';
+  return 'ViewModuleState(status: $status, tabId: $tabId, currentPage: $currentPage, isLastPage: $isLastPage, viewModuleWidgets: $viewModuleWidgets, error: $error)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ViewModuleStateCopyWith<$Res>  {
   factory $ViewModuleStateCopyWith(ViewModuleState value, $Res Function(ViewModuleState) _then) = _$ViewModuleStateCopyWithImpl;
 @useResult
 $Res call({
- Status status, int tabId, List<ViewModuleWidget> viewModuleWidgets, ErrorResponse error
+ Status status, int tabId, int currentPage, bool isLastPage, List<ViewModuleWidget> viewModuleWidgets, ErrorResponse error
 });
 
 
@@ -62,11 +62,13 @@ class _$ViewModuleStateCopyWithImpl<$Res>
 
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? tabId = null,Object? viewModuleWidgets = null,Object? error = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? status = null,Object? tabId = null,Object? currentPage = null,Object? isLastPage = null,Object? viewModuleWidgets = null,Object? error = null,}) {
   return _then(_self.copyWith(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int,viewModuleWidgets: null == viewModuleWidgets ? _self.viewModuleWidgets : viewModuleWidgets // ignore: cast_nullable_to_non_nullable
+as int,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,isLastPage: null == isLastPage ? _self.isLastPage : isLastPage // ignore: cast_nullable_to_non_nullable
+as bool,viewModuleWidgets: null == viewModuleWidgets ? _self.viewModuleWidgets : viewModuleWidgets // ignore: cast_nullable_to_non_nullable
 as List<ViewModuleWidget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
@@ -153,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  int tabId,  int currentPage,  bool isLastPage,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ViewModuleState() when $default != null:
-return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);case _:
+return $default(_that.status,_that.tabId,_that.currentPage,_that.isLastPage,_that.viewModuleWidgets,_that.error);case _:
   return orElse();
 
 }
@@ -174,10 +176,10 @@ return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  int tabId,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  int tabId,  int currentPage,  bool isLastPage,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)  $default,) {final _that = this;
 switch (_that) {
 case _ViewModuleState():
-return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);case _:
+return $default(_that.status,_that.tabId,_that.currentPage,_that.isLastPage,_that.viewModuleWidgets,_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +196,10 @@ return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  int tabId,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  int tabId,  int currentPage,  bool isLastPage,  List<ViewModuleWidget> viewModuleWidgets,  ErrorResponse error)?  $default,) {final _that = this;
 switch (_that) {
 case _ViewModuleState() when $default != null:
-return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);case _:
+return $default(_that.status,_that.tabId,_that.currentPage,_that.isLastPage,_that.viewModuleWidgets,_that.error);case _:
   return null;
 
 }
@@ -209,11 +211,13 @@ return $default(_that.status,_that.tabId,_that.viewModuleWidgets,_that.error);ca
 
 
 class _ViewModuleState implements ViewModuleState {
-  const _ViewModuleState({this.status = Status.initial, this.tabId = -1, final  List<ViewModuleWidget> viewModuleWidgets = const <ViewModuleWidget>[], this.error = const ErrorResponse()}): _viewModuleWidgets = viewModuleWidgets;
+  const _ViewModuleState({this.status = Status.initial, this.tabId = -1, this.currentPage = 1, this.isLastPage = false, final  List<ViewModuleWidget> viewModuleWidgets = const <ViewModuleWidget>[], this.error = const ErrorResponse()}): _viewModuleWidgets = viewModuleWidgets;
   
 
 @override@JsonKey() final  Status status;
 @override@JsonKey() final  int tabId;
+@override@JsonKey() final  int currentPage;
+@override@JsonKey() final  bool isLastPage;
  final  List<ViewModuleWidget> _viewModuleWidgets;
 @override@JsonKey() List<ViewModuleWidget> get viewModuleWidgets {
   if (_viewModuleWidgets is EqualUnmodifiableListView) return _viewModuleWidgets;
@@ -233,16 +237,16 @@ _$ViewModuleStateCopyWith<_ViewModuleState> get copyWith => __$ViewModuleStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&const DeepCollectionEquality().equals(other._viewModuleWidgets, _viewModuleWidgets)&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModuleState&&(identical(other.status, status) || other.status == status)&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.currentPage, currentPage) || other.currentPage == currentPage)&&(identical(other.isLastPage, isLastPage) || other.isLastPage == isLastPage)&&const DeepCollectionEquality().equals(other._viewModuleWidgets, _viewModuleWidgets)&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,status,tabId,const DeepCollectionEquality().hash(_viewModuleWidgets),error);
+int get hashCode => Object.hash(runtimeType,status,tabId,currentPage,isLastPage,const DeepCollectionEquality().hash(_viewModuleWidgets),error);
 
 @override
 String toString() {
-  return 'ViewModuleState(status: $status, tabId: $tabId, viewModuleWidgets: $viewModuleWidgets, error: $error)';
+  return 'ViewModuleState(status: $status, tabId: $tabId, currentPage: $currentPage, isLastPage: $isLastPage, viewModuleWidgets: $viewModuleWidgets, error: $error)';
 }
 
 
@@ -253,7 +257,7 @@ abstract mixin class _$ViewModuleStateCopyWith<$Res> implements $ViewModuleState
   factory _$ViewModuleStateCopyWith(_ViewModuleState value, $Res Function(_ViewModuleState) _then) = __$ViewModuleStateCopyWithImpl;
 @override @useResult
 $Res call({
- Status status, int tabId, List<ViewModuleWidget> viewModuleWidgets, ErrorResponse error
+ Status status, int tabId, int currentPage, bool isLastPage, List<ViewModuleWidget> viewModuleWidgets, ErrorResponse error
 });
 
 
@@ -270,11 +274,13 @@ class __$ViewModuleStateCopyWithImpl<$Res>
 
 /// Create a copy of ViewModuleState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? tabId = null,Object? viewModuleWidgets = null,Object? error = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? status = null,Object? tabId = null,Object? currentPage = null,Object? isLastPage = null,Object? viewModuleWidgets = null,Object? error = null,}) {
   return _then(_ViewModuleState(
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
-as int,viewModuleWidgets: null == viewModuleWidgets ? _self._viewModuleWidgets : viewModuleWidgets // ignore: cast_nullable_to_non_nullable
+as int,currentPage: null == currentPage ? _self.currentPage : currentPage // ignore: cast_nullable_to_non_nullable
+as int,isLastPage: null == isLastPage ? _self.isLastPage : isLastPage // ignore: cast_nullable_to_non_nullable
+as bool,viewModuleWidgets: null == viewModuleWidgets ? _self._viewModuleWidgets : viewModuleWidgets // ignore: cast_nullable_to_non_nullable
 as List<ViewModuleWidget>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));

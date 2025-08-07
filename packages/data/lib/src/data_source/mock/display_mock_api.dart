@@ -23,7 +23,10 @@ class DisplayMockApi implements DisplayApi {
   }
 
   @override
-  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulues(int tabId) async {
+  Future<ResponseWrapper<List<ViewModuleDto>>> getViewModulues(int tabId, int page) async {
+    if (page == 4) {
+      return ResponseWrapper(status: 'SUCCESS', code: '0000', message: '모듈 더 이상 존재 X', data: []);
+    }
     final endOfTabId = tabId % 10;
 
     final String source = switch (endOfTabId) {

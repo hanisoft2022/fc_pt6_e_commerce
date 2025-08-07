@@ -9,3 +9,7 @@ class ViewModuleStarted extends ViewModuleEvent {
 
   const ViewModuleStarted({required this.tabId});
 }
+
+class ViewModuleFetched extends ViewModuleEvent {
+  const ViewModuleFetched();
+}
