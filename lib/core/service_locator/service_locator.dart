@@ -35,10 +35,13 @@ void _registerDomainLayer() {
 }
 
 void _registerPresentationLayer() {
-  getIt.registerFactory(() => MenuBloc(displayUsecase: getIt<DisplayUsecase>()));
+  getIt.registerFactory<MenuBloc>(() => MenuBloc(displayUsecase: getIt<DisplayUsecase>()));
 
-  getIt.registerFactory(() => ViewModuleBloc(displayUsecase: getIt<DisplayUsecase>()));
+  getIt.registerFactory<ViewModuleBloc>(
+    () => ViewModuleBloc(displayUsecase: getIt<DisplayUsecase>()),
+  );
 }
  
 // for commit
-// for commit 
+// for commit
+// for commit
