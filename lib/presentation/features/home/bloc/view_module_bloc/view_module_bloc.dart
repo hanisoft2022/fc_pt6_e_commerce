@@ -41,6 +41,16 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     await Future.delayed(Duration(milliseconds: 500));
 
     try {
+      if (event.isRefresh) {
+        emit(
+          state.copyWith(
+            status: Status.initial,
+            currentPage: 1,
+            isLastPage: false,
+            viewModuleWidgets: [],
+          ),
+        );
+      }
       final tabId = event.tabId;
 
       final Result<List<ViewModule>> response = await _fetch(tabId: tabId);

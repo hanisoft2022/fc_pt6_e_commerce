@@ -18,14 +18,13 @@ class HomeTabBarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: TabBarView(
-        children: List.generate(
-          menus.length,
-          (index) => BlocProvider(
-            create: (context) =>
-                getIt<ViewModuleBloc>()..add(ViewModuleStarted(tabId: menus[index].tabId)),
-            child: ViewModuleList(),
-          ),
-        ),
+        children: List.generate(menus.length, (index) {
+          final tabId = menus[index].tabId;
+          return BlocProvider(
+            create: (context) => getIt<ViewModuleBloc>()..add(ViewModuleStarted(tabId: tabId)),
+            child: ViewModuleList(tabId: tabId),
+          );
+        }),
       ),
     );
   }

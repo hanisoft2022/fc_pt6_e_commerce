@@ -6,8 +6,9 @@ class ViewModuleEvent {
 
 class ViewModuleStarted extends ViewModuleEvent {
   final int tabId;
+  final bool isRefresh;
 
-  const ViewModuleStarted({required this.tabId});
+  const ViewModuleStarted({required this.tabId, this.isRefresh = false});
 }
 
 class ViewModuleFetched extends ViewModuleEvent {
