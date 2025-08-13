@@ -4,6 +4,7 @@ import 'package:domain/domain.dart';
 import 'package:e_commerce_app/presentation/features/home/widget/view_module/factory/factory.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import '../../../../../core/core.dart';
@@ -23,10 +24,11 @@ EventTransformer<E> throttleDroppable<E>(Duration duration) {
   };
 }
 
+@injectable
 class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
   final DisplayUsecase _displayUsecase;
 
-  ViewModuleBloc({required displayUsecase})
+  ViewModuleBloc({required DisplayUsecase displayUsecase})
     : _displayUsecase = displayUsecase,
       super(ViewModuleState()) {
     on<ViewModuleStarted>(_onViewModuleStarted);

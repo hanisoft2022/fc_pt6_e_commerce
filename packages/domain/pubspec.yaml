@@ -16,6 +16,9 @@ dependencies:
   dio: ^5.8.0+1
   core:
     path: ../core
+  get_it: ^8.2.0
+  injectable: ^2.5.1
+  injectable_generator: ^2.8.1
 
 
 dev_dependencies:
