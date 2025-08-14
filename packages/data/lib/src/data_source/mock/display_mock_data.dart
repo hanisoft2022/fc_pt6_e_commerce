@@ -1,4 +1,4 @@
-class DisplayMockData {
+abstract class DisplayMockData {
   static final String menusByMarket =
       '[{"title":"패캠추천","tabId":10001},{"title":"신상품","tabId":10002},{"title":"베스트","tabId":10003},{"title":"알뜰쇼핑","tabId":10004},{"title":"특가/혜택","tabId":10005}]';
 
@@ -29,7 +29,7 @@ class DisplayMockData {
       }''';
 
   static String getViewModules() {
-    var viewModules = [];
+    final List<String> viewModules = [];
 
     final List<String> types = [
       'carousel_view_module',
@@ -40,7 +40,7 @@ class DisplayMockData {
       'brand_product_view_module',
     ];
 
-    var products = List.filled(6, productInfo);
+    final List<String> products = List.filled(6, productInfo);
 
     for (var type in types) {
       viewModules.add('''{

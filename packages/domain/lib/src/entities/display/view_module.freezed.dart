@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ViewModule {
 
- String get type; String get title; String get subtitle; String get imageUrl;
+ String get type; String get title; String get subtitle; String get imageUrl; List<ProductInfo> get products;
 /// Create a copy of ViewModule
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $ViewModuleCopyWith<ViewModule> get copyWith => _$ViewModuleCopyWithImpl<ViewMod
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModule&&(identical(other.type, type) || other.type == type)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ViewModule&&(identical(other.type, type) || other.type == type)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&const DeepCollectionEquality().equals(other.products, products));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,type,title,subtitle,imageUrl);
+int get hashCode => Object.hash(runtimeType,type,title,subtitle,imageUrl,const DeepCollectionEquality().hash(products));
 
 @override
 String toString() {
-  return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl)';
+  return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, products: $products)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $ViewModuleCopyWith<$Res>  {
   factory $ViewModuleCopyWith(ViewModule value, $Res Function(ViewModule) _then) = _$ViewModuleCopyWithImpl;
 @useResult
 $Res call({
- String type, String title, String subtitle, String imageUrl
+ String type, String title, String subtitle, String imageUrl, List<ProductInfo> products
 });
 
 
@@ -62,13 +62,14 @@ class _$ViewModuleCopyWithImpl<$Res>
 
 /// Create a copy of ViewModule
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? type = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,Object? products = null,}) {
   return _then(_self.copyWith(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subtitle: null == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
-as String,
+as String,products: null == products ? _self.products : products // ignore: cast_nullable_to_non_nullable
+as List<ProductInfo>,
   ));
 }
 
@@ -153,10 +154,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  String title,  String subtitle,  String imageUrl)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String type,  String title,  String subtitle,  String imageUrl,  List<ProductInfo> products)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ViewModule() when $default != null:
-return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
+return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl,_that.products);case _:
   return orElse();
 
 }
@@ -174,10 +175,10 @@ return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  String title,  String subtitle,  String imageUrl)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String type,  String title,  String subtitle,  String imageUrl,  List<ProductInfo> products)  $default,) {final _that = this;
 switch (_that) {
 case _ViewModule():
-return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
+return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl,_that.products);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +195,10 @@ return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  String title,  String subtitle,  String imageUrl)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String type,  String title,  String subtitle,  String imageUrl,  List<ProductInfo> products)?  $default,) {final _that = this;
 switch (_that) {
 case _ViewModule() when $default != null:
-return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
+return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl,_that.products);case _:
   return null;
 
 }
@@ -209,13 +210,20 @@ return $default(_that.type,_that.title,_that.subtitle,_that.imageUrl);case _:
 
 
 class _ViewModule implements ViewModule {
-   _ViewModule({required this.type, required this.title, required this.subtitle, required this.imageUrl});
+   _ViewModule({required this.type, required this.title, required this.subtitle, required this.imageUrl, required final  List<ProductInfo> products}): _products = products;
   
 
 @override final  String type;
 @override final  String title;
 @override final  String subtitle;
 @override final  String imageUrl;
+ final  List<ProductInfo> _products;
+@override List<ProductInfo> get products {
+  if (_products is EqualUnmodifiableListView) return _products;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_products);
+}
+
 
 /// Create a copy of ViewModule
 /// with the given fields replaced by the non-null parameter values.
@@ -227,16 +235,16 @@ _$ViewModuleCopyWith<_ViewModule> get copyWith => __$ViewModuleCopyWithImpl<_Vie
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModule&&(identical(other.type, type) || other.type == type)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ViewModule&&(identical(other.type, type) || other.type == type)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&const DeepCollectionEquality().equals(other._products, _products));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,type,title,subtitle,imageUrl);
+int get hashCode => Object.hash(runtimeType,type,title,subtitle,imageUrl,const DeepCollectionEquality().hash(_products));
 
 @override
 String toString() {
-  return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl)';
+  return 'ViewModule(type: $type, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, products: $products)';
 }
 
 
@@ -247,7 +255,7 @@ abstract mixin class _$ViewModuleCopyWith<$Res> implements $ViewModuleCopyWith<$
   factory _$ViewModuleCopyWith(_ViewModule value, $Res Function(_ViewModule) _then) = __$ViewModuleCopyWithImpl;
 @override @useResult
 $Res call({
- String type, String title, String subtitle, String imageUrl
+ String type, String title, String subtitle, String imageUrl, List<ProductInfo> products
 });
 
 
@@ -264,13 +272,14 @@ class __$ViewModuleCopyWithImpl<$Res>
 
 /// Create a copy of ViewModule
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? type = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,Object? products = null,}) {
   return _then(_ViewModule(
 type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subtitle: null == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
-as String,
+as String,products: null == products ? _self._products : products // ignore: cast_nullable_to_non_nullable
+as List<ProductInfo>,
   ));
 }
 

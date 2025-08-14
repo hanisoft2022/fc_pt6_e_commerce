@@ -1,3 +1,4 @@
+import 'package:data/data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'view_module_dto.freezed.dart';
@@ -10,6 +11,7 @@ abstract class ViewModuleDto with _$ViewModuleDto {
     @Default('') String title,
     @Default('') String subtitle,
     @Default('') String imageUrl,
+    @Default(<ProductInfoDto>[]) List<ProductInfoDto> products,
   }) = _ViewModuleDto;
 
   factory ViewModuleDto.fromJson(Map<String, dynamic> json) => _$ViewModuleDtoFromJson(json);

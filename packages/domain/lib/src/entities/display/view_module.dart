@@ -1,3 +1,4 @@
+import 'package:domain/domain.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'view_module.freezed.dart';
@@ -9,5 +10,6 @@ abstract class ViewModule with _$ViewModule {
     required String title,
     required String subtitle,
     required String imageUrl,
+    required List<ProductInfo> products,
   }) = _ViewModule;
 }
