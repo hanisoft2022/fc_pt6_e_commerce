@@ -27,16 +27,8 @@ class DisplayMockApi implements DisplayApi {
     if (page == 4) {
       return ResponseWrapper(status: 'SUCCESS', code: '0000', message: '모듈 더 이상 존재 X', data: []);
     }
-    final endOfTabId = tabId % 10;
 
-    final String source = switch (endOfTabId) {
-      1 => DisplayMockData.viewModulesByTabIdCaseOne,
-      2 => DisplayMockData.viewModulesByTabIdCaseTwo,
-      3 => DisplayMockData.viewModulesByTabIdCaseThree,
-      4 => DisplayMockData.viewModulesByTabIdCaseFour,
-      5 => DisplayMockData.viewModulesByTabIdCaseFive,
-      _ => throw ArgumentError('지원하지 않는 tabId: $tabId'),
-    };
+    final String source = DisplayMockData.getViewModules();
 
     return ResponseWrapper(
       status: 'SUCCESS',

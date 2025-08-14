@@ -4,7 +4,7 @@ import 'package:e_commerce_app/core/core.dart';
 import '../view_module.dart';
 import 'factory.dart';
 
-enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE }
+enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE, carouselViewModule }
 
 abstract class ViewModuleFactory {
   static ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
@@ -13,7 +13,7 @@ abstract class ViewModuleFactory {
     for (final module in Modules.values) {
       final String snakeCasedName = module.name.toSnakeCase();
       if (snakeCasedName == snakeCasesdType) {
-        return module.toViewModuleWidget();
+        return module.toViewModuleWidget(viewModule);
       }
     }
     return const ViewModuleNone();
@@ -21,7 +21,7 @@ abstract class ViewModuleFactory {
 }
 
 extension ModulesX on Modules {
-  ViewModuleWidget toViewModuleWidget() {
+  ViewModuleWidget toViewModuleWidget(ViewModule viewModule) {
     switch (this) {
       case Modules.viewModuleA:
         return const ViewModuleA();
@@ -33,6 +33,8 @@ extension ModulesX on Modules {
         return const ViewModuleD();
       case Modules.viewModuleE:
         return const ViewModuleE();
+      case Modules.carouselViewModule:
+        return CarouselViewModule(viewModule: viewModule);
     }
   }
 }

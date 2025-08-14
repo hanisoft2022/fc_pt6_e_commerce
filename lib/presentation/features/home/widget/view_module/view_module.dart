@@ -6,3 +6,4 @@ export 'view_module_E.dart';
 export 'view_module_NONE.dart';
 export 'view_module_widget.dart';
 export 'view_module_list.dart';
+export 'carousel_view_module.dart';
