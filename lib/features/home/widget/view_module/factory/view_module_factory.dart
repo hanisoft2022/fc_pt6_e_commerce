@@ -4,7 +4,16 @@ import 'package:e_commerce_app/core/core.dart';
 import '../view_module.dart';
 import 'factory.dart';
 
-enum Modules { viewModuleA, viewModuleB, viewModuleC, viewModuleD, viewModuleE, carouselViewModule }
+enum Modules {
+  viewModuleA,
+  viewModuleB,
+  viewModuleC,
+  viewModuleD,
+  viewModuleE,
+  carouselViewModule,
+  bannerViewModule,
+  scrollViewModule,
+}
 
 abstract class ViewModuleFactory {
   static ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
@@ -35,6 +44,10 @@ extension ModulesX on Modules {
         return const ViewModuleE();
       case Modules.carouselViewModule:
         return CarouselViewModule(viewModule: viewModule);
+      case Modules.bannerViewModule:
+        return BannerViewModule(viewModule: viewModule);
+      case Modules.scrollViewModule:
+        return ScrollViewModule(viewModule: viewModule);
     }
   }
 }
