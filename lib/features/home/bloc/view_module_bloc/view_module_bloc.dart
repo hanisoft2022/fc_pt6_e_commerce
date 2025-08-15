@@ -1,14 +1,14 @@
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
-import 'package:e_commerce_app/presentation/features/home/widget/view_module/factory/factory.dart';
+import 'package:e_commerce_app/features/home/widget/view_module/factory/factory.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
-import '../../../../../core/core.dart';
-import '../../../../../core/exception/common_exception.dart';
+import '../../../../core/core.dart';
+import '../../../../core/exception/common_exception.dart';
 import '../../widget/view_module/view_module.dart';
 import '../menu_bloc/menu_bloc.dart';
 

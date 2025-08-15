@@ -1,8 +1,8 @@
 import 'package:core/core.dart';
 import 'package:e_commerce_app/core/extensions/context_theme_extension.dart';
 import 'package:e_commerce_app/core/theme/custom/custom_theme.dart';
-import 'package:e_commerce_app/presentation/features/bottom_nav/cubit/bottom_nav_cubit.dart';
-import 'package:e_commerce_app/presentation/features/mall_type/cubit/mall_type_cubit.dart';
+import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
+import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

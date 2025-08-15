@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:e_commerce_app/core/extensions/extensions.dart';
 import 'package:e_commerce_app/core/theme/constants/app_colors.dart';
 import 'package:e_commerce_app/core/theme/constants/app_icons.dart';
-import 'package:e_commerce_app/presentation/features/main/view/main_routes.dart';
+import 'package:e_commerce_app/features/main/view/main_routes.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

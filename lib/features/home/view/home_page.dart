@@ -1,13 +1,13 @@
 import 'package:e_commerce_app/core/core.dart';
-import 'package:e_commerce_app/presentation/features/home/widget/home_tab/home_tab.dart';
+import 'package:e_commerce_app/features/home/widget/home_tab/home_tab.dart';
 import 'package:flutter/material.dart';
 
 import 'package:core/core.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:e_commerce_app/presentation/features/home/bloc/menu_bloc/menu_bloc.dart';
-import 'package:e_commerce_app/presentation/features/mall_type/cubit/mall_type_cubit.dart';
+import 'package:e_commerce_app/features/home/bloc/menu_bloc/menu_bloc.dart';
+import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

@@ -12,9 +12,9 @@
 import 'package:data/data_injection.module.dart' as _i1027;
 import 'package:domain/domain.dart' as _i494;
 import 'package:domain/domain_injection.module.dart' as _i966;
-import 'package:e_commerce_app/presentation/features/home/bloc/menu_bloc/menu_bloc.dart'
+import 'package:e_commerce_app/features/home/bloc/menu_bloc/menu_bloc.dart'
     as _i903;
-import 'package:e_commerce_app/presentation/features/home/bloc/view_module_bloc/view_module_bloc.dart'
+import 'package:e_commerce_app/features/home/bloc/view_module_bloc/view_module_bloc.dart'
     as _i670;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
