@@ -17,10 +17,10 @@ enum Modules {
 
 abstract class ViewModuleFactory {
   static ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
-    final String snakeCasesdType = viewModule.type.toSnakeCase();
+    final String snakeCasesdType = viewModule.type.toSnakeCase;
 
     for (final module in Modules.values) {
-      final String snakeCasedName = module.name.toSnakeCase();
+      final String snakeCasedName = module.name.toSnakeCase;
       if (snakeCasedName == snakeCasesdType) {
         return module.toViewModuleWidget(viewModule);
       }
