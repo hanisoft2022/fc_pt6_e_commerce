@@ -83,7 +83,7 @@ class _PagecountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: context.theme.colorScheme.inverseSurface.withAlpha(100),
+        color: context.colorScheme.inverseSurface.withAlpha(100),
         borderRadius: BorderRadius.circular(20),
       ),
       child: Padding(

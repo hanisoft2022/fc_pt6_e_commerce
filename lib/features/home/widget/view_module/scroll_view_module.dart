@@ -2,7 +2,6 @@ import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
 import 'view_module.dart';
-import 'widget/widget.dart';
 
 class ScrollViewModule extends StatelessWidget with ViewModuleWidget {
   final ViewModule viewModule;
@@ -11,6 +10,6 @@ class ScrollViewModule extends StatelessWidget with ViewModuleWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ProductCardWidget(productInfo: viewModule.products.first, aspectRatio: 150 / 195);
+    return Column(children: []);
   }
 }
