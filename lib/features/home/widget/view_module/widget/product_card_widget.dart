@@ -8,7 +8,7 @@ import 'widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
   final ProductInfo productInfo;
-  final double aspectRatio;
+  final double imageAspectRatio;
   final bool showReviewCount;
   final TextStyle? titleStyle;
   final TextStyle? priceStyle;
@@ -18,7 +18,7 @@ class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget({
     super.key,
     required this.productInfo,
-    required this.aspectRatio,
+    required this.imageAspectRatio,
     required this.showReviewCount,
     this.titleStyle,
     this.priceStyle,
@@ -34,7 +34,7 @@ class ProductCardWidget extends StatelessWidget {
         Stack(
           children: [
             AspectRatio(
-              aspectRatio: aspectRatio,
+              aspectRatio: imageAspectRatio,
               child: Image.network(productInfo.imageUrl, fit: BoxFit.cover),
             ),
             AddCartButton(),

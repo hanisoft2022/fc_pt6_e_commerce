@@ -8,7 +8,7 @@ class LargeProductCard extends ProductCardWidget {
 
   LargeProductCard({super.key, required this.context, required super.productInfo})
     : super(
-        aspectRatio: 150 / 195,
+        imageAspectRatio: 150 / 195,
         showReviewCount: true,
         titleStyle: context.textTheme.titleSmall,
         priceStyle: context.textTheme.titleSmall,
@@ -22,7 +22,7 @@ class SmallProductCard extends ProductCardWidget {
 
   SmallProductCard({super.key, required this.context, required super.productInfo})
     : super(
-        aspectRatio: 114 / 152,
+        imageAspectRatio: 114 / 152,
         showReviewCount: false,
         titleStyle: context.textTheme.labelMedium,
         priceStyle: context.textTheme.labelMedium,
