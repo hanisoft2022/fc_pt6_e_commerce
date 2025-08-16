@@ -12,6 +12,7 @@ extension ViewModuleX on ViewModuleDto {
     return ViewModule(
       type: type,
       title: title,
+      time: time,
       subtitle: subtitle,
       imageUrl: imageUrl,
       products: products.map((dto) => dto.toEntity()).toList(),
@@ -26,6 +27,7 @@ extension ProductInfoX on ProductInfoDto {
       title: title,
       subtitle: subtitle,
       imageUrl: imageUrl,
+
       price: price,
       originalPrice: originalPrice,
       discountRate: discountRate,

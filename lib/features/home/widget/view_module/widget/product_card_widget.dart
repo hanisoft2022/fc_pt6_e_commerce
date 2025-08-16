@@ -69,7 +69,7 @@ class ProductCardWidget extends StatelessWidget {
               ),
               Gap(4),
               Text(
-                '후기: ${productInfo.reviewCount.cappedAt9999}',
+                '후기 ${productInfo.reviewCount.cappedAt9999}',
                 style: reviewStyle!.reviewCountCopyWith,
               ),
             ],

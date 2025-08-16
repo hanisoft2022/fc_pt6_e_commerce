@@ -7,11 +7,9 @@ class CustomFontWeight {
 }
 
 extension TextStyleX on TextStyle? {
-  TextStyle? get regular =>
-      this?.copyWith(fontWeight: CustomFontWeight.regular);
+  TextStyle? get regular => this?.copyWith(fontWeight: CustomFontWeight.regular);
 
-  TextStyle? get semiBold =>
-      this?.copyWith(fontWeight: CustomFontWeight.semiBold);
+  TextStyle? get semiBold => this?.copyWith(fontWeight: CustomFontWeight.semiBold);
 
   TextStyle? get bold => this?.copyWith(fontWeight: CustomFontWeight.bold);
 }

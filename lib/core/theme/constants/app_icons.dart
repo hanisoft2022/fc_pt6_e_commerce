@@ -35,4 +35,8 @@ abstract class AppIcons {
   //image
   static const String kakaoLogin = 'assets/image/kakao_login_btn.png';
   static const String badge = 'assets/image/badge.png';
+
+  //lottie
+  static const String lottieClock = 'assets/lottie/clock.json';
+  static const String lottieClock2 = 'assets/lottie/clock2.json';
 }

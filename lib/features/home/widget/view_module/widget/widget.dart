@@ -4,3 +4,4 @@ export 'product_card_component.dart';
 export 'view_module_title.dart';
 export 'view_module_subtitle.dart';
 export 'view_module_padding.dart';
+export 'timer_widget.dart';

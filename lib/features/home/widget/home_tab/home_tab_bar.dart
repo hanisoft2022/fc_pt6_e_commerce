@@ -25,7 +25,7 @@ class HomeTabBar extends StatelessWidget {
               ),
               indicatorSize: TabBarIndicatorSize.label,
               labelPadding: const EdgeInsets.symmetric(horizontal: 8, vertical: 13),
-              labelStyle: context.textTheme.titleSmall.semiBold!.copyWith(
+              labelStyle: context.textTheme.titleSmall.semiBold?.copyWith(
                 color: context.colorScheme.primary,
               ),
               unselectedLabelColor: context.colorScheme.contentSecondary,

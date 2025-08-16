@@ -13,6 +13,7 @@ enum Modules {
   carouselViewModule,
   bannerViewModule,
   scrollViewModule,
+  specialPriceViewModule,
 }
 
 abstract class ViewModuleFactory {
@@ -48,6 +49,8 @@ extension ModulesX on Modules {
         return BannerViewModule(viewModule: viewModule);
       case Modules.scrollViewModule:
         return ScrollViewModule(viewModule: viewModule);
+      case Modules.specialPriceViewModule:
+        return SpecialPriceViewModule(viewModule: viewModule);
     }
   }
 }
