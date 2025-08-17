@@ -16,6 +16,7 @@ extension ViewModuleX on ViewModuleDto {
       subtitle: subtitle,
       imageUrl: imageUrl,
       products: products.map((dto) => dto.toEntity()).toList(),
+      tabs: tabs,
     );
   }
 }
