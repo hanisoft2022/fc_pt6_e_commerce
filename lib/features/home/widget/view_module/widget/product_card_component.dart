@@ -22,7 +22,7 @@ class SmallProductCard extends ProductCardWidget {
 
   SmallProductCard({super.key, required this.context, required super.productInfo})
     : super(
-        imageAspectRatio: 114 / 152,
+        imageAspectRatio: 109 / 145,
         showReviewCount: false,
         titleStyle: context.textTheme.labelMedium,
         priceStyle: context.textTheme.labelMedium,

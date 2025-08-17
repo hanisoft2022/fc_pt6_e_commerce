@@ -40,14 +40,14 @@ class ProductCardWidget extends StatelessWidget {
             AddCartButton(),
           ],
         ),
-        Gap(9),
+        Gap(8),
         Text(
           productInfo.title,
           overflow: TextOverflow.ellipsis,
           maxLines: 2,
           style: titleStyle!.titleCopyWith,
         ),
-        Gap(4),
+        Gap(1),
         Row(
           children: [
             Text('${productInfo.discountRate}%', style: priceStyle!.discountRateCopyWith),
@@ -55,7 +55,7 @@ class ProductCardWidget extends StatelessWidget {
             Text(productInfo.price.toWon),
           ],
         ),
-        Gap(3),
+        Gap(2),
         Text(productInfo.originalPrice.toWon, style: originalPriceStyle!.originalPriceCopyWith),
         if (showReviewCount) Gap(8),
         if (showReviewCount)
