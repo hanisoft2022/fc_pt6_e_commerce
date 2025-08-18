@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../bloc/menu_bloc/menu_bloc.dart';
 import '../../bloc/view_module_bloc/view_module_bloc.dart';
+import '../widget.dart';
 
 class ViewModuleList extends StatefulWidget {
   final int tabId;
@@ -55,6 +56,7 @@ class _ViewModuleListState extends State<ViewModuleList> {
                   children: [
                     ...state.viewModuleWidgets,
                     if (state.status.isLoading) _LoadingWidget(),
+                    Footer(),
                   ],
                 );
           // switch (state.status) {

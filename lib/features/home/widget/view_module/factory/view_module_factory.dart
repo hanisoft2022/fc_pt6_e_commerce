@@ -15,6 +15,7 @@ enum Modules {
   scrollViewModule,
   specialPriceViewModule,
   categoryProductViewModule,
+  brandProductViewModule,
 }
 
 abstract class ViewModuleFactory {
@@ -54,6 +55,8 @@ extension ModulesX on Modules {
         return SpecialPriceViewModule(viewModule: viewModule);
       case Modules.categoryProductViewModule:
         return CategoryProductViewModule(viewModule: viewModule);
+      case Modules.brandProductViewModule:
+        return BrandProductViewModule(viewModule: viewModule);
     }
   }
 }
