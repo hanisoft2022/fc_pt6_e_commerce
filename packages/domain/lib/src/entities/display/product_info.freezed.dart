@@ -213,7 +213,7 @@ return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.
 
 
 class _ProductInfo implements ProductInfo {
-   _ProductInfo({required this.productId, required this.title, required this.subtitle, required this.imageUrl, required this.price, required this.originalPrice, required this.discountRate, required this.reviewCount});
+  const _ProductInfo({required this.productId, required this.title, required this.subtitle, required this.imageUrl, required this.price, required this.originalPrice, required this.discountRate, required this.reviewCount});
   
 
 @override final  String productId;

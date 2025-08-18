@@ -4,7 +4,7 @@ part 'product_info.freezed.dart';
 
 @freezed
 abstract class ProductInfo with _$ProductInfo {
-  factory ProductInfo({
+  const factory ProductInfo({
     required String productId,
     required String title,
     required String subtitle,

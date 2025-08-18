@@ -1,6 +1,6 @@
 part of 'view_module_bloc.dart';
 
-class ViewModuleEvent {
+sealed class ViewModuleEvent {
   const ViewModuleEvent();
 }
 
