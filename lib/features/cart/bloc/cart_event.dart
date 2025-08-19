@@ -8,13 +8,13 @@ class CartStarted extends CartEvent {
   const CartStarted();
 }
 
-class CartClosed extends CartEvent {
-  const CartClosed();
-}
-
-class CardOpend extends CartEvent {
+class CartOpend extends CartEvent {
   final ProductInfo productInfo;
   final int quantity;
 
-  const CardOpend({required this.productInfo, required this.quantity});
+  const CartOpend({required this.productInfo, required this.quantity});
+}
+
+class CartClosed extends CartEvent {
+  const CartClosed();
 }

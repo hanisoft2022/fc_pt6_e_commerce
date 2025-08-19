@@ -2,6 +2,12 @@ part of 'cart_bloc.dart';
 
 enum CartStatus { open, close, error }
 
+extension CartStatusX on CartStatus {
+  bool get isClose => this == CartStatus.close;
+  bool get isOpen => this == CartStatus.open;
+  bool get isError => this == CartStatus.error;
+}
+
 @freezed
 abstract class CartState with _$CartState {
   const factory CartState({
@@ -22,5 +28,5 @@ abstract class CartState with _$CartState {
     ProductInfo productInfo,
     @Default(1) int quantity,
     @Default(0) int totalPrice,
-  }) = _Initial;
+  }) = _CartState;
 }

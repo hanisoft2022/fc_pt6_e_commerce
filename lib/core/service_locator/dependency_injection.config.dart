@@ -12,6 +12,7 @@
 import 'package:data/data_injection.module.dart' as _i1027;
 import 'package:domain/domain.dart' as _i494;
 import 'package:domain/domain_injection.module.dart' as _i966;
+import 'package:e_commerce_app/features/cart/bloc/cart_bloc.dart' as _i102;
 import 'package:e_commerce_app/features/home/bloc/menu_bloc/menu_bloc.dart'
     as _i183;
 import 'package:e_commerce_app/features/home/bloc/view_module_bloc/view_module_bloc.dart'
@@ -28,6 +29,7 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     await _i1027.DataPackageModule().init(gh);
     await _i966.DomainPackageModule().init(gh);
+    gh.factory<_i102.CartBloc>(() => _i102.CartBloc());
     gh.factory<_i183.MenuBloc>(
       () => _i183.MenuBloc(displayUsecase: gh<_i494.DisplayUsecase>()),
     );

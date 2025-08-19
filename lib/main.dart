@@ -1,6 +1,8 @@
+import 'core/core.dart';
 import 'package:flutter/material.dart';
 
-import 'core/core.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'features/cart/bloc/cart_bloc.dart';
 
 void main() async {
   configureDependencies();
@@ -12,10 +14,13 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      theme: CustomThemeData.themeData,
-      routerConfig: router,
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => getIt<CartBloc>()..add(CartStarted()))],
+      child: MaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        theme: CustomThemeData.themeData,
+        routerConfig: router,
+      ),
     );
   }
 }
