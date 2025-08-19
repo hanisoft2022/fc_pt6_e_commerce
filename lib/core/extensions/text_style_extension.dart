@@ -12,6 +12,7 @@ extension TextStyleEx on TextStyle {
   TextStyle? get originalPriceCopyWith => copyWith(
     color: CustomTheme.colorScheme.contentFourth,
     decoration: TextDecoration.lineThrough,
+    decorationColor: CustomTheme.colorScheme.contentFourth,
   ).regular;
 
   TextStyle? get reviewCountCopyWith => copyWith(

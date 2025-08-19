@@ -1,12 +1,10 @@
 import 'package:core/core.dart';
-import 'package:e_commerce_app/core/extensions/context_theme_extension.dart';
-import 'package:e_commerce_app/core/theme/constants/app_icons.dart';
-import 'package:e_commerce_app/core/theme/custom/custom.dart';
 import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
 
-import 'package:e_commerce_app/features/top_app_bar/widgets/home_app_bar/svg_icon_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/core.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});

@@ -18,3 +18,9 @@ class CartOpend extends CartEvent {
 class CartClosed extends CartEvent {
   const CartClosed();
 }
+
+class CartQuantityDecreased extends CartEvent {}
+
+class CartQuantityIncreased extends CartEvent {
+  const CartQuantityIncreased();
+}
