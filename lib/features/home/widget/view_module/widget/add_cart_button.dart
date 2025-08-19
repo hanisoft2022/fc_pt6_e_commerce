@@ -1,9 +1,14 @@
+import 'package:domain/domain.dart';
 import 'package:e_commerce_app/core/core.dart';
+import 'package:e_commerce_app/features/cart/bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AddCartButton extends StatelessWidget {
-  const AddCartButton({super.key});
+  final ProductInfo productInfo;
+
+  const AddCartButton({super.key, required this.productInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +16,7 @@ class AddCartButton extends StatelessWidget {
       bottom: 8,
       right: 8,
       child: GestureDetector(
-        // TODO: 장바구니 바텀 시트 호출
-        onTap: () => {},
+        onTap: () => context.read<CartBloc>().add(CartOpend(productInfo: productInfo, quantity: 1)),
         child: Container(
           decoration: BoxDecoration(
             color: context.colorScheme.primary.withAlpha(100),

@@ -37,7 +37,7 @@ class ProductCardWidget extends StatelessWidget {
               aspectRatio: imageAspectRatio,
               child: Image.network(productInfo.imageUrl, fit: BoxFit.cover),
             ),
-            AddCartButton(),
+            AddCartButton(productInfo: productInfo),
           ],
         ),
         Gap(8),

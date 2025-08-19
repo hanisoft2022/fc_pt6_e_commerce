@@ -84,7 +84,7 @@ class _SpecialPriceProduct extends StatelessWidget {
               aspectRatio: 343 / 174,
               child: Image.network(productInfo.imageUrl, fit: BoxFit.cover),
             ),
-            AddCartButton(),
+            AddCartButton(productInfo: productInfo),
           ],
         ),
         Gap(9),
