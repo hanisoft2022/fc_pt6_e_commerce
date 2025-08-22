@@ -1,6 +1,6 @@
 import 'package:data/data.dart';
 
-class ProductInfoLocal {
+class ProductInfoRemote {
   late String productId;
   late String title;
   late String subtitle;
@@ -10,10 +10,10 @@ class ProductInfoLocal {
   late int discountRate;
   late int reviewCount;
 
-  ProductInfoLocal();
+  ProductInfoRemote();
 
-  // DTO → Isar 모델 변환용 생성자 예시 (선택적)
-  ProductInfoLocal.fromDto(ProductInfoDto dto) {
+  // DTO → Firestore 모델 변환용 생성자 예시 (선택적)
+  ProductInfoRemote.fromDto(ProductInfoDto dto) {
     productId = dto.productId;
     title = dto.title;
     subtitle = dto.subtitle;
@@ -24,7 +24,7 @@ class ProductInfoLocal {
     reviewCount = dto.reviewCount;
   }
 
-  // Isar 모델 → DTO 변환용 메서드 예시 (선택적)
+  // Firestore 모델 → DTO 변환용 메서드 예시 (선택적)
   ProductInfoDto toDto() {
     return ProductInfoDto(
       productId: productId,
@@ -38,3 +38,6 @@ class ProductInfoLocal {
     );
   }
 }
+
+
+// for commit

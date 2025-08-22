@@ -6,12 +6,12 @@
 
 #include "generated_plugin_registrant.h"
 
-#include <objectbox_flutter_libs/objectbox_flutter_libs_plugin.h>
-#include <objectbox_sync_flutter_libs/objectbox_sync_flutter_libs_plugin.h>
+#include <cloud_firestore/cloud_firestore_plugin_c_api.h>
+#include <firebase_core/firebase_core_plugin_c_api.h>
 
 void RegisterPlugins(flutter::PluginRegistry* registry) {
-  ObjectboxFlutterLibsPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("ObjectboxFlutterLibsPlugin"));
-  ObjectboxSyncFlutterLibsPluginRegisterWithRegistrar(
-      registry->GetRegistrarForPlugin("ObjectboxSyncFlutterLibsPlugin"));
+  CloudFirestorePluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("CloudFirestorePluginCApi"));
+  FirebaseCorePluginCApiRegisterWithRegistrar(
+      registry->GetRegistrarForPlugin("FirebaseCorePluginCApi"));
 }

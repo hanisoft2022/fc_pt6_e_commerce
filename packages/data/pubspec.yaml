@@ -12,7 +12,7 @@ dependencies:
   freezed_annotation: ^3.1.0
   json_annotation: ^4.9.0
   retrofit: ^4.6.0
-  logger: ^2.6.0  # for logging purpose
+  logger: ^2.6.0 
   dio: ^5.8.0+1
   domain:
     path: ../domain
@@ -22,9 +22,6 @@ dependencies:
   injectable: ^2.5.1
   injectable_generator: ^2.8.1
   path_provider: ^2.1.5
-  objectbox: ^4.3.0
-  objectbox_flutter_libs: any
-  objectbox_sync_flutter_libs: any
 
 dev_dependencies:
   flutter_test:
@@ -33,5 +30,3 @@ dev_dependencies:
   freezed: ^3.2.0
   json_serializable: ^6.10.0
   retrofit_generator: ^10.0.1
-
-

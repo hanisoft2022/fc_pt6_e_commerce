@@ -5,14 +5,14 @@
 import FlutterMacOS
 import Foundation
 
-import objectbox_flutter_libs
-import objectbox_sync_flutter_libs
+import cloud_firestore
+import firebase_core
 import path_provider_foundation
 import sqflite_darwin
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  ObjectboxFlutterLibsPlugin.register(with: registry.registrar(forPlugin: "ObjectboxFlutterLibsPlugin"))
-  ObjectboxSyncFlutterLibsPlugin.register(with: registry.registrar(forPlugin: "ObjectboxSyncFlutterLibsPlugin"))
+  FLTFirebaseFirestorePlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseFirestorePlugin"))
+  FLTFirebaseCorePlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseCorePlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   SqflitePlugin.register(with: registry.registrar(forPlugin: "SqflitePlugin"))
 }

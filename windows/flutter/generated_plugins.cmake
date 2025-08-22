@@ -3,8 +3,8 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
-  objectbox_flutter_libs
-  objectbox_sync_flutter_libs
+  cloud_firestore
+  firebase_core
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

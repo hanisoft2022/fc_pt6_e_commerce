@@ -1,10 +1,14 @@
 import 'core/core.dart';
 import 'package:flutter/material.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'features/cart/bloc/cart_bloc.dart';
 
 void main() async {
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   configureDependencies();
   runApp(const MainApp());
 }
