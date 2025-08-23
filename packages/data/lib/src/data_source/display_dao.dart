@@ -90,7 +90,7 @@ class DisplayDao {
   // }
 
   /// 장바구니 상품 담기
-  Future<ResponseWrapper<List<CartRemoteModel>>> insertCart(CartRemoteModel cart) async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> addtoCart(CartRemoteModel cart) async {
     final productId = cart.productInfo.productId;
 
     final db = FirebaseFirestore.instance;
@@ -131,7 +131,7 @@ class DisplayDao {
   // }
 
   /// 장바구니에 담긴 상품 삭제 by productId
-  Future<ResponseWrapper<List<CartRemoteModel>>> deleteCart(List<String> productIds) async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> deleteCartItem(List<String> productIds) async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
@@ -157,8 +157,8 @@ class DisplayDao {
   //   return ResponseWrapper(status: 'SUCCESS', code: '0000', message: '장바구니 전체 삭제 성공', data: []);
   // }
 
-  /// 장바구니 전체 삭제
-  Future<ResponseWrapper<List<CartRemoteModel>>> clearCarts() async {
+  /// 장바구니 상품 전체 삭제
+  Future<ResponseWrapper<List<CartRemoteModel>>> clearCart() async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
@@ -202,7 +202,7 @@ class DisplayDao {
   // }
 
   /// 장바구니 수량 변경
-  Future<ResponseWrapper<List<CartRemoteModel>>> changeQtyCart(
+  Future<ResponseWrapper<List<CartRemoteModel>>> changeCartItemQty(
     String productId,
     int quantity,
   ) async {

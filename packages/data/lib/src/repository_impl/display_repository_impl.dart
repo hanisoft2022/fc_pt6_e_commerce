@@ -6,8 +6,11 @@ import 'package:injectable/injectable.dart';
 @Singleton(as: DisplayRepository)
 class DisplayRepositoryImpl implements DisplayRepository {
   final DisplayApi _displayApi;
+  final DisplayDao _displayDao;
 
-  DisplayRepositoryImpl({required DisplayApi displayApi}) : _displayApi = displayApi;
+  DisplayRepositoryImpl({required DisplayApi displayApi, required DisplayDao displayDao})
+    : _displayApi = displayApi,
+      _displayDao = displayDao;
 
   @override
   Future<ResponseWrapper<List<MenuEntity>>> getMenus({required MallType mallType}) async {
@@ -34,32 +37,47 @@ class DisplayRepositoryImpl implements DisplayRepository {
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> addCart(CartEntity cart) {
-    // TODO: implement addCart
-    throw UnimplementedError();
+  Future<ApiResponse<List<CartEntity>>> addtoCart(CartEntity cart) async {
+    final response = await _displayDao.addtoCart(cart.toRemoteModel());
+
+    return response.toEntity<List<CartEntity>>(
+      response.data?.map((cartModel) => cartModel.toEntity()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> changeCartQty(String productId, int quantity) {
-    // TODO: implement changeCartQty
-    throw UnimplementedError();
+  Future<ApiResponse<List<CartEntity>>> getCartList() async {
+    final response = await _displayDao.getCartList();
+
+    return response.toEntity<List<CartEntity>>(
+      response.data?.map((cartModel) => cartModel.toEntity()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> clearCart() {
-    // TODO: implement clearCart
-    throw UnimplementedError();
+  Future<ApiResponse<List<CartEntity>>> changeCartItemQty(String productId, int quantity) async {
+    final response = await _displayDao.changeCartItemQty(productId, quantity);
+
+    return response.toEntity<List<CartEntity>>(
+      response.data?.map((cartModel) => cartModel.toEntity()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> deleteCart(List<String> productIds) {
-    // TODO: implement deleteCart
-    throw UnimplementedError();
+  Future<ApiResponse<List<CartEntity>>> deleteCartItem(List<String> productIds) async {
+    final response = await _displayDao.deleteCartItem(productIds);
+
+    return response.toEntity<List<CartEntity>>(
+      response.data?.map((cartModel) => cartModel.toEntity()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> getCartList() {
-    // TODO: implement getCartList
-    throw UnimplementedError();
+  Future<ApiResponse<List<CartEntity>>> clearCart() async {
+    final response = await _displayDao.clearCart();
+
+    return response.toEntity<List<CartEntity>>(
+      response.data?.map((cartModel) => cartModel.toEntity()).toList() ?? [],
+    );
   }
 }

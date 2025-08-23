@@ -18,8 +18,11 @@ class DataPackageModule extends _i526.MicroPackageModule {
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final dataSourceModule = _$DataSourceModule();
     gh.singleton<_i437.DisplayApi>(() => dataSourceModule.displayApi);
-    gh.singleton<_i494.DisplayRepository>(
-        () => _i755.DisplayRepositoryImpl(displayApi: gh<_i437.DisplayApi>()));
+    gh.singleton<_i437.DisplayDao>(() => dataSourceModule.displayDao);
+    gh.singleton<_i494.DisplayRepository>(() => _i755.DisplayRepositoryImpl(
+          displayApi: gh<_i437.DisplayApi>(),
+          displayDao: gh<_i437.DisplayDao>(),
+        ));
   }
 }
 

@@ -5,4 +5,7 @@ import 'package:injectable/injectable.dart';
 abstract class DataSourceModule {
   @singleton
   DisplayApi get displayApi => DisplayMockApi();
+
+  @singleton
+  DisplayDao get displayDao => DisplayDao();
 }

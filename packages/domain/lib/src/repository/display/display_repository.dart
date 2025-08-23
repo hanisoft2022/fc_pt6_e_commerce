@@ -8,18 +8,18 @@ abstract interface class DisplayRepository implements Repository {
     required int page,
   });
 
+  /// 장바구니 담기
+  Future<ApiResponse<List<CartEntity>>> addtoCart(CartEntity cart);
+
   /// 장바구니 리스트 불러오기
   Future<ApiResponse<List<CartEntity>>> getCartList();
 
-  /// 장바구니 담기
-  Future<ApiResponse<List<CartEntity>>> addCart(CartEntity cart);
+  /// 장바구니 상품 수량 변경
+  Future<ApiResponse<List<CartEntity>>> changeCartItemQty(String productId, int quantity);
 
   /// 장바구니에 담긴 상품 삭제 by productId
-  Future<ApiResponse<List<CartEntity>>> deleteCart(List<String> productIds);
+  Future<ApiResponse<List<CartEntity>>> deleteCartItem(List<String> productIds);
 
-  /// 장바구니 전체 삭제
+  /// 장바구니 상품 전체 삭제
   Future<ApiResponse<List<CartEntity>>> clearCart();
-
-  /// 장바구니 수량 변경
-  Future<ApiResponse<List<CartEntity>>> changeCartQty(String productId, int quantity);
 }

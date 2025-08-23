@@ -6,13 +6,17 @@ import 'package:mocktail/mocktail.dart';
 
 class MockDisplayApi extends Mock implements DisplayApi {}
 
+class MockDisplayDao extends Mock implements DisplayDao {}
+
 void main() {
   late DisplayApi displayApi;
+  late DisplayDao displayDao;
   late DisplayRepository displayRepository;
 
   setUpAll(() {
     displayApi = MockDisplayApi();
-    displayRepository = DisplayRepositoryImpl(displayApi: displayApi);
+    displayDao = MockDisplayDao();
+    displayRepository = DisplayRepositoryImpl(displayApi: displayApi, displayDao: displayDao);
   });
 
   test('의존성 주입 및 객체 생성 완료', () {

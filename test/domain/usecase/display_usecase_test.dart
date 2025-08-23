@@ -6,18 +6,22 @@ import 'package:mocktail/mocktail.dart';
 
 class MockDisplayApi extends Mock implements DisplayApi {}
 
+class MockDisplayDao extends Mock implements DisplayDao {}
+
 // class MockDisplayRepository extends Mock implements DisplayRepository {}
 
 class MockGetMenusUsecase extends Mock implements GetMenusUsecase {}
 
 void main() {
   late DisplayApi displayApi;
+  late DisplayDao displayDao;
   late DisplayRepository displayRepository;
   late DisplayUsecase displayUsecase;
 
   setUpAll(() {
     displayApi = MockDisplayApi();
-    displayRepository = DisplayRepositoryImpl(displayApi: displayApi);
+    displayDao = MockDisplayDao();
+    displayRepository = DisplayRepositoryImpl(displayApi: displayApi, displayDao: displayDao);
     displayUsecase = DisplayUsecase(displayRepository: displayRepository);
   });
 

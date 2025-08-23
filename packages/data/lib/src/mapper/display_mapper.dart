@@ -58,3 +58,24 @@ extension CartModelX on CartRemoteModel {
     return CartEntity(productInfo: productInfo.toEntity(), quantity: quantity);
   }
 }
+
+extension CartEntityX on CartEntity {
+  CartRemoteModel toRemoteModel() {
+    return CartRemoteModel(productInfo: productInfo.toRemoteModel(), quantity: quantity);
+  }
+}
+
+extension ProductInfoEntityX on ProductInfoEntity {
+  ProductInfoRemoteModel toRemoteModel() {
+    return ProductInfoRemoteModel(
+      productId: productId,
+      title: title,
+      subtitle: subtitle,
+      imageUrl: imageUrl,
+      price: price,
+      originalPrice: originalPrice,
+      discountRate: discountRate,
+      reviewCount: reviewCount,
+    );
+  }
+}
