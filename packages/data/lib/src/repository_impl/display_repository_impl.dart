@@ -32,4 +32,34 @@ class DisplayRepositoryImpl implements DisplayRepository {
       response.data?.map((e) => e.toEntity()).toList() ?? [],
     );
   }
+
+  @override
+  Future<ApiResponse<List<CartEntity>>> addCart(CartEntity cart) {
+    // TODO: implement addCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse<List<CartEntity>>> changeCartQty(String productId, int quantity) {
+    // TODO: implement changeCartQty
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse<List<CartEntity>>> clearCart() {
+    // TODO: implement clearCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse<List<CartEntity>>> deleteCart(List<String> productIds) {
+    // TODO: implement deleteCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResponse<List<CartEntity>>> getCartList() {
+    // TODO: implement getCartList
+    throw UnimplementedError();
+  }
 }

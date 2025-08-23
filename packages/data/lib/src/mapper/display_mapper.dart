@@ -1,13 +1,13 @@
 import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 
-extension MenuX on MenuDto {
+extension MenuDtoX on MenuDto {
   MenuEntity toEntity() {
     return MenuEntity(tabId: tabId, title: title);
   }
 }
 
-extension ViewModuleX on ViewModuleDto {
+extension ViewModuleDtoX on ViewModuleDto {
   ViewModuleEntity toEntity() {
     return ViewModuleEntity(
       type: type,
@@ -21,7 +21,7 @@ extension ViewModuleX on ViewModuleDto {
   }
 }
 
-extension ProductInfoX on ProductInfoDto {
+extension ProductInfoDtoX on ProductInfoDto {
   ProductInfoEntity toEntity() {
     return ProductInfoEntity(
       productId: productId,
@@ -34,5 +34,27 @@ extension ProductInfoX on ProductInfoDto {
       discountRate: discountRate,
       reviewCount: reviewCount,
     );
+  }
+}
+
+extension ProductInfoRemoteModelX on ProductInfoRemoteModel {
+  ProductInfoEntity toEntity() {
+    return ProductInfoEntity(
+      productId: productId,
+      title: title,
+      subtitle: subtitle,
+      imageUrl: imageUrl,
+      price: price,
+      originalPrice: originalPrice,
+      discountRate: discountRate,
+      reviewCount: reviewCount,
+    );
+  }
+}
+
+// Model -> Entity
+extension CartModelX on CartRemoteModel {
+  CartEntity toEntity() {
+    return CartEntity(productInfo: productInfo.toEntity(), quantity: quantity);
   }
 }
