@@ -53,10 +53,10 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
       }
       final tabId = event.tabId;
 
-      final Result<List<ViewModule>> response = await _fetch(tabId: tabId);
+      final Result<List<ViewModuleEntity>> response = await _fetch(tabId: tabId);
 
       response.when(
-        success: (List<ViewModule> viewModules) {
+        success: (List<ViewModuleEntity> viewModules) {
           final List<ViewModuleWidget> viewModuleWidgets = viewModules
               .map((e) => ViewModuleFactory.viewModuleToViewModuleWidget(e))
               .toList();
@@ -93,10 +93,10 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     await Future.delayed(Duration(milliseconds: 500));
 
     try {
-      final Result<List<ViewModule>> response = await _fetch(tabId: tabId, page: nextPage);
+      final Result<List<ViewModuleEntity>> response = await _fetch(tabId: tabId, page: nextPage);
 
       response.when(
-        success: (List<ViewModule> viewModules) {
+        success: (List<ViewModuleEntity> viewModules) {
           if (viewModules.isEmpty) {
             emit(state.copyWith(status: Status.success, currentPage: nextPage, isLastPage: true));
 
@@ -134,8 +134,8 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
     }
   }
 
-  Future<Result<List<ViewModule>>> _fetch({required int tabId, int page = 1}) async {
-    final result = await _displayUsecase.execute<Result<List<ViewModule>>>(
+  Future<Result<List<ViewModuleEntity>>> _fetch({required int tabId, int page = 1}) async {
+    final result = await _displayUsecase.execute<Result<List<ViewModuleEntity>>>(
       remoteUsecase: GetViewModulesUsecase(tabId: tabId, page: page),
     );
     return result;

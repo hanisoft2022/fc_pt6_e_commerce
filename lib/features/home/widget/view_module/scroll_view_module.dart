@@ -7,7 +7,7 @@ import 'package:gap/gap.dart';
 import 'view_module.dart';
 
 class ScrollViewModule extends StatelessWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const ScrollViewModule({super.key, required this.viewModule});
 
@@ -35,7 +35,7 @@ class ScrollViewModule extends StatelessWidget with ViewModuleWidget {
 }
 
 class _ImageList extends StatelessWidget {
-  final List<ProductInfo> products;
+  final List<ProductInfoEntity> products;
 
   const _ImageList({required this.products});
 

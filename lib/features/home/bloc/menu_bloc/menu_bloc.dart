@@ -29,10 +29,10 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     try {
       final mallType = event.mallType;
 
-      final Result<List<Menu>> response = await _fetch(mallType);
+      final Result<List<MenuEntity>> response = await _fetch(mallType);
 
       response.when(
-        success: (List<Menu> menus) {
+        success: (List<MenuEntity> menus) {
           emit(state.copyWith(status: Status.success, menus: menus, mallType: mallType));
         },
         failure: (ErrorResponse error) {
@@ -45,8 +45,8 @@ class MenuBloc extends Bloc<MenuEvent, MenuState> {
     }
   }
 
-  Future<Result<List<Menu>>> _fetch(MallType mallType) async {
-    final result = await _displayUsecase.execute<Result<List<Menu>>>(
+  Future<Result<List<MenuEntity>>> _fetch(MallType mallType) async {
+    final result = await _displayUsecase.execute<Result<List<MenuEntity>>>(
       remoteUsecase: GetMenusUsecase(mallType: mallType),
     );
     return result;

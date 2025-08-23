@@ -48,17 +48,17 @@ class DisplayDao {
   // }
 
   /// 장바구니 리스트 불러오기
-  Future<ResponseWrapper<List<CartRemote>>> getCartList() async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> getCartList() async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
     final snapshot = await docRef.get();
 
-    return ResponseWrapper<List<CartRemote>>(
+    return ResponseWrapper<List<CartRemoteModel>>(
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 리스트 불러오기 성공',
-      data: snapshot.docs.map((e) => CartRemote.fromJson(e.data())).toList(),
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }
 
@@ -90,14 +90,14 @@ class DisplayDao {
   // }
 
   /// 장바구니 상품 담기
-  Future<ResponseWrapper<List<CartRemote>>> insertCart(CartRemote cart) async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> insertCart(CartRemoteModel cart) async {
     final productId = cart.productInfo.productId;
 
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
     if (await docRef.doc(productId).get().then((value) => value.exists)) {
-      return ResponseWrapper<List<CartRemote>>(
+      return ResponseWrapper<List<CartRemoteModel>>(
         status: '이미 존재하는 상품 ::: ${cart.productInfo.title}',
         code: 'CART-1000',
         message: '이미 장바구니에 존재하는 상품입니다.',
@@ -109,11 +109,11 @@ class DisplayDao {
 
     final snapshot = await docRef.get();
 
-    return ResponseWrapper<List<CartRemote>>(
+    return ResponseWrapper<List<CartRemoteModel>>(
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 담기 성공',
-      data: snapshot.docs.map((e) => CartRemote.fromJson(e.data())).toList(),
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }
 
@@ -131,7 +131,7 @@ class DisplayDao {
   // }
 
   /// 장바구니에 담긴 상품 삭제 by productId
-  Future<ResponseWrapper<List<CartRemote>>> deleteCart(List<String> productIds) async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> deleteCart(List<String> productIds) async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
@@ -141,11 +141,11 @@ class DisplayDao {
 
     final snapshot = await docRef.get();
 
-    return ResponseWrapper<List<CartRemote>>(
+    return ResponseWrapper<List<CartRemoteModel>>(
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 $productIds 상품 삭제 성공',
-      data: snapshot.docs.map((e) => CartRemote.fromJson(e.data())).toList(),
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }
 
@@ -158,7 +158,7 @@ class DisplayDao {
   // }
 
   /// 장바구니 전체 삭제
-  Future<ResponseWrapper<List<CartRemote>>> clearCarts() async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> clearCarts() async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
@@ -170,11 +170,11 @@ class DisplayDao {
 
     final snapshot = await docRef.get();
 
-    return ResponseWrapper<List<CartRemote>>(
+    return ResponseWrapper<List<CartRemoteModel>>(
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 전체 삭제 성공',
-      data: snapshot.docs.map((e) => CartRemote.fromJson(e.data())).toList(),
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }
 
@@ -202,7 +202,10 @@ class DisplayDao {
   // }
 
   /// 장바구니 수량 변경
-  Future<ResponseWrapper<List<CartRemote>>> changeQtyCart(String productId, int quantity) async {
+  Future<ResponseWrapper<List<CartRemoteModel>>> changeQtyCart(
+    String productId,
+    int quantity,
+  ) async {
     final db = FirebaseFirestore.instance;
     final docRef = db.collection('cart');
 
@@ -212,11 +215,11 @@ class DisplayDao {
 
     final item = snapshot.docs.where((element) => element.id == productId).first;
 
-    return ResponseWrapper<List<CartRemote>>(
+    return ResponseWrapper<List<CartRemoteModel>>(
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 $item의 수량 변경 완료.',
-      data: snapshot.docs.map((e) => CartRemote.fromJson(e.data())).toList(),
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }
 }

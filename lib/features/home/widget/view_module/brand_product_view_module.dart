@@ -9,7 +9,7 @@ import 'widget/view_module_padding.dart';
 import 'widget/view_module_title.dart';
 
 class BrandProductViewModule extends StatelessWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const BrandProductViewModule({super.key, required this.viewModule});
 
@@ -78,7 +78,7 @@ class BrandProductViewModule extends StatelessWidget with ViewModuleWidget {
 }
 
 class _BrandProduct extends StatelessWidget {
-  final ProductInfo productInfo;
+  final ProductInfoEntity productInfo;
 
   const _BrandProduct({required this.productInfo});
 

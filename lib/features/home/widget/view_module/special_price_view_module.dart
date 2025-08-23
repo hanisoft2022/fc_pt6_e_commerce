@@ -10,7 +10,7 @@ import 'package:lottie/lottie.dart';
 import 'view_module.dart';
 
 class SpecialPriceViewModule extends StatelessWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const SpecialPriceViewModule({super.key, required this.viewModule});
 
@@ -66,7 +66,7 @@ class SpecialPriceViewModule extends StatelessWidget with ViewModuleWidget {
 }
 
 class _SpecialPriceProduct extends StatelessWidget {
-  final ProductInfo productInfo;
+  final ProductInfoEntity productInfo;
 
   const _SpecialPriceProduct({required this.productInfo});
 

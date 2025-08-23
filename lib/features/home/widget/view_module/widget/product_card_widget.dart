@@ -7,7 +7,7 @@ import '../../../../../core/core.dart';
 import 'widget.dart';
 
 class ProductCardWidget extends StatelessWidget {
-  final ProductInfo productInfo;
+  final ProductInfoEntity productInfo;
   final double imageAspectRatio;
   final bool showReviewCount;
   final TextStyle? titleStyle;

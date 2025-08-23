@@ -10,14 +10,16 @@ class DisplayRepositoryImpl implements DisplayRepository {
   DisplayRepositoryImpl({required DisplayApi displayApi}) : _displayApi = displayApi;
 
   @override
-  Future<ResponseWrapper<List<Menu>>> getMenus({required MallType mallType}) async {
+  Future<ResponseWrapper<List<MenuEntity>>> getMenus({required MallType mallType}) async {
     final ResponseWrapper<List<MenuDto>> response = await _displayApi.getMenus(mallType.name);
 
-    return response.toEntity<List<Menu>>(response.data?.map((e) => e.toEntity()).toList() ?? []);
+    return response.toEntity<List<MenuEntity>>(
+      response.data?.map((e) => e.toEntity()).toList() ?? [],
+    );
   }
 
   @override
-  Future<ApiResponse<List<ViewModule>>> getViewModules({
+  Future<ApiResponse<List<ViewModuleEntity>>> getViewModules({
     required int tabId,
     required int page,
   }) async {
@@ -26,7 +28,7 @@ class DisplayRepositoryImpl implements DisplayRepository {
       page,
     );
 
-    return response.toEntity<List<ViewModule>>(
+    return response.toEntity<List<ViewModuleEntity>>(
       response.data?.map((e) => e.toEntity()).toList() ?? [],
     );
   }

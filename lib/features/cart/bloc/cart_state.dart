@@ -14,7 +14,7 @@ abstract class CartState with _$CartState {
     @Default(CartStatus.close) CartStatus status,
     @Default(ErrorResponse()) ErrorResponse error,
     @Default(
-      ProductInfo(
+      ProductInfoEntity(
         productId: '',
         title: '',
         subtitle: '',
@@ -25,7 +25,7 @@ abstract class CartState with _$CartState {
         reviewCount: -1,
       ),
     )
-    ProductInfo productInfo,
+    ProductInfoEntity productInfo,
     @Default(1) int quantity,
     @Default(0) int totalPrice,
   }) = _CartState;

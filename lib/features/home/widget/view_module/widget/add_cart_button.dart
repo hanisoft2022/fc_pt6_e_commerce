@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class AddCartButton extends StatelessWidget {
-  final ProductInfo productInfo;
+  final ProductInfoEntity productInfo;
 
   const AddCartButton({super.key, required this.productInfo});
 

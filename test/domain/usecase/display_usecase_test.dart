@@ -24,7 +24,7 @@ void main() {
   test('의존성 주입 성공', () => expect(displayUsecase, isNotNull));
 
   test('메뉴 리스트 불러오기 성공', () async {
-    final result = Result<List<Menu>>.success([Menu(tabId: -1, title: '메뉴 테스트')]);
+    final result = Result<List<MenuEntity>>.success([MenuEntity(tabId: -1, title: '메뉴 테스트')]);
     final usecase = MockGetMenusUsecase();
 
     when(() => usecase.mallType).thenReturn(MallType.market);
@@ -36,7 +36,7 @@ void main() {
   });
 
   test('메뉴 리스트 불러오기 실패', () async {
-    final result = Result<List<Menu>>.failure(ErrorResponse(status: 'error'));
+    final result = Result<List<MenuEntity>>.failure(ErrorResponse(status: 'error'));
     final usecase = MockGetMenusUsecase();
 
     when(() => usecase.mallType).thenReturn(MallType.market);

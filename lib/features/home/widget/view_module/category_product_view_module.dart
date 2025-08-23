@@ -8,7 +8,7 @@ import 'view_module.dart';
 import 'widget/widget.dart';
 
 class CategoryProductViewModule extends StatefulWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const CategoryProductViewModule({super.key, required this.viewModule});
 

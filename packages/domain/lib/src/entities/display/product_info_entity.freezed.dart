@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'product_info.dart';
+part of 'product_info_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -11,38 +11,41 @@ part of 'product_info.dart';
 
 // dart format off
 T _$identity<T>(T value) => value;
+
 /// @nodoc
-mixin _$ProductInfo {
+mixin _$ProductInfoEntity {
 
  String get productId; String get title; String get subtitle; String get imageUrl; int get price; int get originalPrice; int get discountRate; int get reviewCount;
-/// Create a copy of ProductInfo
+/// Create a copy of ProductInfoEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$ProductInfoCopyWith<ProductInfo> get copyWith => _$ProductInfoCopyWithImpl<ProductInfo>(this as ProductInfo, _$identity);
+$ProductInfoEntityCopyWith<ProductInfoEntity> get copyWith => _$ProductInfoEntityCopyWithImpl<ProductInfoEntity>(this as ProductInfoEntity, _$identity);
 
+  /// Serializes this ProductInfoEntity to a JSON map.
+  Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductInfo&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.discountRate, discountRate) || other.discountRate == discountRate)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProductInfoEntity&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.discountRate, discountRate) || other.discountRate == discountRate)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,productId,title,subtitle,imageUrl,price,originalPrice,discountRate,reviewCount);
 
 @override
 String toString() {
-  return 'ProductInfo(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discountRate: $discountRate, reviewCount: $reviewCount)';
+  return 'ProductInfoEntity(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discountRate: $discountRate, reviewCount: $reviewCount)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $ProductInfoCopyWith<$Res>  {
-  factory $ProductInfoCopyWith(ProductInfo value, $Res Function(ProductInfo) _then) = _$ProductInfoCopyWithImpl;
+abstract mixin class $ProductInfoEntityCopyWith<$Res>  {
+  factory $ProductInfoEntityCopyWith(ProductInfoEntity value, $Res Function(ProductInfoEntity) _then) = _$ProductInfoEntityCopyWithImpl;
 @useResult
 $Res call({
  String productId, String title, String subtitle, String imageUrl, int price, int originalPrice, int discountRate, int reviewCount
@@ -53,14 +56,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$ProductInfoCopyWithImpl<$Res>
-    implements $ProductInfoCopyWith<$Res> {
-  _$ProductInfoCopyWithImpl(this._self, this._then);
+class _$ProductInfoEntityCopyWithImpl<$Res>
+    implements $ProductInfoEntityCopyWith<$Res> {
+  _$ProductInfoEntityCopyWithImpl(this._self, this._then);
 
-  final ProductInfo _self;
-  final $Res Function(ProductInfo) _then;
+  final ProductInfoEntity _self;
+  final $Res Function(ProductInfoEntity) _then;
 
-/// Create a copy of ProductInfo
+/// Create a copy of ProductInfoEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? productId = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,Object? price = null,Object? originalPrice = null,Object? discountRate = null,Object? reviewCount = null,}) {
   return _then(_self.copyWith(
@@ -79,8 +82,8 @@ as int,
 }
 
 
-/// Adds pattern-matching-related methods to [ProductInfo].
-extension ProductInfoPatterns on ProductInfo {
+/// Adds pattern-matching-related methods to [ProductInfoEntity].
+extension ProductInfoEntityPatterns on ProductInfoEntity {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -93,10 +96,10 @@ extension ProductInfoPatterns on ProductInfo {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ProductInfo value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _ProductInfoEntity value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _ProductInfo() when $default != null:
+case _ProductInfoEntity() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -115,10 +118,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProductInfo value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _ProductInfoEntity value)  $default,){
 final _that = this;
 switch (_that) {
-case _ProductInfo():
+case _ProductInfoEntity():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -136,10 +139,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProductInfo value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _ProductInfoEntity value)?  $default,){
 final _that = this;
 switch (_that) {
-case _ProductInfo() when $default != null:
+case _ProductInfoEntity() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -159,7 +162,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String productId,  String title,  String subtitle,  String imageUrl,  int price,  int originalPrice,  int discountRate,  int reviewCount)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _ProductInfo() when $default != null:
+case _ProductInfoEntity() when $default != null:
 return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.price,_that.originalPrice,_that.discountRate,_that.reviewCount);case _:
   return orElse();
 
@@ -180,7 +183,7 @@ return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String productId,  String title,  String subtitle,  String imageUrl,  int price,  int originalPrice,  int discountRate,  int reviewCount)  $default,) {final _that = this;
 switch (_that) {
-case _ProductInfo():
+case _ProductInfoEntity():
 return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.price,_that.originalPrice,_that.discountRate,_that.reviewCount);case _:
   throw StateError('Unexpected subclass');
 
@@ -200,7 +203,7 @@ return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String productId,  String title,  String subtitle,  String imageUrl,  int price,  int originalPrice,  int discountRate,  int reviewCount)?  $default,) {final _that = this;
 switch (_that) {
-case _ProductInfo() when $default != null:
+case _ProductInfoEntity() when $default != null:
 return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.price,_that.originalPrice,_that.discountRate,_that.reviewCount);case _:
   return null;
 
@@ -210,11 +213,11 @@ return $default(_that.productId,_that.title,_that.subtitle,_that.imageUrl,_that.
 }
 
 /// @nodoc
+@JsonSerializable()
 
-
-class _ProductInfo implements ProductInfo {
-  const _ProductInfo({required this.productId, required this.title, required this.subtitle, required this.imageUrl, required this.price, required this.originalPrice, required this.discountRate, required this.reviewCount});
-  
+class _ProductInfoEntity implements ProductInfoEntity {
+  const _ProductInfoEntity({required this.productId, required this.title, required this.subtitle, required this.imageUrl, required this.price, required this.originalPrice, required this.discountRate, required this.reviewCount});
+  factory _ProductInfoEntity.fromJson(Map<String, dynamic> json) => _$ProductInfoEntityFromJson(json);
 
 @override final  String productId;
 @override final  String title;
@@ -225,34 +228,37 @@ class _ProductInfo implements ProductInfo {
 @override final  int discountRate;
 @override final  int reviewCount;
 
-/// Create a copy of ProductInfo
+/// Create a copy of ProductInfoEntity
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$ProductInfoCopyWith<_ProductInfo> get copyWith => __$ProductInfoCopyWithImpl<_ProductInfo>(this, _$identity);
+_$ProductInfoEntityCopyWith<_ProductInfoEntity> get copyWith => __$ProductInfoEntityCopyWithImpl<_ProductInfoEntity>(this, _$identity);
 
-
+@override
+Map<String, dynamic> toJson() {
+  return _$ProductInfoEntityToJson(this, );
+}
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductInfo&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.discountRate, discountRate) || other.discountRate == discountRate)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProductInfoEntity&&(identical(other.productId, productId) || other.productId == productId)&&(identical(other.title, title) || other.title == title)&&(identical(other.subtitle, subtitle) || other.subtitle == subtitle)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.price, price) || other.price == price)&&(identical(other.originalPrice, originalPrice) || other.originalPrice == originalPrice)&&(identical(other.discountRate, discountRate) || other.discountRate == discountRate)&&(identical(other.reviewCount, reviewCount) || other.reviewCount == reviewCount));
 }
 
-
+@JsonKey(includeFromJson: false, includeToJson: false)
 @override
 int get hashCode => Object.hash(runtimeType,productId,title,subtitle,imageUrl,price,originalPrice,discountRate,reviewCount);
 
 @override
 String toString() {
-  return 'ProductInfo(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discountRate: $discountRate, reviewCount: $reviewCount)';
+  return 'ProductInfoEntity(productId: $productId, title: $title, subtitle: $subtitle, imageUrl: $imageUrl, price: $price, originalPrice: $originalPrice, discountRate: $discountRate, reviewCount: $reviewCount)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$ProductInfoCopyWith<$Res> implements $ProductInfoCopyWith<$Res> {
-  factory _$ProductInfoCopyWith(_ProductInfo value, $Res Function(_ProductInfo) _then) = __$ProductInfoCopyWithImpl;
+abstract mixin class _$ProductInfoEntityCopyWith<$Res> implements $ProductInfoEntityCopyWith<$Res> {
+  factory _$ProductInfoEntityCopyWith(_ProductInfoEntity value, $Res Function(_ProductInfoEntity) _then) = __$ProductInfoEntityCopyWithImpl;
 @override @useResult
 $Res call({
  String productId, String title, String subtitle, String imageUrl, int price, int originalPrice, int discountRate, int reviewCount
@@ -263,17 +269,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$ProductInfoCopyWithImpl<$Res>
-    implements _$ProductInfoCopyWith<$Res> {
-  __$ProductInfoCopyWithImpl(this._self, this._then);
+class __$ProductInfoEntityCopyWithImpl<$Res>
+    implements _$ProductInfoEntityCopyWith<$Res> {
+  __$ProductInfoEntityCopyWithImpl(this._self, this._then);
 
-  final _ProductInfo _self;
-  final $Res Function(_ProductInfo) _then;
+  final _ProductInfoEntity _self;
+  final $Res Function(_ProductInfoEntity) _then;
 
-/// Create a copy of ProductInfo
+/// Create a copy of ProductInfoEntity
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? productId = null,Object? title = null,Object? subtitle = null,Object? imageUrl = null,Object? price = null,Object? originalPrice = null,Object? discountRate = null,Object? reviewCount = null,}) {
-  return _then(_ProductInfo(
+  return _then(_ProductInfoEntity(
 productId: null == productId ? _self.productId : productId // ignore: cast_nullable_to_non_nullable
 as String,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,subtitle: null == subtitle ? _self.subtitle : subtitle // ignore: cast_nullable_to_non_nullable

@@ -7,7 +7,7 @@ import 'package:flutter/widgets.dart';
 import 'view_module_widget.dart';
 
 class CarouselViewModule extends StatefulWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const CarouselViewModule({super.key, required this.viewModule});
 
@@ -43,7 +43,7 @@ class _CarouselViewModuleState extends State<CarouselViewModule> {
 
   @override
   Widget build(BuildContext context) {
-    List<ProductInfo> products = widget.viewModule.products;
+    List<ProductInfoEntity> products = widget.viewModule.products;
 
     return AspectRatio(
       aspectRatio: 375 / 340,

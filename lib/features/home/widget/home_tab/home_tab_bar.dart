@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../bloc/menu_bloc/menu_bloc.dart';
 
 class HomeTabBar extends StatelessWidget {
-  final List<Menu> menus;
+  final List<MenuEntity> menus;
 
   const HomeTabBar({super.key, required this.menus});
 

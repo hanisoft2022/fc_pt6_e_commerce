@@ -2,7 +2,7 @@
 
 import '../../../data.dart';
 
-class ProductInfoRemote {
+class ProductInfoRemoteModel {
   final String productId;
   final String title;
   final String subtitle;
@@ -12,7 +12,7 @@ class ProductInfoRemote {
   final int discountRate;
   final int reviewCount;
 
-  ProductInfoRemote({
+  ProductInfoRemoteModel({
     required this.productId,
     required this.title,
     required this.subtitle,
@@ -24,8 +24,8 @@ class ProductInfoRemote {
   });
 
   // Firestore 문서(Map) → Remote Model 변환
-  factory ProductInfoRemote.fromFirestore(Map<String, dynamic> doc) {
-    return ProductInfoRemote(
+  factory ProductInfoRemoteModel.fromFirestore(Map<String, dynamic> doc) {
+    return ProductInfoRemoteModel(
       productId: doc['productId'] ?? '',
       title: doc['title'] ?? '',
       subtitle: doc['subtitle'] ?? '',
@@ -52,8 +52,8 @@ class ProductInfoRemote {
   }
 
   // DTO → Remote Model 변환 메서드 (필요시)
-  factory ProductInfoRemote.fromDto(ProductInfoDto dto) {
-    return ProductInfoRemote(
+  factory ProductInfoRemoteModel.fromDto(ProductInfoDto dto) {
+    return ProductInfoRemoteModel(
       productId: dto.productId,
       title: dto.title,
       subtitle: dto.subtitle,

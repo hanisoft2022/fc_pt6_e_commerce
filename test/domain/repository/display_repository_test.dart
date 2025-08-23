@@ -43,7 +43,7 @@ void main() {
 
       final actual = await displayRepository.getMenus(mallType: mallType);
 
-      final expected = mockingData.toEntity<List<Menu>>(
+      final expected = mockingData.toEntity<List<MenuEntity>>(
         mockingData.data?.map((menuDto) => menuDto.toEntity()).toList() ?? [],
       );
 

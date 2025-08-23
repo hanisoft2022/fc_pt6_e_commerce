@@ -2,14 +2,14 @@ import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 
 extension MenuX on MenuDto {
-  Menu toEntity() {
-    return Menu(tabId: tabId, title: title);
+  MenuEntity toEntity() {
+    return MenuEntity(tabId: tabId, title: title);
   }
 }
 
 extension ViewModuleX on ViewModuleDto {
-  ViewModule toEntity() {
-    return ViewModule(
+  ViewModuleEntity toEntity() {
+    return ViewModuleEntity(
       type: type,
       title: title,
       time: time,
@@ -22,8 +22,8 @@ extension ViewModuleX on ViewModuleDto {
 }
 
 extension ProductInfoX on ProductInfoDto {
-  ProductInfo toEntity() {
-    return ProductInfo(
+  ProductInfoEntity toEntity() {
+    return ProductInfoEntity(
       productId: productId,
       title: title,
       subtitle: subtitle,

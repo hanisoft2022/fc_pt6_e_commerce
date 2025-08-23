@@ -9,7 +9,7 @@ import '../../bloc/view_module_bloc/view_module_bloc.dart';
 import '../view_module/view_module.dart';
 
 class HomeTabBarView extends StatelessWidget {
-  final List<Menu> menus;
+  final List<MenuEntity> menus;
   final MallType mallType;
 
   const HomeTabBarView({super.key, required this.menus, required this.mallType});

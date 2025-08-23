@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CartState {
 
- CartStatus get status; ErrorResponse get error; ProductInfo get productInfo; int get quantity; int get totalPrice;
+ CartStatus get status; ErrorResponse get error; ProductInfoEntity get productInfo; int get quantity; int get totalPrice;
 /// Create a copy of CartState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,11 +45,11 @@ abstract mixin class $CartStateCopyWith<$Res>  {
   factory $CartStateCopyWith(CartState value, $Res Function(CartState) _then) = _$CartStateCopyWithImpl;
 @useResult
 $Res call({
- CartStatus status, ErrorResponse error, ProductInfo productInfo, int quantity, int totalPrice
+ CartStatus status, ErrorResponse error, ProductInfoEntity productInfo, int quantity, int totalPrice
 });
 
 
-$ProductInfoCopyWith<$Res> get productInfo;
+$ProductInfoEntityCopyWith<$Res> get productInfo;
 
 }
 /// @nodoc
@@ -67,7 +67,7 @@ class _$CartStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CartStatus,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,productInfo: null == productInfo ? _self.productInfo : productInfo // ignore: cast_nullable_to_non_nullable
-as ProductInfo,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as ProductInfoEntity,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -76,9 +76,9 @@ as int,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ProductInfoCopyWith<$Res> get productInfo {
+$ProductInfoEntityCopyWith<$Res> get productInfo {
   
-  return $ProductInfoCopyWith<$Res>(_self.productInfo, (value) {
+  return $ProductInfoEntityCopyWith<$Res>(_self.productInfo, (value) {
     return _then(_self.copyWith(productInfo: value));
   });
 }
@@ -163,7 +163,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CartStatus status,  ErrorResponse error,  ProductInfo productInfo,  int quantity,  int totalPrice)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( CartStatus status,  ErrorResponse error,  ProductInfoEntity productInfo,  int quantity,  int totalPrice)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CartState() when $default != null:
 return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.totalPrice);case _:
@@ -184,7 +184,7 @@ return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CartStatus status,  ErrorResponse error,  ProductInfo productInfo,  int quantity,  int totalPrice)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( CartStatus status,  ErrorResponse error,  ProductInfoEntity productInfo,  int quantity,  int totalPrice)  $default,) {final _that = this;
 switch (_that) {
 case _CartState():
 return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.totalPrice);case _:
@@ -204,7 +204,7 @@ return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CartStatus status,  ErrorResponse error,  ProductInfo productInfo,  int quantity,  int totalPrice)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( CartStatus status,  ErrorResponse error,  ProductInfoEntity productInfo,  int quantity,  int totalPrice)?  $default,) {final _that = this;
 switch (_that) {
 case _CartState() when $default != null:
 return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.totalPrice);case _:
@@ -219,12 +219,12 @@ return $default(_that.status,_that.error,_that.productInfo,_that.quantity,_that.
 
 
 class _CartState implements CartState {
-  const _CartState({this.status = CartStatus.close, this.error = const ErrorResponse(), this.productInfo = const ProductInfo(productId: '', title: '', subtitle: '', imageUrl: '', price: -1, originalPrice: -1, discountRate: -1, reviewCount: -1), this.quantity = 1, this.totalPrice = 0});
+  const _CartState({this.status = CartStatus.close, this.error = const ErrorResponse(), this.productInfo = const ProductInfoEntity(productId: '', title: '', subtitle: '', imageUrl: '', price: -1, originalPrice: -1, discountRate: -1, reviewCount: -1), this.quantity = 1, this.totalPrice = 0});
   
 
 @override@JsonKey() final  CartStatus status;
 @override@JsonKey() final  ErrorResponse error;
-@override@JsonKey() final  ProductInfo productInfo;
+@override@JsonKey() final  ProductInfoEntity productInfo;
 @override@JsonKey() final  int quantity;
 @override@JsonKey() final  int totalPrice;
 
@@ -258,11 +258,11 @@ abstract mixin class _$CartStateCopyWith<$Res> implements $CartStateCopyWith<$Re
   factory _$CartStateCopyWith(_CartState value, $Res Function(_CartState) _then) = __$CartStateCopyWithImpl;
 @override @useResult
 $Res call({
- CartStatus status, ErrorResponse error, ProductInfo productInfo, int quantity, int totalPrice
+ CartStatus status, ErrorResponse error, ProductInfoEntity productInfo, int quantity, int totalPrice
 });
 
 
-@override $ProductInfoCopyWith<$Res> get productInfo;
+@override $ProductInfoEntityCopyWith<$Res> get productInfo;
 
 }
 /// @nodoc
@@ -280,7 +280,7 @@ class __$CartStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as CartStatus,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,productInfo: null == productInfo ? _self.productInfo : productInfo // ignore: cast_nullable_to_non_nullable
-as ProductInfo,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
+as ProductInfoEntity,quantity: null == quantity ? _self.quantity : quantity // ignore: cast_nullable_to_non_nullable
 as int,totalPrice: null == totalPrice ? _self.totalPrice : totalPrice // ignore: cast_nullable_to_non_nullable
 as int,
   ));
@@ -290,9 +290,9 @@ as int,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$ProductInfoCopyWith<$Res> get productInfo {
+$ProductInfoEntityCopyWith<$Res> get productInfo {
   
-  return $ProductInfoCopyWith<$Res>(_self.productInfo, (value) {
+  return $ProductInfoEntityCopyWith<$Res>(_self.productInfo, (value) {
     return _then(_self.copyWith(productInfo: value));
   });
 }

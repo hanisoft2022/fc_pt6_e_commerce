@@ -19,7 +19,7 @@ enum Modules {
 }
 
 abstract class ViewModuleFactory {
-  static ViewModuleWidget viewModuleToViewModuleWidget(ViewModule viewModule) {
+  static ViewModuleWidget viewModuleToViewModuleWidget(ViewModuleEntity viewModule) {
     final String snakeCasesdType = viewModule.type.toSnakeCase;
 
     for (final module in Modules.values) {
@@ -33,7 +33,7 @@ abstract class ViewModuleFactory {
 }
 
 extension ModulesX on Modules {
-  ViewModuleWidget toViewModuleWidget(ViewModule viewModule) {
+  ViewModuleWidget toViewModuleWidget(ViewModuleEntity viewModule) {
     switch (this) {
       case Modules.viewModuleA:
         return const ViewModuleA();

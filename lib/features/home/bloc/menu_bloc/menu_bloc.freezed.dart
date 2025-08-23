@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$MenuState {
 
- Status get status; MallType get mallType; List<Menu> get menus; ErrorResponse get error;
+ Status get status; MallType get mallType; List<MenuEntity> get menus; ErrorResponse get error;
 /// Create a copy of MenuState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $MenuStateCopyWith<$Res>  {
   factory $MenuStateCopyWith(MenuState value, $Res Function(MenuState) _then) = _$MenuStateCopyWithImpl;
 @useResult
 $Res call({
- Status status, MallType mallType, List<Menu> menus, ErrorResponse error
+ Status status, MallType mallType, List<MenuEntity> menus, ErrorResponse error
 });
 
 
@@ -67,7 +67,7 @@ class _$MenuStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,mallType: null == mallType ? _self.mallType : mallType // ignore: cast_nullable_to_non_nullable
 as MallType,menus: null == menus ? _self.menus : menus // ignore: cast_nullable_to_non_nullable
-as List<Menu>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as List<MenuEntity>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
 }
@@ -153,7 +153,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  MallType mallType,  List<Menu> menus,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Status status,  MallType mallType,  List<MenuEntity> menus,  ErrorResponse error)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _MenuState() when $default != null:
 return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
@@ -174,7 +174,7 @@ return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  MallType mallType,  List<Menu> menus,  ErrorResponse error)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Status status,  MallType mallType,  List<MenuEntity> menus,  ErrorResponse error)  $default,) {final _that = this;
 switch (_that) {
 case _MenuState():
 return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
@@ -194,7 +194,7 @@ return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  MallType mallType,  List<Menu> menus,  ErrorResponse error)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Status status,  MallType mallType,  List<MenuEntity> menus,  ErrorResponse error)?  $default,) {final _that = this;
 switch (_that) {
 case _MenuState() when $default != null:
 return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
@@ -209,13 +209,13 @@ return $default(_that.status,_that.mallType,_that.menus,_that.error);case _:
 
 
 class _MenuState implements MenuState {
-   _MenuState({this.status = Status.initial, this.mallType = MallType.market, final  List<Menu> menus = const <Menu>[], this.error = const ErrorResponse()}): _menus = menus;
+   _MenuState({this.status = Status.initial, this.mallType = MallType.market, final  List<MenuEntity> menus = const <MenuEntity>[], this.error = const ErrorResponse()}): _menus = menus;
   
 
 @override@JsonKey() final  Status status;
 @override@JsonKey() final  MallType mallType;
- final  List<Menu> _menus;
-@override@JsonKey() List<Menu> get menus {
+ final  List<MenuEntity> _menus;
+@override@JsonKey() List<MenuEntity> get menus {
   if (_menus is EqualUnmodifiableListView) return _menus;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_menus);
@@ -253,7 +253,7 @@ abstract mixin class _$MenuStateCopyWith<$Res> implements $MenuStateCopyWith<$Re
   factory _$MenuStateCopyWith(_MenuState value, $Res Function(_MenuState) _then) = __$MenuStateCopyWithImpl;
 @override @useResult
 $Res call({
- Status status, MallType mallType, List<Menu> menus, ErrorResponse error
+ Status status, MallType mallType, List<MenuEntity> menus, ErrorResponse error
 });
 
 
@@ -275,7 +275,7 @@ class __$MenuStateCopyWithImpl<$Res>
 status: null == status ? _self.status : status // ignore: cast_nullable_to_non_nullable
 as Status,mallType: null == mallType ? _self.mallType : mallType // ignore: cast_nullable_to_non_nullable
 as MallType,menus: null == menus ? _self._menus : menus // ignore: cast_nullable_to_non_nullable
-as List<Menu>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
+as List<MenuEntity>,error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as ErrorResponse,
   ));
 }

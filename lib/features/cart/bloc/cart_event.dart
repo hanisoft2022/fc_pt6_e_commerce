@@ -9,7 +9,7 @@ class CartStarted extends CartEvent {
 }
 
 class CartOpend extends CartEvent {
-  final ProductInfo productInfo;
+  final ProductInfoEntity productInfo;
   final int quantity;
 
   const CartOpend({required this.productInfo, required this.quantity});

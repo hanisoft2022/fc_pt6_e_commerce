@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'view_module.dart';
 
 class BannerViewModule extends StatelessWidget with ViewModuleWidget {
-  final ViewModule viewModule;
+  final ViewModuleEntity viewModule;
 
   const BannerViewModule({super.key, required this.viewModule});
 

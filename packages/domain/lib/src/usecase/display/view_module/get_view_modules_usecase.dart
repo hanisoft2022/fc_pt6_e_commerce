@@ -2,7 +2,8 @@ import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/foundation.dart';
 
-class GetViewModulesUsecase implements RemoteUsecase<DisplayRepository, Result<List<ViewModule>>> {
+class GetViewModulesUsecase
+    implements RemoteUsecase<DisplayRepository, Result<List<ViewModuleEntity>>> {
   final int _tabId;
   final int page;
 
@@ -12,8 +13,8 @@ class GetViewModulesUsecase implements RemoteUsecase<DisplayRepository, Result<L
   int get tabId => _tabId;
 
   @override
-  Future<Result<List<ViewModule>>> call(DisplayRepository repository) async {
-    final ApiResponse<List<ViewModule>> result = await repository.getViewModules(
+  Future<Result<List<ViewModuleEntity>>> call(DisplayRepository repository) async {
+    final ApiResponse<List<ViewModuleEntity>> result = await repository.getViewModules(
       tabId: _tabId,
       page: page,
     );

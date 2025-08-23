@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'menu.dart';
+part of 'menu_entity.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -12,20 +12,20 @@ part of 'menu.dart';
 // dart format off
 T _$identity<T>(T value) => value;
 /// @nodoc
-mixin _$Menu {
+mixin _$MenuEntity {
 
  int get tabId; String get title;
-/// Create a copy of Menu
+/// Create a copy of MenuEntity
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$MenuCopyWith<Menu> get copyWith => _$MenuCopyWithImpl<Menu>(this as Menu, _$identity);
+$MenuEntityCopyWith<MenuEntity> get copyWith => _$MenuEntityCopyWithImpl<MenuEntity>(this as MenuEntity, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is MenuEntity&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
 
@@ -34,15 +34,15 @@ int get hashCode => Object.hash(runtimeType,tabId,title);
 
 @override
 String toString() {
-  return 'Menu(tabId: $tabId, title: $title)';
+  return 'MenuEntity(tabId: $tabId, title: $title)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $MenuCopyWith<$Res>  {
-  factory $MenuCopyWith(Menu value, $Res Function(Menu) _then) = _$MenuCopyWithImpl;
+abstract mixin class $MenuEntityCopyWith<$Res>  {
+  factory $MenuEntityCopyWith(MenuEntity value, $Res Function(MenuEntity) _then) = _$MenuEntityCopyWithImpl;
 @useResult
 $Res call({
  int tabId, String title
@@ -53,14 +53,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$MenuCopyWithImpl<$Res>
-    implements $MenuCopyWith<$Res> {
-  _$MenuCopyWithImpl(this._self, this._then);
+class _$MenuEntityCopyWithImpl<$Res>
+    implements $MenuEntityCopyWith<$Res> {
+  _$MenuEntityCopyWithImpl(this._self, this._then);
 
-  final Menu _self;
-  final $Res Function(Menu) _then;
+  final MenuEntity _self;
+  final $Res Function(MenuEntity) _then;
 
-/// Create a copy of Menu
+/// Create a copy of MenuEntity
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? tabId = null,Object? title = null,}) {
   return _then(_self.copyWith(
@@ -73,8 +73,8 @@ as String,
 }
 
 
-/// Adds pattern-matching-related methods to [Menu].
-extension MenuPatterns on Menu {
+/// Adds pattern-matching-related methods to [MenuEntity].
+extension MenuEntityPatterns on MenuEntity {
 /// A variant of `map` that fallback to returning `orElse`.
 ///
 /// It is equivalent to doing:
@@ -87,10 +87,10 @@ extension MenuPatterns on Menu {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _Menu value)?  $default,{required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _MenuEntity value)?  $default,{required TResult orElse(),}){
 final _that = this;
 switch (_that) {
-case _Menu() when $default != null:
+case _MenuEntity() when $default != null:
 return $default(_that);case _:
   return orElse();
 
@@ -109,10 +109,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _Menu value)  $default,){
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _MenuEntity value)  $default,){
 final _that = this;
 switch (_that) {
-case _Menu():
+case _MenuEntity():
 return $default(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -130,10 +130,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _Menu value)?  $default,){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _MenuEntity value)?  $default,){
 final _that = this;
 switch (_that) {
-case _Menu() when $default != null:
+case _MenuEntity() when $default != null:
 return $default(_that);case _:
   return null;
 
@@ -153,7 +153,7 @@ return $default(_that);case _:
 
 @optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int tabId,  String title)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
-case _Menu() when $default != null:
+case _MenuEntity() when $default != null:
 return $default(_that.tabId,_that.title);case _:
   return orElse();
 
@@ -174,7 +174,7 @@ return $default(_that.tabId,_that.title);case _:
 
 @optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int tabId,  String title)  $default,) {final _that = this;
 switch (_that) {
-case _Menu():
+case _MenuEntity():
 return $default(_that.tabId,_that.title);case _:
   throw StateError('Unexpected subclass');
 
@@ -194,7 +194,7 @@ return $default(_that.tabId,_that.title);case _:
 
 @optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int tabId,  String title)?  $default,) {final _that = this;
 switch (_that) {
-case _Menu() when $default != null:
+case _MenuEntity() when $default != null:
 return $default(_that.tabId,_that.title);case _:
   return null;
 
@@ -206,24 +206,24 @@ return $default(_that.tabId,_that.title);case _:
 /// @nodoc
 
 
-class _Menu implements Menu {
-   _Menu({required this.tabId, required this.title});
+class _MenuEntity implements MenuEntity {
+   _MenuEntity({required this.tabId, required this.title});
   
 
 @override final  int tabId;
 @override final  String title;
 
-/// Create a copy of Menu
+/// Create a copy of MenuEntity
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$MenuCopyWith<_Menu> get copyWith => __$MenuCopyWithImpl<_Menu>(this, _$identity);
+_$MenuEntityCopyWith<_MenuEntity> get copyWith => __$MenuEntityCopyWithImpl<_MenuEntity>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Menu&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _MenuEntity&&(identical(other.tabId, tabId) || other.tabId == tabId)&&(identical(other.title, title) || other.title == title));
 }
 
 
@@ -232,15 +232,15 @@ int get hashCode => Object.hash(runtimeType,tabId,title);
 
 @override
 String toString() {
-  return 'Menu(tabId: $tabId, title: $title)';
+  return 'MenuEntity(tabId: $tabId, title: $title)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$MenuCopyWith<$Res> implements $MenuCopyWith<$Res> {
-  factory _$MenuCopyWith(_Menu value, $Res Function(_Menu) _then) = __$MenuCopyWithImpl;
+abstract mixin class _$MenuEntityCopyWith<$Res> implements $MenuEntityCopyWith<$Res> {
+  factory _$MenuEntityCopyWith(_MenuEntity value, $Res Function(_MenuEntity) _then) = __$MenuEntityCopyWithImpl;
 @override @useResult
 $Res call({
  int tabId, String title
@@ -251,17 +251,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$MenuCopyWithImpl<$Res>
-    implements _$MenuCopyWith<$Res> {
-  __$MenuCopyWithImpl(this._self, this._then);
+class __$MenuEntityCopyWithImpl<$Res>
+    implements _$MenuEntityCopyWith<$Res> {
+  __$MenuEntityCopyWithImpl(this._self, this._then);
 
-  final _Menu _self;
-  final $Res Function(_Menu) _then;
+  final _MenuEntity _self;
+  final $Res Function(_MenuEntity) _then;
 
-/// Create a copy of Menu
+/// Create a copy of MenuEntity
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? tabId = null,Object? title = null,}) {
-  return _then(_Menu(
+  return _then(_MenuEntity(
 tabId: null == tabId ? _self.tabId : tabId // ignore: cast_nullable_to_non_nullable
 as int,title: null == title ? _self.title : title // ignore: cast_nullable_to_non_nullable
 as String,

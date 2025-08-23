@@ -1,10 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'product_info.freezed.dart';
+part 'product_info_entity.freezed.dart';
+part 'product_info_entity.g.dart';
 
 @freezed
-abstract class ProductInfo with _$ProductInfo {
-  const factory ProductInfo({
+abstract class ProductInfoEntity with _$ProductInfoEntity {
+  const factory ProductInfoEntity({
     required String productId,
     required String title,
     required String subtitle,
@@ -13,5 +14,8 @@ abstract class ProductInfo with _$ProductInfo {
     required int originalPrice,
     required int discountRate,
     required int reviewCount,
-  }) = _ProductInfo;
+  }) = _ProductInfoEntity;
+
+  factory ProductInfoEntity.fromJson(Map<String, dynamic> json) =>
+      _$ProductInfoEntityFromJson(json);
 }
