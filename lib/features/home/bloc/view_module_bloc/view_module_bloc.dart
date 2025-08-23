@@ -8,9 +8,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stream_transform/stream_transform.dart';
 
 import '../../../../core/core.dart';
-import '../../../../core/exception/common_exception.dart';
 import '../../widget/view_module/view_module.dart';
-import '../menu_bloc/menu_bloc.dart';
 
 part 'view_module_event.dart';
 part 'view_module_state.dart';
