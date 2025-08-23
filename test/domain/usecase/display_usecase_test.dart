@@ -34,7 +34,7 @@ void main() {
     when(() => usecase.mallType).thenReturn(MallType.market);
     when(() => usecase(displayRepository)).thenAnswer((_) async => result);
 
-    final actual = await displayUsecase.execute(remoteUsecase: usecase);
+    final actual = await displayUsecase.execute(usecase: usecase);
 
     expect(actual, result);
   });
@@ -46,7 +46,7 @@ void main() {
     when(() => usecase.mallType).thenReturn(MallType.market);
     when(() => usecase(displayRepository)).thenAnswer((_) async => result);
 
-    final actual = await displayUsecase.execute(remoteUsecase: usecase);
+    final actual = await displayUsecase.execute(usecase: usecase);
 
     expect(actual, result);
   });

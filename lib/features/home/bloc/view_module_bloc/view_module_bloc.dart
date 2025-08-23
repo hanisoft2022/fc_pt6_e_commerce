@@ -136,7 +136,7 @@ class ViewModuleBloc extends Bloc<ViewModuleEvent, ViewModuleState> {
 
   Future<Result<List<ViewModuleEntity>>> _fetch({required int tabId, int page = 1}) async {
     final result = await _displayUsecase.execute<Result<List<ViewModuleEntity>>>(
-      remoteUsecase: GetViewModulesUsecase(tabId: tabId, page: page),
+      usecase: GetViewModulesUsecase(tabId: tabId, page: page),
     );
     return result;
   }

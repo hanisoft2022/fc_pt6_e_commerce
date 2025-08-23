@@ -35,33 +35,6 @@ class DisplayDao {
   //   await localStorage.delete(page);
   // }
 
-  // /// 장바구니 리스트 불러오기
-  // Future<ResponseWrapper<List<CartEntity>>> getCartList() async {
-  //   final localStorage = await Hive.openBox<Cart>(_cartDb);
-
-  //   return ResponseWrapper(
-  //     status: 'SUCCESS',
-  //     code: '0000',
-  //     message: '장바구니 리스트 불러오기 성공',
-  //     data: localStorage.values.toList(),
-  //   );
-  // }
-
-  /// 장바구니 리스트 불러오기
-  Future<ResponseWrapper<List<CartRemoteModel>>> getCartList() async {
-    final db = FirebaseFirestore.instance;
-    final docRef = db.collection('cart');
-
-    final snapshot = await docRef.get();
-
-    return ResponseWrapper<List<CartRemoteModel>>(
-      status: 'SUCCESS',
-      code: '0000',
-      message: '장바구니 리스트 불러오기 성공',
-      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
-    );
-  }
-
   // /// 장바구니 상품 담기
   // Future<ResponseWrapper<List<CartEntity>>> insertCart(CartEntity cart) async {
   //   final localStorage = await Hive.openBox<CartEntity>(_cartDb);
@@ -113,6 +86,33 @@ class DisplayDao {
       status: 'SUCCESS',
       code: '0000',
       message: '장바구니 담기 성공',
+      data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
+    );
+  }
+
+  // /// 장바구니 리스트 불러오기
+  // Future<ResponseWrapper<List<CartEntity>>> getCartList() async {
+  //   final localStorage = await Hive.openBox<Cart>(_cartDb);
+
+  //   return ResponseWrapper(
+  //     status: 'SUCCESS',
+  //     code: '0000',
+  //     message: '장바구니 리스트 불러오기 성공',
+  //     data: localStorage.values.toList(),
+  //   );
+  // }
+
+  /// 장바구니 리스트 불러오기
+  Future<ResponseWrapper<List<CartRemoteModel>>> getCartList() async {
+    final db = FirebaseFirestore.instance;
+    final docRef = db.collection('cart');
+
+    final snapshot = await docRef.get();
+
+    return ResponseWrapper<List<CartRemoteModel>>(
+      status: 'SUCCESS',
+      code: '0000',
+      message: '장바구니 리스트 불러오기 성공',
       data: snapshot.docs.map((e) => CartRemoteModel.fromJson(e.data())).toList(),
     );
   }

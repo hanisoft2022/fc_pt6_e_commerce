@@ -37,7 +37,7 @@ class DisplayRepositoryImpl implements DisplayRepository {
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> addtoCart(CartEntity cart) async {
+  Future<ApiResponse<List<CartEntity>>> addToCart(CartEntity cart) async {
     final response = await _displayDao.addtoCart(cart.toRemoteModel());
 
     return response.toEntity<List<CartEntity>>(
@@ -55,7 +55,7 @@ class DisplayRepositoryImpl implements DisplayRepository {
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> changeCartItemQty(String productId, int quantity) async {
+  Future<ApiResponse<List<CartEntity>>> changeCartProductQty(String productId, int quantity) async {
     final response = await _displayDao.changeCartItemQty(productId, quantity);
 
     return response.toEntity<List<CartEntity>>(
@@ -64,7 +64,7 @@ class DisplayRepositoryImpl implements DisplayRepository {
   }
 
   @override
-  Future<ApiResponse<List<CartEntity>>> deleteCartItem(List<String> productIds) async {
+  Future<ApiResponse<List<CartEntity>>> deleteCartProduct(List<String> productIds) async {
     final response = await _displayDao.deleteCartItem(productIds);
 
     return response.toEntity<List<CartEntity>>(

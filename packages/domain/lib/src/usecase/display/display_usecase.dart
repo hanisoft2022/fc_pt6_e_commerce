@@ -8,7 +8,7 @@ class DisplayUsecase {
   DisplayUsecase({required DisplayRepository displayRepository})
     : _displayRepository = displayRepository;
 
-  Future execute<T>({required RemoteUsecase remoteUsecase}) async {
-    return await remoteUsecase(_displayRepository);
+  Future execute<T>({required Usecase usecase}) async {
+    return await usecase(_displayRepository);
   }
 }
