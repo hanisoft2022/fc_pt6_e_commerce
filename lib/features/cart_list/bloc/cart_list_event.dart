@@ -9,10 +9,10 @@ class CartListStarted extends CartListEvent {
 }
 
 class CartListAdded extends CartListEvent {
-  final int quantity;
   final ProductInfoEntity productInfo;
+  final int quantity;
 
-  CartListAdded({required this.quantity, required this.productInfo});
+  CartListAdded({required this.productInfo, required this.quantity});
 }
 
 class CartListGetList extends CartListEvent {

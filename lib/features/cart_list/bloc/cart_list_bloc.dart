@@ -21,7 +21,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     on<CartListStarted>(_onCartListStarted);
     on<CartListAdded>(_onCartListAdded);
     on<CartListSelected>(_onCartSelected);
-    // on<CartListSelectedAll>(_onCartSelectedAll);
+    on<CartListSelectedAll>(_onCartSelectedAll);
     on<CartListQtyDecreased>(_onCartQtyDecreased);
     on<CartListQtyIncreased>(_onCartQtyIncreased);
     on<CartListDeleted>(_onCartDeleted);
@@ -30,23 +30,25 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
   Future<void> _onCartListStarted(CartListStarted event, Emitter<CartListState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      final Result<List<CartEntity>> response = await _displayUsecase.execute(
+      final response = await _displayUsecase.execute<Result<List<CartEntity>>>(
         usecase: GetCartListUsecase(),
       );
       response.when(
         success: (data) {
-          final List<CartEntity> cartList = [...data];
-          final List<String> selectedProducts = cartList
+          final List<CartEntity> cartProducts = [...data];
+          final List<String> selectedProductsIds = cartProducts
               .map((e) => e.productInfo.productId)
               .toList();
 
-          final totalPrice = _calTotalPrice(selectedProducts, cartList);
+          final totalPrice = _calculateTotalPrice(selectedProductsIds, cartProducts);
+          // ignore: avoid_print
+          print('[test] totalPrice: $totalPrice');
           emit(
             state.copyWith(
               status: Status.success,
-              cartList: cartList,
+              cartProducts: cartProducts,
               totalPrice: totalPrice,
-              selectedProduct: selectedProducts,
+              selectedProductsIds: selectedProductsIds,
             ),
           );
         },
@@ -62,25 +64,26 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
 
   Future<void> _onCartListAdded(CartListAdded event, Emitter<CartListState> emit) async {
     emit(state.copyWith(status: Status.loading));
-    final cart = CartEntity(quantity: event.quantity, productInfo: event.productInfo);
     try {
+      final cartProduct = CartEntity(productInfo: event.productInfo, quantity: event.quantity);
+
       final Result<List<CartEntity>> response = await _displayUsecase.execute(
-        usecase: AddToCartUsecase(cartEntity: cart),
+        usecase: AddToCartUsecase(cartEntity: cartProduct),
       );
 
       response.when(
-        success: (cartList) {
-          final selectedProducts = [...state.selectedProduct];
+        success: (cartProducts) {
+          final selectedProductsIds = [...state.selectedProductsIds];
           final productId = event.productInfo.productId;
-          if (selectedProducts.indexWhere((e) => e == productId) == -1) {
-            selectedProducts.add(productId);
+          if (selectedProductsIds.indexWhere((e) => e == productId) == -1) {
+            selectedProductsIds.add(productId);
           }
-          final totalPrice = _calTotalPrice(selectedProducts, cartList);
+          final totalPrice = _calculateTotalPrice(selectedProductsIds, cartProducts);
           emit(
             state.copyWith(
               status: Status.success,
-              cartList: cartList,
-              selectedProduct: selectedProducts,
+              cartProducts: cartProducts,
+              selectedProductsIds: selectedProductsIds,
               totalPrice: totalPrice,
             ),
           );
@@ -95,59 +98,88 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
+  // void _onCartSelected(CartListSelected event, Emitter<CartListState> emit) {
+  //   try {
+  //     final String productId = event.cart.productInfo.productId;
+  //     final selectedProducts = [...state.selectedProductsIds];
+  //     final int selectedIdx = state.selectedProductsIds.indexWhere(
+  //       (element) => element == productId,
+  //     );
+
+  //     if (selectedIdx == -1) {
+  //       selectedProducts.add(productId);
+  //     } else {
+  //       selectedProducts.removeAt(selectedIdx);
+  //     }
+
+  //     final totalPrice = _calculateTotalPrice(selectedProducts, state.cartProducts);
+
+  //     emit(state.copyWith(selectedProductsIds: selectedProducts, totalPrice: totalPrice));
+  //   } catch (error) {
+  //     CustomLogger.logger.e(error.toString());
+
+  //     emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
+  //   }
+  // }
+
   void _onCartSelected(CartListSelected event, Emitter<CartListState> emit) {
     try {
       final String productId = event.cart.productInfo.productId;
-      final selectedProducts = [...state.selectedProduct];
-      final int selectedIdx = state.selectedProduct.indexWhere((element) => element == productId);
-      if (selectedIdx == -1) {
-        selectedProducts.add(productId);
+      final selectedProducts = [...state.selectedProductsIds];
+
+      if (selectedProducts.contains(productId)) {
+        selectedProducts.remove(productId);
       } else {
-        selectedProducts.removeAt(selectedIdx);
+        selectedProducts.add(productId);
       }
 
-      final totalPrice = _calTotalPrice(selectedProducts, state.cartList);
+      final totalPrice = _calculateTotalPrice(selectedProducts, state.cartProducts);
 
-      emit(state.copyWith(selectedProduct: selectedProducts, totalPrice: totalPrice));
+      emit(state.copyWith(selectedProductsIds: selectedProducts, totalPrice: totalPrice));
     } catch (error) {
       CustomLogger.logger.e(error.toString());
       emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
     }
   }
 
-  // void _onCartSelectedAll(CartListSelectedAll event, Emitter<CartListState> emit) {
-  //   try {
-  //     // 이미 전체 선택이 되어있는 경우 -> 모두 지움
-  //     if (state.selectedProduct.length == state.cartList.length) {
-  //       emit(state.copyWith(selectedProduct: [], totalPrice: 0));
+  void _onCartSelectedAll(CartListSelectedAll event, Emitter<CartListState> emit) {
+    try {
+      // 이미 전체 선택이 되어있는 경우 -> 모두 지움
+      if (state.selectedProductsIds.length == state.cartProducts.length) {
+        emit(state.copyWith(selectedProductsIds: [], totalPrice: 0));
+        return;
+      }
 
-  //       return;
-  //     }
+      final List<String> selectedProductIds = state.cartProducts
+          .map((cartProduct) => cartProduct.productInfo.productId)
+          .toList();
 
-  //     final selectedProducts = state.cartList.map((e) => e.productInfo.productId).toList();
-  //     final totalPrice = _calTotalPrice(selectedProducts, state.cartList);
+      final totalPrice = _calculateTotalPrice(selectedProductIds, state.cartProducts);
 
-  //     emit(state.copyWith(selectedProduct: selectedProducts, totalPrice: totalPrice));
-  //   } catch (error) {
-  //     CustomLogger.logger.e('${error.toString()}');
-  //     emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
-  //   }
-  // }
+      emit(state.copyWith(selectedProductsIds: selectedProductIds, totalPrice: totalPrice));
+    } catch (error) {
+      CustomLogger.logger.e(error.toString());
+      emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
+    }
+  }
 
-  Future<void> _onCartQtyIncreased(CartListQtyIncreased event, Emitter<CartListState> emit) async {
+  Future<void> _onCartQtyDecreased(CartListQtyDecreased event, Emitter<CartListState> emit) async {
     try {
       final productId = event.cart.productInfo.productId;
-      final qty = event.cart.quantity + 1;
+      final decreasedQuantity = event.cart.quantity - 1;
+
+      if (decreasedQuantity < 1) return;
+
       final Result<List<CartEntity>> response = await _displayUsecase.execute(
-        usecase: ChangeCartProductQtyUsecase(productId: productId, quantity: qty),
+        usecase: ChangeCartProductQtyUsecase(
+          productId: productId,
+          changedQuantity: decreasedQuantity,
+        ),
       );
-
       response.when(
-        success: (data) {
-          final List<CartEntity> cartList = [...data];
-
-          final totalPrice = _calTotalPrice(state.selectedProduct, cartList);
-          emit(state.copyWith(cartList: cartList, totalPrice: totalPrice));
+        success: (cartProducts) {
+          final totalPrice = _calculateTotalPrice(state.selectedProductsIds, cartProducts);
+          emit(state.copyWith(totalPrice: totalPrice, cartProducts: cartProducts));
         },
         failure: (error) {
           emit(state.copyWith(status: Status.failure, error: error));
@@ -159,20 +191,22 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  Future<void> _onCartQtyDecreased(CartListQtyDecreased event, Emitter<CartListState> emit) async {
+  Future<void> _onCartQtyIncreased(CartListQtyIncreased event, Emitter<CartListState> emit) async {
     try {
       final productId = event.cart.productInfo.productId;
-      final qty = event.cart.quantity - 1;
-      if (qty < 1) return;
-      final Result<List<CartEntity>> response = await _displayUsecase.execute(
-        usecase: ChangeCartProductQtyUsecase(productId: productId, quantity: qty),
-      );
-      response.when(
-        success: (data) {
-          final List<CartEntity> cartList = [...data];
+      final increasedQuantity = event.cart.quantity + 1;
 
-          final totalPrice = _calTotalPrice(state.selectedProduct, cartList);
-          emit(state.copyWith(cartList: cartList, totalPrice: totalPrice));
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
+        usecase: ChangeCartProductQtyUsecase(
+          productId: productId,
+          changedQuantity: increasedQuantity,
+        ),
+      );
+
+      response.when(
+        success: (cartProducts) {
+          final totalPrice = _calculateTotalPrice(state.selectedProductsIds, cartProducts);
+          emit(state.copyWith(totalPrice: totalPrice, cartProducts: cartProducts));
         },
         failure: (error) {
           emit(state.copyWith(status: Status.failure, error: error));
@@ -192,13 +226,13 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
 
       response.when(
         success: (data) {
-          final List<CartEntity> cartList = [...data];
-          final selectedProducts = cartList.map((e) => e.productInfo.productId).toList();
-          final totalPrice = _calTotalPrice(selectedProducts, cartList);
+          final List<CartEntity> cartProducts = [...data];
+          final selectedProducts = cartProducts.map((e) => e.productInfo.productId).toList();
+          final totalPrice = _calculateTotalPrice(selectedProducts, cartProducts);
           emit(
             state.copyWith(
-              cartList: cartList,
-              selectedProduct: selectedProducts,
+              cartProducts: cartProducts,
+              selectedProductsIds: selectedProducts,
               totalPrice: totalPrice,
             ),
           );
@@ -213,16 +247,20 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  int _calTotalPrice(List<String> selectedIds, List<CartEntity> carts) {
-    int price = 0;
-    for (final id in selectedIds) {
-      for (final cart in carts) {
-        if (cart.productInfo.productId == id) {
-          price += cart.quantity * cart.productInfo.price;
-        }
+  int _calculateTotalPrice(List<String> selectedProductsIds, List<CartEntity> cartProducts) {
+    final Map<String, CartEntity> cartProductsMap = {
+      for (var cartProduct in cartProducts) cartProduct.productInfo.productId: cartProduct,
+    };
+
+    int totalPrice = 0;
+
+    for (var productId in selectedProductsIds) {
+      final cartProduct = cartProductsMap[productId];
+      if (cartProduct != null) {
+        totalPrice += cartProduct.quantity * cartProduct.productInfo.price;
       }
     }
 
-    return price;
+    return totalPrice;
   }
 }

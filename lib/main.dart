@@ -2,6 +2,7 @@ import 'core/core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'features/cart_list/cart_list.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +21,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [BlocProvider(create: (context) => getIt<CartBloc>()..add(CartStarted()))],
+      providers: [
+        BlocProvider(create: (context) => getIt<CartBloc>()..add(CartStarted())),
+
+        BlocProvider(
+          lazy: false,
+          create: (context) => getIt<CartListBloc>()..add(CartListStarted()),
+        ),
+      ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: CustomThemeData.themeData,
