@@ -1,15 +1,11 @@
 part of 'cart_list_bloc.dart';
 
-abstract class CartListEvent {
+sealed class CartListEvent {
   const CartListEvent();
 }
 
-class CartListInitialized extends CartListEvent {
-  CartListInitialized();
-}
-
-class CartListGetList extends CartListEvent {
-  CartListGetList();
+class CartListStarted extends CartListEvent {
+  CartListStarted();
 }
 
 class CartListAdded extends CartListEvent {
@@ -19,8 +15,8 @@ class CartListAdded extends CartListEvent {
   CartListAdded({required this.quantity, required this.productInfo});
 }
 
-class CartListSelectedAll extends CartListEvent {
-  CartListSelectedAll();
+class CartListGetList extends CartListEvent {
+  CartListGetList();
 }
 
 class CartListSelected extends CartListEvent {
@@ -29,10 +25,8 @@ class CartListSelected extends CartListEvent {
   CartListSelected({required this.cart});
 }
 
-class CartListDeleted extends CartListEvent {
-  final List<String> productIds;
-
-  CartListDeleted({required this.productIds});
+class CartListSelectedAll extends CartListEvent {
+  CartListSelectedAll();
 }
 
 class CartListQtyDecreased extends CartListEvent {
@@ -45,4 +39,10 @@ class CartListQtyIncreased extends CartListEvent {
   final CartEntity cart;
 
   CartListQtyIncreased({required this.cart});
+}
+
+class CartListDeleted extends CartListEvent {
+  final List<String> productIds;
+
+  CartListDeleted({required this.productIds});
 }

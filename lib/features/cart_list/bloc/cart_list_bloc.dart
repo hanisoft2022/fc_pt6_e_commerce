@@ -18,22 +18,21 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
   final DisplayUsecase _displayUsecase;
 
   CartListBloc(this._displayUsecase) : super(CartListState()) {
-    on<CartListInitialized>(_onCartListInitialized);
+    on<CartListStarted>(_onCartListStarted);
     on<CartListAdded>(_onCartListAdded);
     on<CartListSelected>(_onCartSelected);
     // on<CartListSelectedAll>(_onCartSelectedAll);
-    on<CartListDeleted>(_onCartDeleted);
     on<CartListQtyDecreased>(_onCartQtyDecreased);
     on<CartListQtyIncreased>(_onCartQtyIncreased);
+    on<CartListDeleted>(_onCartDeleted);
   }
 
-  Future<void> _onCartListInitialized(
-    CartListInitialized event,
-    Emitter<CartListState> emit,
-  ) async {
+  Future<void> _onCartListStarted(CartListStarted event, Emitter<CartListState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      final response = await _displayUsecase.execute(usecase: GetCartListUsecase());
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
+        usecase: GetCartListUsecase(),
+      );
       response.when(
         success: (data) {
           final List<CartEntity> cartList = [...data];
@@ -65,7 +64,9 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     emit(state.copyWith(status: Status.loading));
     final cart = CartEntity(quantity: event.quantity, productInfo: event.productInfo);
     try {
-      final response = await _displayUsecase.execute(usecase: AddToCartUsecase(cartEntity: cart));
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
+        usecase: AddToCartUsecase(cartEntity: cart),
+      );
 
       response.when(
         success: (cartList) {
@@ -90,35 +91,6 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
       );
     } catch (error) {
       CustomLogger.logger.e(error);
-      emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
-    }
-  }
-
-  Future<void> _onCartDeleted(CartListDeleted event, Emitter<CartListState> emit) async {
-    try {
-      final response = await _displayUsecase.execute(
-        usecase: DeleteCartProductUsecase(productIds: event.productIds),
-      );
-
-      response.when(
-        success: (data) {
-          final List<CartEntity> cartList = [...data];
-          final selectedProducts = cartList.map((e) => e.productInfo.productId).toList();
-          final totalPrice = _calTotalPrice(selectedProducts, cartList);
-          emit(
-            state.copyWith(
-              cartList: cartList,
-              selectedProduct: selectedProducts,
-              totalPrice: totalPrice,
-            ),
-          );
-        },
-        failure: (error) {
-          emit(state.copyWith(status: Status.failure, error: error));
-        },
-      );
-    } catch (error) {
-      CustomLogger.logger.e(error.toString());
       emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
     }
   }
@@ -166,7 +138,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     try {
       final productId = event.cart.productInfo.productId;
       final qty = event.cart.quantity + 1;
-      final response = await _displayUsecase.execute(
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
         usecase: ChangeCartProductQtyUsecase(productId: productId, quantity: qty),
       );
 
@@ -192,7 +164,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
       final productId = event.cart.productInfo.productId;
       final qty = event.cart.quantity - 1;
       if (qty < 1) return;
-      final response = await _displayUsecase.execute(
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
         usecase: ChangeCartProductQtyUsecase(productId: productId, quantity: qty),
       );
       response.when(
@@ -201,6 +173,35 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
 
           final totalPrice = _calTotalPrice(state.selectedProduct, cartList);
           emit(state.copyWith(cartList: cartList, totalPrice: totalPrice));
+        },
+        failure: (error) {
+          emit(state.copyWith(status: Status.failure, error: error));
+        },
+      );
+    } catch (error) {
+      CustomLogger.logger.e(error.toString());
+      emit(state.copyWith(status: Status.failure, error: CommonException.setError(error)));
+    }
+  }
+
+  Future<void> _onCartDeleted(CartListDeleted event, Emitter<CartListState> emit) async {
+    try {
+      final Result<List<CartEntity>> response = await _displayUsecase.execute(
+        usecase: DeleteCartProductUsecase(productIds: event.productIds),
+      );
+
+      response.when(
+        success: (data) {
+          final List<CartEntity> cartList = [...data];
+          final selectedProducts = cartList.map((e) => e.productInfo.productId).toList();
+          final totalPrice = _calTotalPrice(selectedProducts, cartList);
+          emit(
+            state.copyWith(
+              cartList: cartList,
+              selectedProduct: selectedProducts,
+              totalPrice: totalPrice,
+            ),
+          );
         },
         failure: (error) {
           emit(state.copyWith(status: Status.failure, error: error));
