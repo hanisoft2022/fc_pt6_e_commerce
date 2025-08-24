@@ -19,10 +19,8 @@ class DataPackageModule extends _i526.MicroPackageModule {
     final dataSourceModule = _$DataSourceModule();
     gh.singleton<_i437.DisplayApi>(() => dataSourceModule.displayApi);
     gh.singleton<_i437.DisplayDao>(() => dataSourceModule.displayDao);
-    gh.singleton<_i494.DisplayRepository>(() => _i755.DisplayRepositoryImpl(
-          displayApi: gh<_i437.DisplayApi>(),
-          displayDao: gh<_i437.DisplayDao>(),
-        ));
+    gh.singleton<_i494.DisplayRepository>(
+        () => _i755.DisplayRepositoryImpl(displayDao: gh<_i437.DisplayDao>()));
   }
 }
 

@@ -4,8 +4,6 @@ import 'package:domain/domain.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-class MockDisplayApi extends Mock implements DisplayApi {}
-
 class MockDisplayDao extends Mock implements DisplayDao {}
 
 // class MockDisplayRepository extends Mock implements DisplayRepository {}
@@ -13,15 +11,13 @@ class MockDisplayDao extends Mock implements DisplayDao {}
 class MockGetMenusUsecase extends Mock implements GetMenusUsecase {}
 
 void main() {
-  late DisplayApi displayApi;
   late DisplayDao displayDao;
   late DisplayRepository displayRepository;
   late DisplayUsecase displayUsecase;
 
   setUpAll(() {
-    displayApi = MockDisplayApi();
     displayDao = MockDisplayDao();
-    displayRepository = DisplayRepositoryImpl(displayApi: displayApi, displayDao: displayDao);
+    displayRepository = DisplayRepositoryImpl(displayDao: displayDao);
     displayUsecase = DisplayUsecase(displayRepository: displayRepository);
   });
 

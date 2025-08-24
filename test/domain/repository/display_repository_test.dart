@@ -16,7 +16,7 @@ void main() {
   setUpAll(() {
     displayApi = MockDisplayApi();
     displayDao = MockDisplayDao();
-    displayRepository = DisplayRepositoryImpl(displayApi: displayApi, displayDao: displayDao);
+    displayRepository = DisplayRepositoryImpl(displayDao: displayDao);
   });
 
   test('의존성 주입 및 객체 생성 완료', () {

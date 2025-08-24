@@ -1,10 +1,12 @@
 import 'package:data/data.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
 part 'display_api.g.dart';
 
+@singleton
 @RestApi()
 abstract interface class DisplayApi {
   factory DisplayApi(Dio dio, {String baseUrl}) = _DisplayApi;
