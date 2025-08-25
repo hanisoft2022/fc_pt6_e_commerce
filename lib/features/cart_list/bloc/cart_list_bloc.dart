@@ -19,12 +19,12 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
 
   CartListBloc(this._displayUsecase) : super(CartListState()) {
     on<CartListStarted>(_onCartListStarted);
-    on<CartListAdded>(_onCartListAdded);
-    on<CartListSelected>(_onCartSelected);
-    on<CartListSelectedAll>(_onCartSelectedAll);
-    on<CartListQtyDecreased>(_onCartQtyDecreased);
-    on<CartListQtyIncreased>(_onCartQtyIncreased);
-    on<CartListDeleted>(_onCartDeleted);
+    on<CartProductAdded>(_onCartProductAdded);
+    on<CartProductSelected>(_onCartProductSelected);
+    on<CartAllProductsSelected>(_onCartAllProductsSelected);
+    on<CartProductQtyDecreased>(_onCartProductQtyDecreased);
+    on<CartProductQtyIncreased>(_onCartProductQtyIncreased);
+    on<CartProductDeleted>(_onCartProductDeleted);
   }
 
   Future<void> _onCartListStarted(CartListStarted event, Emitter<CartListState> emit) async {
@@ -62,7 +62,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  Future<void> _onCartListAdded(CartListAdded event, Emitter<CartListState> emit) async {
+  Future<void> _onCartProductAdded(CartProductAdded event, Emitter<CartListState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
       final cartProduct = CartEntity(productInfo: event.productInfo, quantity: event.quantity);
@@ -122,9 +122,9 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
   //   }
   // }
 
-  void _onCartSelected(CartListSelected event, Emitter<CartListState> emit) {
+  void _onCartProductSelected(CartProductSelected event, Emitter<CartListState> emit) {
     try {
-      final String productId = event.cart.productInfo.productId;
+      final String productId = event.cartEntity.productInfo.productId;
       final selectedProducts = [...state.selectedProductsIds];
 
       if (selectedProducts.contains(productId)) {
@@ -142,7 +142,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  void _onCartSelectedAll(CartListSelectedAll event, Emitter<CartListState> emit) {
+  void _onCartAllProductsSelected(CartAllProductsSelected event, Emitter<CartListState> emit) {
     try {
       // 이미 전체 선택이 되어있는 경우 -> 모두 지움
       if (state.selectedProductsIds.length == state.cartProducts.length) {
@@ -163,10 +163,13 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  Future<void> _onCartQtyDecreased(CartListQtyDecreased event, Emitter<CartListState> emit) async {
+  Future<void> _onCartProductQtyDecreased(
+    CartProductQtyDecreased event,
+    Emitter<CartListState> emit,
+  ) async {
     try {
-      final productId = event.cart.productInfo.productId;
-      final decreasedQuantity = event.cart.quantity - 1;
+      final productId = event.cartEntity.productInfo.productId;
+      final decreasedQuantity = event.cartEntity.quantity - 1;
 
       if (decreasedQuantity < 1) return;
 
@@ -191,10 +194,13 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  Future<void> _onCartQtyIncreased(CartListQtyIncreased event, Emitter<CartListState> emit) async {
+  Future<void> _onCartProductQtyIncreased(
+    CartProductQtyIncreased event,
+    Emitter<CartListState> emit,
+  ) async {
     try {
-      final productId = event.cart.productInfo.productId;
-      final increasedQuantity = event.cart.quantity + 1;
+      final productId = event.cartEntity.productInfo.productId;
+      final increasedQuantity = event.cartEntity.quantity + 1;
 
       final Result<List<CartEntity>> response = await _displayUsecase.execute(
         usecase: ChangeCartProductQtyUsecase(
@@ -218,7 +224,7 @@ class CartListBloc extends Bloc<CartListEvent, CartListState> {
     }
   }
 
-  Future<void> _onCartDeleted(CartListDeleted event, Emitter<CartListState> emit) async {
+  Future<void> _onCartProductDeleted(CartProductDeleted event, Emitter<CartListState> emit) async {
     try {
       final Result<List<CartEntity>> response = await _displayUsecase.execute(
         usecase: DeleteCartProductUsecase(productIds: event.productIds),

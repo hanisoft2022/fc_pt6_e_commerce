@@ -8,41 +8,41 @@ class CartListStarted extends CartListEvent {
   CartListStarted();
 }
 
-class CartListAdded extends CartListEvent {
+class CartProductAdded extends CartListEvent {
   final ProductInfoEntity productInfo;
   final int quantity;
 
-  CartListAdded({required this.productInfo, required this.quantity});
+  CartProductAdded({required this.productInfo, required this.quantity});
 }
 
 class CartListGetList extends CartListEvent {
   CartListGetList();
 }
 
-class CartListSelected extends CartListEvent {
-  final CartEntity cart;
+class CartProductSelected extends CartListEvent {
+  final CartEntity cartEntity;
 
-  CartListSelected({required this.cart});
+  CartProductSelected({required this.cartEntity});
 }
 
-class CartListSelectedAll extends CartListEvent {
-  CartListSelectedAll();
+class CartAllProductsSelected extends CartListEvent {
+  CartAllProductsSelected();
 }
 
-class CartListQtyDecreased extends CartListEvent {
-  final CartEntity cart;
+class CartProductQtyDecreased extends CartListEvent {
+  final CartEntity cartEntity;
 
-  CartListQtyDecreased({required this.cart});
+  CartProductQtyDecreased({required this.cartEntity});
 }
 
-class CartListQtyIncreased extends CartListEvent {
-  final CartEntity cart;
+class CartProductQtyIncreased extends CartListEvent {
+  final CartEntity cartEntity;
 
-  CartListQtyIncreased({required this.cart});
+  CartProductQtyIncreased({required this.cartEntity});
 }
 
-class CartListDeleted extends CartListEvent {
+class CartProductDeleted extends CartListEvent {
   final List<String> productIds;
 
-  CartListDeleted({required this.productIds});
+  CartProductDeleted({required this.productIds});
 }

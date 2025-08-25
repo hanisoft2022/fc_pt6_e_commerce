@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/features/cart/cart.dart';
+
 import 'core/core.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +8,6 @@ import 'features/cart_list/cart_list.dart';
 import 'firebase_options.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'features/cart/bloc/cart_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

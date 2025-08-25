@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/features/cart_list/view/cart_list_page.dart';
+import 'package:e_commerce_app/features/cart_list/view/cart_list_routes.dart';
 import 'package:e_commerce_app/features/home/view/home_page.dart';
 import 'package:e_commerce_app/features/home/view/home_routes.dart';
 import 'package:e_commerce_app/features/main/view/main_routes.dart';
@@ -23,6 +25,11 @@ final GoRouter router = GoRouter(
       name: HomeRoutes.name,
       path: HomeRoutes.path,
       builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      name: CartListRoutes.name,
+      path: CartListRoutes.path,
+      builder: (context, state) => const CartListPage(),
     ),
   ],
 );
