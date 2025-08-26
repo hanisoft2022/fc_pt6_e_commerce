@@ -33,9 +33,9 @@ class CartProductInfo extends StatelessWidget {
                 Gap(4),
                 Text(
                   productInfo.subtitle,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.labelMedium?.copyWith(color: context.colorScheme.contentTertiary),
+                  style: context.textTheme.labelMedium?.copyWith(
+                    color: context.colorScheme.contentTertiary,
+                  ),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),

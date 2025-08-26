@@ -8,6 +8,7 @@ import 'package:e_commerce_app/features/top_app_bar/widgets/top_app_bar.dart';
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/core.dart';
 import '../../cart/cart.dart';
 
 class MainPage extends StatelessWidget {
@@ -33,12 +34,20 @@ class MainView extends StatelessWidget {
     return Scaffold(
       appBar: const TopAppBar(),
       body: BlocListener<CartBloc, CartState>(
-        listener: (context, state) {
-          showCartBottomSheet(context).whenComplete(() {
+        listener: (context, state) async {
+          final bottomSheet = await showCartBottomSheet(context).whenComplete(() {
             if (context.mounted) {
               context.read<CartBloc>().add(CartClosed());
             }
           });
+
+          final bool isSuccess = bottomSheet ?? false;
+
+          if (isSuccess == true) {
+            if (context.mounted) {
+              CommonSnackBar.addCartSnackBar(context);
+            }
+          }
         },
         listenWhen: (previous, current) => previous.status.isClose && current.status.isOpen,
         child: BlocBuilder<BottomNavCubit, BottomNavState>(

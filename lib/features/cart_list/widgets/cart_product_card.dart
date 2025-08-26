@@ -26,19 +26,19 @@ class CartProductCard extends StatelessWidget {
 
     final bloc = context.read<CartListBloc>();
 
-    final isSelected = context.select(
-      (CartListBloc bloc) => bloc.state.selectedProductsIds.contains(productId),
-    );
-
     return Padding(
       padding: const EdgeInsets.only(left: 16, top: 20, right: 16),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SVGIconButton(
-            iconPath: (isSelected) ? AppIcons.checkMarkCircleFill : AppIcons.checkMarkCircle,
-            color: (isSelected) ? colorScheme.primary : colorScheme.contentFourth,
-            onPressed: () => bloc.add(CartProductSelected(cartEntity: cartEntity)),
+          BlocSelector<CartListBloc, CartListState, bool>(
+            selector: (state) => state.selectedProductsIds.contains(productId),
+            builder: (context, isSelected) => SVGIconButton(
+              iconPath: isSelected ? AppIcons.checkMarkCircleFill : AppIcons.checkMarkCircle,
+              color: isSelected ? colorScheme.primary : colorScheme.contentFourth,
+              onPressed: () =>
+                  context.read<CartListBloc>().add(CartProductSelected(cartEntity: cartEntity)),
+            ),
           ),
           Gap(8),
           Expanded(
@@ -71,6 +71,7 @@ class CartProductCard extends StatelessWidget {
                     // 상품 이미지
                     Image.network(
                       cartEntity.productInfo.imageUrl,
+                      fit: BoxFit.cover,
                       width: _imageWidth,
                       height: _imageHeight,
                     ),

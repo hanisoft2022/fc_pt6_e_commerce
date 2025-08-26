@@ -4,6 +4,7 @@ import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../../core/core.dart';
@@ -65,14 +66,31 @@ class HomeAppBar extends StatelessWidget {
                 color: mallType.theme.iconColor,
                 padding: 8,
               ),
-              SVGIconButton(
-                iconPath: AppIcons.cart,
-                color: mallType.theme.iconColor,
-                padding: 8,
-                onPressed: () {
-                  context.pushNamed(CartListRoutes.name);
+              BlocBuilder<CartListBloc, CartListState>(
+                builder: (context, state) {
+                  return Badge(
+                    backgroundColor: context.colorScheme.onPrimary,
+                    alignment: Alignment.topRight.add(Alignment(-0.2, 0.2)),
+                    label: Text(
+                      state.cartProducts.length.toString(),
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontFamily: 'Pretendard',
+                        fontWeight: FontWeight.w600,
+                        color: context.colorScheme.primary,
+                      ),
+                    ),
+                    child: SVGIconButton(
+                      iconPath: AppIcons.cart,
+                      color: mallType.theme.iconColor,
+                      onPressed: () {
+                        context.pushNamed(CartListRoutes.name);
+                      },
+                    ),
+                  );
                 },
               ),
+              Gap(8),
             ],
           ),
         );

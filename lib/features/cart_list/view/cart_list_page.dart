@@ -6,20 +6,19 @@ import 'package:go_router/go_router.dart';
 import '../../../core/core.dart';
 import '../cart_list.dart';
 
-class CartListPage extends StatelessWidget {
-  const CartListPage({super.key});
+class CartListView extends StatefulWidget {
+  const CartListView({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BlocProvider.value(
-      value: BlocProvider.of<CartListBloc>(context)..add(CartListStarted()),
-      child: const CartListView(),
-    );
-  }
+  State<CartListView> createState() => _CartListViewState();
 }
 
-class CartListView extends StatelessWidget {
-  const CartListView({super.key});
+class _CartListViewState extends State<CartListView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<CartListBloc>().add(CartListStarted());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +106,6 @@ class CartListView extends StatelessWidget {
               return ListView(
                 children: [
                   Divider(height: 8, thickness: 8, color: colorScheme.surface),
-
                   Column(
                     children: List.generate(
                       state.cartProducts.length,

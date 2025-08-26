@@ -1,8 +1,10 @@
 import 'package:e_commerce_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:go_router/go_router.dart';
 
 import '../../cart/cart.dart';
+import '../../cart_list/cart_list.dart';
 
 const double _buttonHeight = 48;
 
@@ -39,9 +41,12 @@ class AddCartButton extends StatelessWidget {
           ),
         ),
       ),
-      // onTap: () => context.read<CartListBloc>().add(
-      //   CartListAdded(quantity: blocState.quantity, productInfo: blocState.productInfo),
-      // ),
+      onTap: () {
+        context.read<CartListBloc>().add(
+          CartProductAdded(quantity: blocState.quantity, productInfo: blocState.productInfo),
+        );
+        // context.pop();
+      },
     );
   }
 }

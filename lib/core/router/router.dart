@@ -3,7 +3,7 @@ import 'package:e_commerce_app/features/cart_list/view/cart_list_routes.dart';
 import 'package:e_commerce_app/features/home/view/home_page.dart';
 import 'package:e_commerce_app/features/home/view/home_routes.dart';
 import 'package:e_commerce_app/features/main/view/main_routes.dart';
-import 'package:e_commerce_app/features/main/view/main_view.dart';
+import 'package:e_commerce_app/features/main/view/main_page.dart';
 import 'package:e_commerce_app/features/splash/view/splash_page.dart';
 import 'package:e_commerce_app/features/splash/view/splash_routes.dart';
 import 'package:go_router/go_router.dart';
@@ -29,7 +29,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: CartListRoutes.name,
       path: CartListRoutes.path,
-      builder: (context, state) => const CartListPage(),
+      builder: (context, state) => const CartListView(),
     ),
   ],
 );
