@@ -29,7 +29,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: CartListRoutes.name,
       path: CartListRoutes.path,
-      builder: (context, state) => const CartListView(),
+      builder: (context, state) => const CartListPage(),
     ),
   ],
 );

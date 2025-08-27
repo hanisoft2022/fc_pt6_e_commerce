@@ -1,10 +1,22 @@
+import 'package:domain/domain.dart';
+import 'package:e_commerce_app/features/payment/payment_bloc/payment_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../../core/core.dart';
+import '../../payment/widget/widget.dart';
 import '../cart_list.dart';
+
+class CartListPage extends StatelessWidget {
+  const CartListPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(create: (context) => getIt<PaymentBloc>(), child: CartListView());
+  }
+}
 
 class CartListView extends StatefulWidget {
   const CartListView({super.key});
@@ -117,6 +129,25 @@ class _CartListViewState extends State<CartListView> {
               );
           }
         },
+      ),
+      bottomNavigationBar: SafeArea(
+        child: BlocBuilder<CartListBloc, CartListState>(
+          builder: (context, state) {
+            List<CartEntity> selectedCartProducts = state.cartProducts
+                .where(
+                  (cartProduct) =>
+                      state.selectedProductsIds.contains(cartProduct.productInfo.productId),
+                )
+                .toList();
+
+            return state.status.isSuccess
+                ? PaymentButton(
+                    selectedCartProducts: selectedCartProducts,
+                    totalPrice: state.totalPrice,
+                  )
+                : SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

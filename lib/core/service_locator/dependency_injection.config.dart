@@ -19,6 +19,8 @@ import 'package:e_commerce_app/features/home/bloc/menu_bloc/menu_bloc.dart'
     as _i183;
 import 'package:e_commerce_app/features/home/bloc/view_module_bloc/view_module_bloc.dart'
     as _i853;
+import 'package:e_commerce_app/features/payment/payment_bloc/payment_bloc.dart'
+    as _i61;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -32,6 +34,7 @@ extension GetItInjectableX on _i174.GetIt {
     await _i1027.DataPackageModule().init(gh);
     await _i966.DomainPackageModule().init(gh);
     gh.factory<_i102.CartBloc>(() => _i102.CartBloc());
+    gh.factory<_i61.PaymentBloc>(() => _i61.PaymentBloc());
     gh.factory<_i183.MenuBloc>(
       () => _i183.MenuBloc(displayUsecase: gh<_i494.DisplayUsecase>()),
     );
