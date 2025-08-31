@@ -4,7 +4,9 @@ import 'package:e_commerce_app/features/home/view/home_page.dart';
 import 'package:e_commerce_app/features/bottom_nav/cubit/bottom_nav_cubit.dart';
 import 'package:e_commerce_app/features/bottom_nav/widgets/navigation_bar.dart';
 import 'package:e_commerce_app/features/mall_type/cubit/mall_type_cubit.dart';
+import 'package:e_commerce_app/features/search/search_page.dart';
 import 'package:e_commerce_app/features/top_app_bar/widgets/top_app_bar.dart';
+import 'package:e_commerce_app/features/user/view/user_page.dart';
 import 'package:flutter/material.dart' hide NavigationBar, Tab;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -67,23 +69,5 @@ class MainView extends StatelessWidget {
       ),
       bottomNavigationBar: NavigationBar(),
     );
-  }
-}
-
-class UserPage extends StatelessWidget {
-  const UserPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
-  }
-}
-
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    throw UnimplementedError();
   }
 }
