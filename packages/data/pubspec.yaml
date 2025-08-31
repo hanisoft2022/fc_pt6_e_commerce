@@ -23,6 +23,8 @@ dependencies:
   injectable_generator: ^2.8.1
   path_provider: ^2.1.5
   cloud_firestore: ^6.0.0
+  kakao_flutter_sdk_user: ^1.9.7+3
+
 
 dev_dependencies:
   flutter_test:
