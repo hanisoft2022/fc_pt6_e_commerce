@@ -1,7 +1,5 @@
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
-import 'package:e_commerce_app/core/exception/common_exception.dart';
-import 'package:e_commerce_app/core/logger/logger.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/features/cart/cart.dart';
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 import 'core/core.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +12,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  KakaoSdk.init(nativeAppKey: KakaoConstants.NATIVE_APP_KEY);
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  configureDependencies();
+  await configureDependencies();
   runApp(const MainApp());
 }
 

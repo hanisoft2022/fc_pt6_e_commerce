@@ -1,69 +1,70 @@
+// ignore_for_file: avoid_print
+
 import 'package:core/core.dart';
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
-import 'package:data/data.dart';
 
+@injectable
 class KakaoUserDao {
-  Future<ResponseWrapper<User?>> getKakaoUser() async {
-    // 1. 기존 토큰이 유효하다면 사용자 정보만 반환 (자동 로그인)
+  Future<User?> getKakaoUser() async {
+    // 1. 카카오톡/카카오계정으로 로그인
+    if (await isKakaoTalkInstalled()) {
+      try {
+        await UserApi.instance.loginWithKakaoTalk();
+      } catch (error) {
+        if (error is PlatformException && error.code == 'CANCELED') {
+          return null;
+        }
+
+        await _loginWithKakaoAccount();
+      }
+    } else {
+      await _loginWithKakaoAccount();
+    }
+
+    // 2. 사용자 정보 반환
+    return await UserApi.instance.me();
+  }
+
+  Future<User?> loginWithToken() async {
     if (await AuthApi.instance.hasToken()) {
       try {
-        final user = await UserApi.instance.me();
-        return ResponseWrapper<User?>(
-          code: '200',
-          status: 'SUCCESS',
-          message: '자동 로그인 성공',
-          data: user,
-        );
+        await UserApi.instance.accessTokenInfo();
       } catch (error) {
-        // 토큰 만료 또는 기타 오류 시에는 아래에서 재로그인 시도
-      }
-    }
-
-    // 2. 카카오톡/카카오계정으로 로그인
-    try {
-      if (await isKakaoTalkInstalled()) {
-        await UserApi.instance.loginWithKakaoTalk();
-      } else {
-        await UserApi.instance.loginWithKakaoAccount();
-      }
-    } catch (error) {
-      // 사용자가 로그인 화면에서 취소한 경우
-      if (error is PlatformException && error.code == 'CANCELED') {
-        return ResponseWrapper<User?>(
-          code: '401',
-          status: 'CANCELED',
-          message: '사용자가 로그인 취소함',
-          data: null,
-        );
-      }
-      // 카카오톡 계정 연결이 안 되어 있거나 기타 사유로 카카오계정 로그인 추가 시도
-      try {
-        await UserApi.instance.loginWithKakaoAccount();
-      } catch (e) {
-        if (e is PlatformException && e.code == 'CANCELED') {
-          return ResponseWrapper<User?>(
-            code: '500',
-            status: 'FAIL',
-            message: '카카오 계정 로그인 실패: ${e.toString()}',
-            data: null,
-          );
+        if (error is KakaoException && error.isInvalidTokenError()) {
+          CustomLogger.logger.w('토큰 만료 또는 유효하지 않음: ${error.message}');
+        } else {
+          CustomLogger.logger.e('엑세스 토큰 정보 조회 실패: $error');
+          throw CommonException.setError(error);
         }
-        CustomLogger.logger.e(e);
       }
+    } else {
+      return null;
     }
 
-    // 3. 사용자 정보 반환
+    return await UserApi.instance.me();
+  }
+
+  Future<void> logout() async {
     try {
-      final user = await UserApi.instance.me();
-      return ResponseWrapper<User?>(code: '200', status: 'SUCCESS', message: '로그인 성공', data: user);
+      await UserApi.instance.logout();
     } catch (error) {
-      return ResponseWrapper<User?>(
-        code: '501',
-        status: 'FAIL',
-        message: '사용자 정보 요청 실패: ${error.toString()}',
-        data: null,
-      );
+      CustomLogger.logger.e(error);
+      throw CommonException.setError(error);
     }
+  }
+}
+
+Future<void> _loginWithKakaoAccount() async {
+  try {
+    await UserApi.instance.loginWithKakaoAccount();
+  } catch (error) {
+    if (error is PlatformException && error.code == 'CANCELED') {
+      return;
+    }
+
+    CustomLogger.logger.e(error);
+    throw CommonException.setError(error);
   }
 }

@@ -6,7 +6,7 @@ import 'package:dio/dio.dart';
 
 part 'display_api.g.dart';
 
-@singleton
+@factoryMethod
 @RestApi()
 abstract interface class DisplayApi {
   factory DisplayApi(Dio dio, {String baseUrl}) = _DisplayApi;

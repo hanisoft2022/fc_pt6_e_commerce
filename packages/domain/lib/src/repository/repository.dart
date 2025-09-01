@@ -1,2 +1,4 @@
 export 'display/display.dart';
-export 'display/repository.dart';
+export 'user/user.dart';
+
+abstract interface class Repository {}

@@ -1,6 +1,7 @@
 import 'package:bootpay/model/user.dart';
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -26,16 +27,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       emit(state.copyWith(status: Status.loading));
 
-      // final response = await _userUsecase.execute<Result<User>>(usecase: LoginUsecase());
+      final response = await _userUsecase.execute<Result<User>>(usecase: LoginUsecase());
 
-      // response.when(
-      //   success: (user) {
-      //     emit(state.copyWith(status: Status.success, user: user));
-      //   },
-      //   failure: (_) {
-      //     emit(state.copyWith(status: Status.initial));
-      //   },
-      // );
+      response.when(
+        success: (user) {
+          emit(state.copyWith(status: Status.success, user: user));
+        },
+        failure: (_) {
+          emit(state.copyWith(status: Status.initial));
+        },
+      );
     } on ErrorResponse catch (error) {
       emit(state.copyWith(status: Status.failure, error: error));
     } catch (error) {
@@ -47,16 +48,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _onUserLoginWithToken(UserLoginWithToken event, Emitter<UserState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      // final response = await _userUsecase.execute<Result<User>>(usecase: LoginWithTokenUsecase());
+      final response = await _userUsecase.execute<Result<User>>(usecase: LoginWithTokenUsecase());
 
-      // response.when(
-      //   success: (user) {
-      //     emit(state.copyWith(status: Status.success, user: user));
-      //   },
-      //   failure: (_) {
-      //     emit(state.copyWith(status: Status.initial));
-      //   },
-      // );
+      response.when(
+        success: (user) {
+          emit(state.copyWith(status: Status.success, user: user));
+        },
+        failure: (_) {
+          emit(state.copyWith(status: Status.initial));
+        },
+      );
     } on ErrorResponse catch (error) {
       emit(state.copyWith(status: Status.failure, error: error));
     } catch (error) {
@@ -68,7 +69,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   Future<void> _onUserLogout(UserLogout event, Emitter<UserState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      // await _userUsecase.execute(usecase: LogoutUsecase());
+      await _userUsecase.execute(usecase: LogoutUsecase());
       emit(state.copyWith(status: Status.initial, user: null));
     } on ErrorResponse catch (error) {
       emit(state.copyWith(status: Status.failure, error: error));
@@ -78,5 +79,3 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 }
-
-class UserUsecase {}

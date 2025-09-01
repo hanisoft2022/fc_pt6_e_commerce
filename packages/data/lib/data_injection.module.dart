@@ -8,7 +8,10 @@ import 'dart:async' as _i687;
 
 import 'package:data/data.dart' as _i437;
 import 'package:data/src/data_source/data_source_module.dart' as _i94;
+import 'package:data/src/data_source/kakao_user_dao.dart' as _i220;
 import 'package:data/src/repository_impl/display_repository_impl.dart' as _i755;
+import 'package:data/src/repository_impl/kakao_user_repository_impl.dart'
+    as _i589;
 import 'package:domain/domain.dart' as _i494;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -17,10 +20,13 @@ class DataPackageModule extends _i526.MicroPackageModule {
   @override
   _i687.FutureOr<void> init(_i526.GetItHelper gh) {
     final dataSourceModule = _$DataSourceModule();
+    gh.factory<_i220.KakaoUserDao>(() => _i220.KakaoUserDao());
     gh.singleton<_i437.DisplayApi>(() => dataSourceModule.displayApi);
     gh.singleton<_i437.DisplayDao>(() => dataSourceModule.displayDao);
     gh.singleton<_i494.DisplayRepository>(
         () => _i755.DisplayRepositoryImpl(displayDao: gh<_i437.DisplayDao>()));
+    gh.singleton<_i494.UserRepository>(
+        () => _i589.KakaoUserRepositoryImpl(gh<_i437.KakaoUserDao>()));
   }
 }
 

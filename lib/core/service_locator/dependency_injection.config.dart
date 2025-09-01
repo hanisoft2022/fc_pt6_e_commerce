@@ -20,7 +20,8 @@ import 'package:e_commerce_app/features/home/bloc/menu_bloc/menu_bloc.dart'
 import 'package:e_commerce_app/features/home/bloc/view_module_bloc/view_module_bloc.dart'
     as _i853;
 import 'package:e_commerce_app/features/payment/payment_bloc/payment_bloc.dart'
-    as _i61;
+    as _i63;
+import 'package:e_commerce_app/features/user/user_bloc/user_bloc.dart' as _i622;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
@@ -33,14 +34,15 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     await _i1027.DataPackageModule().init(gh);
     await _i966.DomainPackageModule().init(gh);
+    gh.factory<_i63.PaymentBloc>(() => _i63.PaymentBloc());
     gh.factory<_i102.CartBloc>(() => _i102.CartBloc());
-    gh.factory<_i61.PaymentBloc>(() => _i61.PaymentBloc());
     gh.factory<_i183.MenuBloc>(
       () => _i183.MenuBloc(displayUsecase: gh<_i494.DisplayUsecase>()),
     );
     gh.factory<_i853.ViewModuleBloc>(
       () => _i853.ViewModuleBloc(displayUsecase: gh<_i494.DisplayUsecase>()),
     );
+    gh.factory<_i622.UserBloc>(() => _i622.UserBloc(gh<_i494.UserUsecase>()));
     gh.factory<_i519.CartListBloc>(
       () => _i519.CartListBloc(gh<_i494.DisplayUsecase>()),
     );
