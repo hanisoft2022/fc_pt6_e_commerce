@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/features/cart/cart.dart';
+import 'package:e_commerce_app/features/user/user.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 
 import 'core/core.dart';
@@ -25,6 +26,11 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => getIt<KakaoUserBloc>()..add(KakaoUserLoginWithToken()),
+          lazy: false,
+        ),
+
         BlocProvider(create: (context) => getIt<CartBloc>()..add(CartStarted())),
 
         BlocProvider(

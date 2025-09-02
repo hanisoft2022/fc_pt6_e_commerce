@@ -2,7 +2,7 @@ import 'package:e_commerce_app/core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../user_bloc/user_bloc.dart';
+import '../user_bloc/kakao_user_bloc.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -11,7 +11,7 @@ class UserPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 20),
-      child: BlocBuilder<UserBloc, UserState>(
+      child: BlocBuilder<KakaoUserBloc, KakaoUserState>(
         builder: (context, state) {
           switch (state.status) {
             case Status.initial:
@@ -20,7 +20,7 @@ class UserPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      '''간편하게 로그인하고\n패캠마켓의\n다양한 서비스를 이용해보세요.''',
+                      '''간편하게 로그인하고\n공무톡의\n다양한 서비스를 이용해보세요.''',
                       style: Theme.of(context).textTheme.headlineSmall
                           ?.copyWith(color: Theme.of(context).colorScheme.contentPrimary)
                           .regular,
@@ -30,7 +30,7 @@ class UserPage extends StatelessWidget {
                     SizedBox(
                       height: 48,
                       child: TextButton(
-                        onPressed: () => context.read<UserBloc>().add(UserLogin()),
+                        onPressed: () => context.read<KakaoUserBloc>().add(KakaoUserLogin()),
                         style: const ButtonStyle(
                           padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(EdgeInsets.zero),
                         ),
@@ -62,33 +62,34 @@ class UserProfile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final user = context.watch<UserBloc>().state.user;
+    final user = context.watch<KakaoUserBloc>().state.user;
 
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 32),
         child: Column(
           children: [
-            // ClipOval(
-            //   child: Image.network(
-            //     user?.kakaoAccount?.profile?.profileImageUrl ?? '',
-            //     width: 110,
-            //     height: 110,
-            //   ),
-            // ),
+            ClipOval(
+              child: Image.network(
+                user?.kakaoAccount?.profile?.profileImageUrl ?? '',
+                width: 110,
+                height: 110,
+                fit: BoxFit.cover,
+              ),
+            ),
             const SizedBox(height: 24),
-            // Text(
-            //   user?.kakaoAccount?.profile?.nickname.toString() ?? '무명의 사용자',
-            //   style: Theme.of(
-            //     context,
-            //   ).textTheme.titleLarge?.copyWith(color: AppColors.black).regular,
-            // ),
+            Text(
+              user?.kakaoAccount?.profile?.nickname.toString() ?? '무명의 사용자',
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(color: AppColors.black).regular,
+            ),
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  context.read<UserBloc>().add(UserLogout());
+                  context.read<KakaoUserBloc>().add(KakaoUserLogout());
                 },
                 style: ButtonStyle(
                   backgroundColor: WidgetStatePropertyAll<Color>(Theme.of(context).primaryColor),

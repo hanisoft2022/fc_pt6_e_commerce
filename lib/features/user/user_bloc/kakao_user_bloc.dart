@@ -1,4 +1,3 @@
-import 'package:bootpay/model/user.dart';
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 
@@ -6,35 +5,40 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart' as kakao;
+
 import '../../../core/core.dart';
-part 'user_event.dart';
 
-part 'user_state.dart';
+part 'kakao_user_event.dart';
 
-part 'user_bloc.freezed.dart';
+part 'kakao_user_state.dart';
+
+part 'kakao_user_bloc.freezed.dart';
 
 @injectable
-class UserBloc extends Bloc<UserEvent, UserState> {
-  final UserUsecase _userUsecase;
+class KakaoUserBloc extends Bloc<KakaoUserEvent, KakaoUserState> {
+  final KakaoUserUsecase _userUsecase;
 
-  UserBloc(this._userUsecase) : super(UserState()) {
-    on<UserLogin>(_onUserLogin);
-    on<UserLoginWithToken>(_onUserLoginWithToken);
-    on<UserLogout>(_onUserLogout);
+  KakaoUserBloc(this._userUsecase) : super(KakaoUserState()) {
+    on<KakaoUserLogin>(_onUserLogin);
+    on<KakaoUserLoginWithToken>(_onUserLoginWithToken);
+    on<KakaoUserLogout>(_onUserLogout);
   }
 
-  Future<void> _onUserLogin(UserLogin event, Emitter<UserState> emit) async {
+  Future<void> _onUserLogin(KakaoUserLogin event, Emitter<KakaoUserState> emit) async {
     try {
       emit(state.copyWith(status: Status.loading));
 
-      final response = await _userUsecase.execute<Result<User>>(usecase: LoginUsecase());
+      final Result<kakao.User?> response = await _userUsecase.execute<Result<kakao.User?>>(
+        usecase: LoginUsecase(),
+      );
 
       response.when(
-        success: (user) {
-          emit(state.copyWith(status: Status.success, user: user));
-        },
         failure: (_) {
           emit(state.copyWith(status: Status.initial));
+        },
+        success: (user) {
+          emit(state.copyWith(status: Status.success, user: user));
         },
       );
     } on ErrorResponse catch (error) {
@@ -45,10 +49,15 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-  Future<void> _onUserLoginWithToken(UserLoginWithToken event, Emitter<UserState> emit) async {
+  Future<void> _onUserLoginWithToken(
+    KakaoUserLoginWithToken event,
+    Emitter<KakaoUserState> emit,
+  ) async {
     emit(state.copyWith(status: Status.loading));
     try {
-      final response = await _userUsecase.execute<Result<User>>(usecase: LoginWithTokenUsecase());
+      final response = await _userUsecase.execute<Result<kakao.User?>>(
+        usecase: LoginWithTokenUsecase(),
+      );
 
       response.when(
         success: (user) {
@@ -66,7 +75,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     }
   }
 
-  Future<void> _onUserLogout(UserLogout event, Emitter<UserState> emit) async {
+  Future<void> _onUserLogout(KakaoUserLogout event, Emitter<KakaoUserState> emit) async {
     emit(state.copyWith(status: Status.loading));
     try {
       await _userUsecase.execute(usecase: LogoutUsecase());

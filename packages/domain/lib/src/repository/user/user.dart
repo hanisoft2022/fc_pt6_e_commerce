@@ -1,1 +1,1 @@
-export 'user_repository.dart';
+export 'kakao_user_repository.dart';

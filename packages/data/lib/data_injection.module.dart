@@ -23,10 +23,10 @@ class DataPackageModule extends _i526.MicroPackageModule {
     gh.factory<_i220.KakaoUserDao>(() => _i220.KakaoUserDao());
     gh.singleton<_i437.DisplayApi>(() => dataSourceModule.displayApi);
     gh.singleton<_i437.DisplayDao>(() => dataSourceModule.displayDao);
+    gh.singleton<_i494.KakaoUserRepository>(
+        () => _i589.KakaoUserRepositoryImpl(gh<_i437.KakaoUserDao>()));
     gh.singleton<_i494.DisplayRepository>(
         () => _i755.DisplayRepositoryImpl(displayDao: gh<_i437.DisplayDao>()));
-    gh.singleton<_i494.UserRepository>(
-        () => _i589.KakaoUserRepositoryImpl(gh<_i437.KakaoUserDao>()));
   }
 }
 
